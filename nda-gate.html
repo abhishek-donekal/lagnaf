@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NDA Execution – LAGNAF Network</title>
+  <link rel="stylesheet" href="css/system.css" />
+</head>
+<body>
+
+<header class="sys-header">
+  <div class="sys-logo">LAGNAF<span>™</span> Network</div>
+  <span class="sys-step-indicator">Step 2 of 4 — NDA Execution</span>
+</header>
+
+<div class="sys-page top-aligned">
+  <div class="sys-card wide">
+
+    <div class="sys-progress">
+      <span class="sys-progress-step done">Entry</span>
+      <span class="sys-progress-arrow">›</span>
+      <span class="sys-progress-step active">NDA Gate</span>
+      <span class="sys-progress-arrow">›</span>
+      <span class="sys-progress-step">UIN Issued</span>
+      <span class="sys-progress-arrow">›</span>
+      <span class="sys-progress-step">Path Selection</span>
+    </div>
+
+    <span class="sys-eyebrow">Mandatory — Non-Disclosure Agreement</span>
+    <h1 class="sys-title">NDA Execution Required</h1>
+    <div class="sys-divider"></div>
+    <p class="sys-sub">Before any system details, pricing, or operational information is disclosed, you must execute the LAGNAF™ Network Non-Disclosure Agreement. Review and sign the document below. No navigation is available from this page.</p>
+
+    <div style="background:#faf8f4;border:1px solid #b89d6a;padding:16px 20px;margin-bottom:24px;display:flex;gap:12px;align-items:flex-start;">
+      <span style="color:#b89d6a;font-size:1rem;flex-shrink:0;">▸</span>
+      <p style="font-size:0.75rem;color:#555;line-height:1.7;">This NDA is legally binding. By signing, you agree that all system information, pricing, operator details, and network infrastructure disclosed following execution are strictly confidential and may not be shared, reproduced, or distributed without written authorization from LAGNAF™ Network LLC.</p>
+    </div>
+
+    <!-- DocuSign Embed Area -->
+    <div class="nda-frame-wrap" id="docusign-wrap">
+      <div style="text-align:center;padding:40px;">
+        <p style="font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#b89d6a;margin-bottom:16px;">DocuSign Integration</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#333;margin-bottom:12px;">NDA Document Loading...</p>
+        <p style="font-size:0.72rem;color:#999;max-width:400px;margin:0 auto 24px;">Configure your DocuSign embedded signing URL in the <code style="font-size:0.7rem;background:#f0f0f0;padding:2px 6px;">nda-gate.html</code> source to activate. Replace the placeholder below with your DocuSign Focused View URL.</p>
+        <div style="background:#f0f0f0;padding:12px 20px;font-size:0.7rem;color:#888;font-family:monospace;text-align:left;max-width:480px;margin:0 auto;">
+          // Replace this block with DocuSign embed:<br>
+          // &lt;iframe src="YOUR_DOCUSIGN_URL" ...&gt;&lt;/iframe&gt;
+        </div>
+      </div>
+    </div>
+    <!-- END DocuSign -->
+
+    <div style="border-top:1px solid #e5e5e5;padding-top:28px;margin-top:8px;">
+      <p style="font-size:0.72rem;color:#aaa;margin-bottom:16px;font-style:italic;">Once you have reviewed and signed the NDA above, click the button below to confirm execution and proceed.</p>
+      <div style="display:flex;gap:16px;align-items:center;">
+        <button class="btn-sys-primary" id="nda-confirm-btn" onclick="confirmNDA()">I Have Signed — Continue →</button>
+        <a href="entry-gateway.html" style="font-size:0.68rem;color:#aaa;text-decoration:underline;">← Back to Entry</a>
+      </div>
+    </div>
+
+    <div style="margin-top:28px;padding-top:20px;border-top:1px solid #f0f0f0;display:flex;justify-content:space-between;align-items:center;">
+      <p style="font-size:0.65rem;color:#bbb;">LAGNAF™ Network LLC · Governed under Wyoming state law</p>
+      <p style="font-size:0.65rem;color:#bbb;">Questions: <a href="tel:9493508804" style="color:#b89d6a;">949-350-8804</a></p>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/flow.js"></script>
+<script>
+// Redirect to entry if no submission on record
+document.addEventListener('DOMContentLoaded', function() {
+  if (!Flow.get('entry')) { window.location.href = 'entry-gateway.html'; }
+  // Display applicant name
+  const entry = Flow.get('entry');
+  if (entry) {
+    const nameEl = document.createElement('div');
+    nameEl.style.cssText = 'font-size:0.7rem;color:#888;margin-bottom:20px;';
+    nameEl.innerHTML = 'Applicant: <strong style="color:#222;">' + entry.first + ' ' + entry.last + '</strong>';
+    document.querySelector('.sys-divider').after(nameEl);
+  }
+});
+
+function confirmNDA() {
+  const btn = document.getElementById('nda-confirm-btn');
+  btn.textContent = 'Processing...';
+  btn.disabled = true;
+  btn.style.opacity = '0.7';
+  setTimeout(function() { Flow.completeNDA(); }, 800);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ambassador Dashboard – LAGNAF Network</title>
+  <link rel="stylesheet" href="css/system.css" />
+</head>
+<body>
+
+<header class="sys-header">
+  <div class="sys-logo">LAGNAF<span>™</span> Network</div>
+  <div style="display:flex;align-items:center;gap:24px;">
+    <span class="sys-step-indicator">Ambassador Dashboard</span>
+    <button onclick="if(confirm('End session and return to entry?')){Flow.clear();window.location.href='entry-gateway.html';}" style="background:none;border:1px solid #333;color:#888;font-size:0.58rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:6px 14px;cursor:pointer;">Sign Out</button>
+  </div>
+</header>
+
+<div class="dash-grid">
+
+  <!-- Sidebar -->
+  <div class="dash-sidebar">
+    <div class="dash-sidebar-logo">LAGNAF<span>™</span></div>
+    <nav class="dash-nav">
+      <a href="#" class="active">Overview</a>
+      <a href="#referral-tracking">Referral Tracking</a>
+      <a href="#submitted-leads">Submitted Leads</a>
+      <a href="#compensation">Compensation</a>
+      <a href="tel:9493508804" style="margin-top:40px;border-top:1px solid #1e1e1e;padding-top:20px;">Support</a>
+    </nav>
+  </div>
+
+  <!-- Main -->
+  <div class="dash-main">
+
+    <div class="dash-header">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <h1>Ambassador Dashboard</h1>
+          <p>Brand Ambassador Program · <span id="dash-date">—</span></p>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-size:0.58rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#bbb;margin-bottom:4px;">UIN</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#b89d6a;letter-spacing:0.1em;" id="uin-display">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status Cards -->
+    <div class="dash-cards">
+      <div class="dash-card">
+        <div class="dash-card-label">Ambassador Status</div>
+        <div class="dash-card-value"><span class="badge badge-gold">Candidate</span></div>
+        <div class="dash-card-sub">Application under review</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-label">Submitted Leads</div>
+        <div class="dash-card-value" style="font-family:'Cormorant Garamond',serif;font-size:2rem;">0</div>
+        <div class="dash-card-sub">Pending referral activity</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-label">Verified Commissions</div>
+        <div class="dash-card-value" style="font-family:'Cormorant Garamond',serif;font-size:2rem;">$0</div>
+        <div class="dash-card-sub">Paid on verified payments only</div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-label">Referral Window</div>
+        <div class="dash-card-value" style="font-size:1rem;font-family:'Cormorant Garamond',serif;">90 Days</div>
+        <div class="dash-card-sub">Per registered referral</div>
+      </div>
+    </div>
+
+    <!-- Referral Tracking -->
+    <div id="referral-tracking" style="background:#fff;border:1px solid #e5e5e5;padding:28px;margin-bottom:20px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+        <div style="font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#b89d6a;">Referral Tracking</div>
+        <span class="badge badge-grey">No Active Referrals</span>
+      </div>
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th>Referral ID</th>
+            <th>Submitted</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Commission</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="5" style="text-align:center;color:#bbb;padding:28px;font-style:italic;font-size:0.73rem;">No referrals submitted yet. Your referral link will be issued upon ambassador approval.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Submitted Leads -->
+    <div id="submitted-leads" style="background:#fff;border:1px solid #e5e5e5;padding:28px;margin-bottom:20px;">
+      <div style="font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#b89d6a;margin-bottom:14px;">Submitted Leads</div>
+      <div style="background:#f7f7f7;border:1px solid #e5e5e5;padding:24px;text-align:center;">
+        <p style="font-size:0.75rem;color:#aaa;font-style:italic;">Lead submission will be activated once your ambassador application is approved and your referral credentials are issued.</p>
+      </div>
+    </div>
+
+    <!-- Compensation Structure -->
+    <div id="compensation" style="background:#fff;border:1px solid #e5e5e5;padding:28px;margin-bottom:20px;">
+      <div style="font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#b89d6a;margin-bottom:16px;">Your Compensation Structure</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="border:1px solid #e5e5e5;border-top:3px solid #b89d6a;padding:24px;">
+          <div style="font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#b89d6a;margin-bottom:8px;">Direct Purchase</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:#b89d6a;line-height:1;margin-bottom:10px;">15%</div>
+          <p style="font-size:0.72rem;color:#666;line-height:1.7;">On eligible purchases paid in full. Single lump-sum payout upon verified payment.</p>
+        </div>
+        <div style="border:1px solid #e5e5e5;border-top:3px solid #b89d6a;padding:24px;">
+          <div style="font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#b89d6a;margin-bottom:8px;">Lease-to-Own ($50k+)</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:#b89d6a;line-height:1;margin-bottom:10px;">3% <span style="font-size:1.4rem;color:#aaa;">+</span> 1%</div>
+          <p style="font-size:0.72rem;color:#666;line-height:1.7;">3% on monthly payments received. 1% lump sum on verified final payoff.</p>
+        </div>
+      </div>
+      <p style="font-size:0.68rem;color:#aaa;margin-top:14px;font-style:italic;">Commissions paid on verified, received payments only. 90-day referral validity window applies.</p>
+    </div>
+
+    <!-- Next Steps -->
+    <div style="background:#fff;border:1px solid #e5e5e5;padding:28px;">
+      <div style="font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#b89d6a;margin-bottom:14px;">Next Steps</div>
+      <ul class="next-steps">
+        <li><strong>Step 1:</strong> Await ambassador application review. You will be contacted within 3–5 business days.</li>
+        <li><strong>Step 2:</strong> Complete Lagnaf University ambassador training modules upon approval.</li>
+        <li><strong>Step 3:</strong> Receive your anonymous referral code and begin introducing qualified operators.</li>
+        <li><strong>Step 4:</strong> Track referrals and commissions in this dashboard once active.</li>
+      </ul>
+      <div style="margin-top:20px;">
+        <a href="tel:9493508804" class="btn-sys-primary" style="display:inline-block;">Contact Your Team — 949-350-8804</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/flow.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  Flow.requireNDA();
+  const uin = Flow.get('uin');
+  if (uin) document.getElementById('uin-display').textContent = uin;
+  document.getElementById('dash-date').textContent = new Date().toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+});
+</script>
+</body>
+</html>

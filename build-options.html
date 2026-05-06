@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Build Options – LAGNAF Network</title>
+  <link rel="stylesheet" href="css/system.css" />
+</head>
+<body>
+
+<header class="sys-header">
+  <div class="sys-logo">LAGNAF<span>™</span> Network</div>
+  <span class="sys-step-indicator">New Operator — Build Selection</span>
+</header>
+
+<div class="sys-page top-aligned">
+  <div class="sys-card wide">
+
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+      <div>
+        <span class="sys-eyebrow">Apollo Build™ — Select Your Build</span>
+        <h1 class="sys-title">Build Options</h1>
+      </div>
+      <div style="text-align:right;">
+        <span style="font-size:0.58rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#bbb;">UIN</span>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#b89d6a;letter-spacing:0.1em;" id="uin-badge">—</div>
+      </div>
+    </div>
+    <div class="sys-divider"></div>
+    <p class="sys-sub">Select the build that aligns with your entry point and operational goals. All builds include network access and Apollo Build™ infrastructure. Compliance add-on available on any selection.</p>
+
+    <div class="build-grid">
+
+      <div class="build-card">
+        <div class="build-name">Core Build</div>
+        <div class="build-price">$895</div>
+        <div class="build-desc">The essential operator entry point. Includes network access, core system framework, brand infrastructure foundation, and operator documentation package.</div>
+        <ul style="margin-top:14px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:0.7rem;color:#555;padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:#b89d6a;">✓</span> Network access + onboarding</li>
+          <li style="font-size:0.7rem;color:#555;padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:#b89d6a;">✓</span> Core system framework</li>
+          <li style="font-size:0.7rem;color:#555;padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:#b89d6a;">✓</span> Brand infrastructure foundation</li>
+          <li style="font-size:0.7rem;color:#555;padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:#b89d6a;">✓</span> Operator documentation package</li>
+        </ul>
+        <button class="build-select-btn" onclick="Flow.selectBuild('Core Build', 895)">Select Core Build</button>
+      </div>
+
+      <div class="build-card featured">
+        <div class="featured-tag">Most Selected</div>
+        <div class="build-name">Accelerated Access</div>
+        <div class="build-price">$2,000</div>
+        <div class="build-desc">Full accelerated entry with priority onboarding, expanded asset access, and complete operator positioning package. Recommended for serious operators.</div>
+        <ul style="margin-top:14px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:0.7rem;color:#555;padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:#b89d6a;">✓</span> Everything in Core Build</li>
+          <li style="font-size:0.7rem;color:#555;padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:#b89d6a;">✓</span> Priority onboarding &amp; positioning</li>
+          <li style="font-size:0.7rem;color:#555;padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:#b89d6a;">✓</span> Expanded digital asset access</li>
+          <li style="font-size:0.7rem;color:#555;padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:#b89d6a;">✓</span> Full operator positioning package</li>
+        </ul>
+        <button class="build-select-btn" onclick="Flow.selectBuild('Accelerated Access', 2000)">Select Accelerated Access</button>
+      </div>
+
+      <div class="build-card">
+        <div class="build-name">Compliance Add-On</div>
+        <div class="build-price">$45<span style="font-size:1rem;color:#aaa;">/mo</span></div>
+        <div class="build-desc">Compliance documentation maintenance, agreement update notifications, and legal framework alignment. Can be added to any build. Billed monthly.</div>
+        <ul style="margin-top:14px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:0.7rem;color:#555;padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:#b89d6a;">✓</span> Compliance doc maintenance</li>
+          <li style="font-size:0.7rem;color:#555;padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:#b89d6a;">✓</span> Agreement update notifications</li>
+          <li style="font-size:0.7rem;color:#555;padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:#b89d6a;">✓</span> Legal framework alignment</li>
+          <li style="font-size:0.7rem;color:#555;padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:#b89d6a;">✓</span> Add to any build</li>
+        </ul>
+        <button class="build-select-btn" onclick="Flow.selectBuild('Compliance Add-On', 45)">Add Compliance</button>
+      </div>
+
+      <div class="build-card" style="border-style:dashed;">
+        <div class="build-name">Custom Build</div>
+        <div class="build-price" style="font-size:1.6rem;">Price TBD</div>
+        <div class="build-desc">Bespoke operator builds for complex requirements. Includes custom asset configurations, white-glove onboarding, and direct LAGNAF™ team engagement.</div>
+        <ul style="margin-top:14px;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:6px;">
+          <li style="font-size:0.7rem;color:#555;padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:#b89d6a;">✓</span> Custom asset configuration</li>
+          <li style="font-size:0.7rem;color:#555;padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:#b89d6a;">✓</span> White-glove onboarding</li>
+          <li style="font-size:0.7rem;color:#555;padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:#b89d6a;">✓</span> Direct team engagement</li>
+          <li style="font-size:0.7rem;color:#555;padding-left:14px;position:relative;"><span style="position:absolute;left:0;color:#b89d6a;">✓</span> Scope defined per operator</li>
+        </ul>
+        <a href="tel:9493508804" class="build-select-btn" style="display:block;text-align:center;">Contact to Discuss</a>
+      </div>
+
+    </div>
+
+    <div style="margin-top:28px;background:#faf8f4;border:1px solid #e5e5e5;padding:16px 20px;font-size:0.72rem;color:#888;line-height:1.8;">
+      All domain acquisitions secured via Afternic escrow. LAGNAF™ Network LLC provides systems and infrastructure only. We do not operate or manage your business.
+    </div>
+
+  </div>
+</div>
+
+<script src="js/flow.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  Flow.requirePath('new-operator');
+  const uin = Flow.get('uin');
+  if (uin) document.getElementById('uin-badge').textContent = uin;
+});
+</script>
+</body>
+</html>

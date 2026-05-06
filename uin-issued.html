@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Access Approved – LAGNAF Network</title>
+  <link rel="stylesheet" href="css/system.css" />
+</head>
+<body>
+
+<header class="sys-header">
+  <div class="sys-logo">LAGNAF<span>™</span> Network</div>
+  <span class="sys-step-indicator">Step 3 of 4 — Identity Confirmation</span>
+</header>
+
+<div class="sys-page">
+  <div class="sys-card">
+
+    <div class="sys-progress">
+      <span class="sys-progress-step done">Entry</span>
+      <span class="sys-progress-arrow">›</span>
+      <span class="sys-progress-step done">NDA Gate</span>
+      <span class="sys-progress-arrow">›</span>
+      <span class="sys-progress-step active">UIN Issued</span>
+      <span class="sys-progress-arrow">›</span>
+      <span class="sys-progress-step">Path Selection</span>
+    </div>
+
+    <span class="sys-eyebrow">Identity Confirmation</span>
+    <h1 class="sys-title">Your Access Has Been Approved</h1>
+    <div class="sys-divider"></div>
+
+    <p class="sys-sub">NDA execution confirmed. A Unique Identification Number has been assigned to your access profile. This number is your identity within the system.</p>
+
+    <div class="uin-box">
+      <span class="uin-label">Unique Identification Number</span>
+      <div class="uin-value" id="uin-display">—</div>
+      <p class="uin-note">Record this number. It will be required to access your account going forward.</p>
+    </div>
+
+    <div style="background:#faf8f4;border-left:3px solid #b89d6a;padding:16px 20px;margin:24px 0;">
+      <p style="font-size:0.75rem;color:#555;line-height:1.8;"><strong style="color:#222;">Important:</strong> Your name will no longer be used beyond this point. All system interactions are conducted under your UIN. This protects both your identity and the integrity of the network.</p>
+    </div>
+
+    <div class="info-row" id="entry-info-row" style="display:none;">
+      <div class="info-item">
+        <strong>Status</strong>
+        <span><span class="badge badge-gold">NDA Completed</span></span>
+      </div>
+      <div class="info-item">
+        <strong>Issued</strong>
+        <span id="issued-time">—</span>
+      </div>
+    </div>
+
+    <div style="margin-top:28px;">
+      <button class="btn-sys-primary btn-full" onclick="window.location.href='path-routing.html'">Continue to System Path →</button>
+    </div>
+
+    <p style="margin-top:16px;font-size:0.7rem;color:#aaa;text-align:center;">Questions about your UIN? <a href="tel:9493508804" style="color:#b89d6a;">949-350-8804</a></p>
+
+  </div>
+</div>
+
+<script src="js/flow.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  Flow.requireNDA();
+  const uin = Flow.get('uin');
+  if (uin) {
+    document.getElementById('uin-display').textContent = uin;
+  }
+  const infoRow = document.getElementById('entry-info-row');
+  infoRow.style.display = 'grid';
+  document.getElementById('issued-time').textContent = new Date().toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+});
+</script>
+</body>
+</html>

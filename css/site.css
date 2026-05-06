@@ -1,0 +1,151 @@
+/* ============================================
+   LAGNAF Network — Shared Site Styles
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: #fff; font-family: 'Montserrat', sans-serif; color: #222; overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+
+/* ── NAV ── */
+.site-nav {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 36px;
+  background: transparent;
+}
+.nav-logo { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: #fff; }
+.nav-links { display: flex; align-items: center; gap: 24px; }
+.nav-links a { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; transition: opacity .2s; }
+.nav-links a:hover { opacity: .6; }
+.nav-right { display: flex; align-items: center; gap: 18px; }
+.nav-request, .nav-cart { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+.hamburger span { display: block; width: 22px; height: 1.5px; background: #fff; }
+
+/* ── MOBILE DRAWER ── */
+.mobile-drawer { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.97); z-index: 300; flex-direction: column; align-items: center; justify-content: center; gap: 28px; }
+.mobile-drawer.open { display: flex; }
+.mobile-drawer a { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: #fff; }
+.drawer-close { position: absolute; top: 22px; right: 30px; font-size: 1.1rem; color: #fff; cursor: pointer; background: none; border: none; }
+
+/* ── HERO IMAGE (centered woman) ── */
+.hero-wrap { width: 100%; max-width: 650px; margin: 0 auto; }
+.hero-wrap img { width: 100%; height: auto; }
+
+/* ── BLUEPRINT HERO ── */
+.bp-hero {
+  width: 100%;
+  background: url('https://lagnafnetwork.com/wp-content/uploads/2026/02/2918.jpg') center/cover no-repeat;
+  background-color: #c8c8c8;
+  min-height: 500px;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 80px 32px;
+  position: relative;
+}
+.bp-hero::before { content: ''; position: absolute; inset: 0; background: rgba(200,200,200,.35); }
+.bp-hero-inner { position: relative; z-index: 1; max-width: 820px; }
+.bp-eyebrow { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: #fff; margin-bottom: 14px; }
+.bp-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 500; color: #fff; line-height: 1.2; margin-bottom: 18px; }
+.bp-sub { font-size: 0.75rem; color: rgba(255,255,255,.85); letter-spacing: 0.05em; line-height: 1.7; margin-bottom: 8px; }
+.bp-note { font-size: 0.65rem; color: rgba(255,255,255,.7); letter-spacing: 0.04em; margin-bottom: 32px; }
+
+/* ── GOLD/TAN BUTTON ── */
+.btn-tan {
+  display: inline-block;
+  background: #b89d6a;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 13px 32px;
+  border-radius: 30px;
+  transition: background .2s;
+}
+.btn-tan:hover { background: #a08550; }
+
+.btn-outline-white {
+  display: inline-block;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 13px 34px;
+  transition: background .2s, color .2s;
+}
+.btn-outline-white:hover { background: #fff; color: #000; }
+
+/* ── WHITE CONTENT SECTION ── */
+.content-section { background: #f7f7f7; padding: 70px 48px; max-width: 1100px; margin: 0 auto; }
+.content-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 3vw, 2.4rem); font-weight: 400; color: #222; margin-bottom: 16px; }
+.content-section p { font-size: 0.8rem; color: #555; line-height: 1.85; margin-bottom: 12px; letter-spacing: 0.02em; }
+.content-section .bold-line { font-weight: 600; color: #333; font-size: 0.82rem; margin: 12px 0; }
+
+.check-list { margin: 20px 0; display: flex; flex-direction: column; gap: 10px; }
+.check-list li { display: flex; align-items: center; gap: 10px; font-size: 0.78rem; color: #555; }
+.check-list li::before { content: '✓'; color: #b89d6a; font-weight: 600; flex-shrink: 0; }
+
+/* ── PRODUCTS GRID ── */
+.products-section { background: #fff; padding: 60px 48px; max-width: 1100px; margin: 0 auto; }
+.products-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: #222; margin-bottom: 32px; }
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+.product-card-real { border: 1px solid #e5e5e5; padding: 24px; background: #fff; }
+.product-card-real h3 { font-size: 0.88rem; font-weight: 600; color: #222; margin-bottom: 8px; letter-spacing: 0.05em; }
+.product-card-real .price { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #b89d6a; margin: 12px 0; }
+.product-card-real p { font-size: 0.75rem; color: #777; line-height: 1.7; margin-bottom: 16px; }
+
+/* ── BUNDLES ── */
+.bundle-section { background: #f7f7f7; padding: 60px 48px; }
+.bundle-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #222; margin-bottom: 8px; text-align: center; }
+.bundle-section .section-sub { font-size: 0.72rem; color: #888; text-align: center; margin-bottom: 40px; letter-spacing: 0.04em; }
+.bundle-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+.bundle-item { background: #fff; border: 1px solid #e5e5e5; padding: 28px; }
+.bundle-item .series-label { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: #b89d6a; margin-bottom: 8px; }
+.bundle-item h3 { font-size: 0.95rem; font-weight: 600; color: #222; margin-bottom: 10px; }
+.bundle-item p { font-size: 0.75rem; color: #666; line-height: 1.7; margin-bottom: 14px; }
+.bundle-item .bundle-price { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #b89d6a; }
+.bundle-item .domain-list { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.bundle-item .domain-tag { background: #f5f0e8; border: 1px solid #e0d5c0; padding: 3px 8px; font-size: 0.62rem; color: #8a7050; }
+
+/* ── FOOTER ── */
+.site-footer { background: #111; padding: 50px 48px 24px; }
+.footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; max-width: 1100px; margin: 0 auto; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.08); }
+.footer-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #fff; letter-spacing: 0.1em; margin-bottom: 12px; }
+.footer-brand p { font-size: 0.7rem; color: #666; line-height: 1.8; }
+.footer-contact { margin-top: 14px; font-size: 0.68rem; color: #666; }
+.footer-contact a { color: #aaa; }
+.footer-col h5 { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: #fff; margin-bottom: 16px; }
+.footer-col ul li { margin-bottom: 10px; }
+.footer-col ul li a { font-size: 0.68rem; color: #666; transition: color .2s; }
+.footer-col ul li a:hover { color: #fff; }
+.footer-bottom { max-width: 1100px; margin: 20px auto 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-size: 0.6rem; color: #444; }
+.footer-legal-links { display: flex; gap: 18px; }
+.footer-legal-links a { font-size: 0.58rem; color: #444; letter-spacing: 0.08em; text-transform: uppercase; transition: color .2s; }
+.footer-legal-links a:hover { color: #fff; }
+
+/* ── PURCHASE NOTICE ── */
+.purchase-notice { background: #0a0a0a; padding: 13px 24px; text-align: center; font-size: 0.59rem; color: #444; letter-spacing: 0.03em; line-height: 1.7; }
+.purchase-notice a { color: #666; text-decoration: underline; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-request { display: none; }
+  .hamburger { display: flex; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .content-section, .products-section, .bundle-section { padding: 50px 24px; }
+}
+@media (max-width: 600px) {
+  .site-nav { padding: 16px 20px; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+  .bp-hero { min-height: 360px; padding: 60px 20px; }
+}

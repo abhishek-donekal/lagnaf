@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" width="320" height="100">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a07830;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#e4c97e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c9a84c;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- LAGNAF text -->
+  <text x="10" y="62" font-family="Georgia, serif" font-size="48" font-weight="700" fill="url(#goldGrad)" letter-spacing="6">LAGNAF</text>
+  <!-- TM symbol -->
+  <text x="274" y="34" font-family="Georgia, serif" font-size="14" fill="#c9a84c">™</text>
+  <!-- Tagline -->
+  <text x="10" y="82" font-family="Arial, sans-serif" font-size="10" fill="#999999" letter-spacing="5">N E T W O R K</text>
+  <!-- Decorative line -->
+  <line x1="10" y1="88" x2="300" y2="88" stroke="#c9a84c" stroke-width="0.5" opacity="0.5"/>
+</svg>

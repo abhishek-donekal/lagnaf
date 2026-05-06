@@ -1,0 +1,11 @@
+/* Legal Pages Shared Styles */
+.legal-body { max-width: 860px; margin: 0 auto; padding: 0 40px 80px; }
+.legal-body h2 { font-size: 1.3rem; margin: 40px 0 12px; color: var(--gold-light); }
+.legal-body h3 { font-size: 1rem; margin: 28px 0 10px; color: var(--white); }
+.legal-body p { margin-bottom: 16px; font-size: 0.92rem; line-height: 1.85; color: var(--gray-light); }
+.legal-body ul { margin: 12px 0 20px 24px; list-style: disc; }
+.legal-body ul li { font-size: 0.92rem; color: var(--gray-light); margin-bottom: 8px; line-height: 1.7; }
+.legal-body a { color: var(--gold); text-decoration: underline; }
+.legal-meta { display: flex; gap: 32px; flex-wrap: wrap; margin: 32px 0 48px; padding: 24px 28px; background: var(--dark-2); border: 1px solid var(--border); border-left: 3px solid var(--gold); }
+.legal-meta-item { font-family: 'Montserrat', sans-serif; font-size: 0.72rem; color: var(--gray); }
+.legal-meta-item strong { display: block; color: var(--gold); letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.6rem; margin-bottom: 4px; }
