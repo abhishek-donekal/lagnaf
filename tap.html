@@ -1,150 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>LAGNAF™ Network</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- System fonts render instantly on tap; web fonts load in behind -->
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html, body {
-      height: 100%;
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: #0a0a0a;
-      font-family: 'Montserrat', sans-serif;
       color: #fff;
-      overflow: hidden;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
     }
 
     .tap-page {
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 40px 24px;
+      padding: 60px 28px 100px;
       text-align: center;
       position: relative;
     }
 
-    /* Subtle radial glow behind logo */
+    /* Radial glow */
     .tap-page::before {
       content: '';
-      position: absolute;
-      top: 50%;
+      position: fixed;
+      top: 40%;
       left: 50%;
-      transform: translate(-50%, -60%);
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(ellipse at center, rgba(184,157,106,0.08) 0%, transparent 70%);
+      transform: translate(-50%, -50%);
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(ellipse at center, rgba(184,157,106,0.07) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .tap-wordmark {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 10vw, 4.4rem);
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      font-size: clamp(3rem, 12vw, 5rem);
       font-weight: 300;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.2em;
       color: #fff;
       line-height: 1;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .tap-tm {
-      font-size: 0.9rem;
+      font-size: 0.7em;
       vertical-align: super;
       color: #b89d6a;
+      font-size: clamp(1rem, 3vw, 1.4rem);
     }
 
     .tap-rule {
-      width: 48px;
+      width: 40px;
       height: 1px;
       background: #b89d6a;
-      margin: 20px auto;
+      margin: 22px auto;
     }
 
     .tap-eyebrow {
-      font-size: 0.58rem;
+      font-size: clamp(0.5rem, 2vw, 0.6rem);
       font-weight: 600;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: #666;
-      margin-bottom: 28px;
+      color: #555;
+      margin-bottom: 32px;
     }
 
     .tap-headline {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(1.3rem, 5vw, 1.9rem);
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      font-size: clamp(1.4rem, 5.5vw, 2rem);
       font-weight: 300;
       color: #e8e0d0;
-      line-height: 1.4;
-      max-width: 360px;
-      margin: 0 auto 12px;
+      line-height: 1.35;
+      max-width: 320px;
+      margin: 0 auto 14px;
     }
 
     .tap-sub {
-      font-size: 0.72rem;
-      color: #555;
+      font-size: clamp(0.68rem, 2.5vw, 0.74rem);
+      color: #4a4a4a;
       line-height: 1.8;
-      max-width: 300px;
-      margin: 0 auto 40px;
+      max-width: 280px;
+      margin: 0 auto 36px;
     }
 
+    /* Attribution badge — only shown when ?ref= is present */
     .tap-ref-badge {
       display: none;
       background: #111;
-      border: 1px solid #222;
+      border: 1px solid #1e1e1e;
       border-left: 2px solid #b89d6a;
       padding: 10px 20px;
-      margin-bottom: 32px;
-      font-size: 0.65rem;
-      color: #888;
-      letter-spacing: 0.06em;
+      margin: 0 auto 28px;
+      font-size: 0.62rem;
+      color: #777;
+      letter-spacing: 0.08em;
+      max-width: 280px;
     }
 
-    .tap-ref-badge span {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 0.85rem;
+    .tap-ref-badge strong {
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
+      font-size: 0.88rem;
       color: #b89d6a;
       letter-spacing: 0.12em;
-      margin-left: 6px;
+      display: block;
+      margin-top: 3px;
     }
 
-    .tap-cta {
-      display: inline-block;
+    /* Primary CTA */
+    .tap-cta-primary {
+      display: block;
+      width: 100%;
+      max-width: 300px;
       background: #b89d6a;
       color: #fff;
       font-size: 0.65rem;
       font-weight: 600;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      padding: 16px 40px;
+      padding: 18px 24px;
+      text-align: center;
       text-decoration: none;
-      transition: background 0.2s, color 0.2s;
+      transition: background 0.2s;
       cursor: pointer;
       border: none;
+      /* Minimum 48px touch target already satisfied by padding */
+      margin: 0 auto;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .tap-cta:hover {
-      background: #a08a5a;
-    }
+    .tap-cta-primary:hover,
+    .tap-cta-primary:active { background: #a08a5a; }
 
-    .tap-footer {
-      position: absolute;
-      bottom: 28px;
-      font-size: 0.58rem;
-      color: #333;
-      letter-spacing: 0.1em;
+    /* Secondary CTA */
+    .tap-cta-secondary {
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      background: transparent;
+      border: 1px solid #1e1e1e;
+      color: #666;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
+      padding: 15px 24px;
+      text-align: center;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+      margin: 10px auto 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    /* Mobile refinements */
-    @media (max-width: 480px) {
-      .tap-page { padding: 32px 20px; }
-      .tap-cta { padding: 14px 32px; width: 100%; max-width: 280px; }
+    .tap-cta-secondary:hover,
+    .tap-cta-secondary:active { border-color: #b89d6a; color: #b89d6a; }
+
+    /* Sticky footer */
+    .tap-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 14px 24px;
+      text-align: center;
+      font-size: 0.55rem;
+      color: #252525;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: #0a0a0a;
+      border-top: 1px solid #111;
+    }
+
+    /* Load web fonts after paint */
+    @media (prefers-reduced-motion: no-preference) {
+      .tap-wordmark, .tap-headline { transition: opacity 0.2s; }
     }
   </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet" /></noscript>
 </head>
 <body>
 
@@ -155,17 +199,18 @@
   <div class="tap-eyebrow">Private Network · By Invitation</div>
 
   <h1 class="tap-headline">You've Been Introduced to the Network</h1>
-  <p class="tap-sub">Access is permission-based and referral-qualified. Complete the form to begin your consideration request.</p>
+  <p class="tap-sub">Access is permission-based and referral-qualified. Submit the form below to begin your consideration request.</p>
 
   <div class="tap-ref-badge" id="ref-badge">
-    Referred by<span id="ref-badge-code">—</span>
+    Referred by<strong id="ref-badge-code">—</strong>
   </div>
 
-  <a class="tap-cta" id="cta-link" href="entry-gateway.html">Request Access</a>
-
-  <div class="tap-footer">LAGNAF™ Network LLC &nbsp;·&nbsp; lagnafnetwork.com</div>
+  <a class="tap-cta-primary" id="cta-request" href="entry-gateway.html">Request Access</a>
+  <a class="tap-cta-secondary" href="tel:9493508804">Call 949-350-8804</a>
 
 </div>
+
+<div class="tap-footer">LAGNAF™ Network LLC &nbsp;·&nbsp; Private &amp; Confidential</div>
 
 <script>
 (function() {
@@ -173,12 +218,10 @@
   var ref = params.get('ref') || '';
   if (ref && /^LAGNAF-[A-Z0-9]{4,8}$/i.test(ref)) {
     var code = ref.toUpperCase();
-    // Show referral badge
     var badge = document.getElementById('ref-badge');
     badge.style.display = 'block';
     document.getElementById('ref-badge-code').textContent = code;
-    // Append ref to CTA so attribution carries through
-    document.getElementById('cta-link').href = 'entry-gateway.html?ref=' + code;
+    document.getElementById('cta-request').href = 'entry-gateway.html?ref=' + code;
   }
 })();
 </script>

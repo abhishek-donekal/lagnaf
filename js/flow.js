@@ -1,3 +1,14 @@
+// ── HubSpot Configuration ─────────────────────────────────────────────────
+// Replace these values with your actual HubSpot portal and form IDs.
+// Find Portal ID: HubSpot → Settings → Account Setup → Integrations → HubSpot API Key
+// Find Form IDs: HubSpot → Marketing → Forms → [form] → Share → Embed Code (look for formId)
+const LAGNAF_HS_CONFIG = {
+  portalId:        'YOUR_PORTAL_ID',       // e.g. '12345678'
+  formEntry:       'YOUR_ENTRY_FORM_ID',   // entry-gateway form GUID
+  formAmbassador:  'YOUR_AMBASSADOR_FORM_ID', // ambassador candidacy form GUID
+};
+// ─────────────────────────────────────────────────────────────────────────
+
 const Flow = {
   set(key, val) { localStorage.setItem('lagnaf_' + key, JSON.stringify(val)); },
   get(key) { const v = localStorage.getItem('lagnaf_' + key); return v ? JSON.parse(v) : null; },
@@ -72,6 +83,21 @@ const Flow = {
     };
 
     this.set('attribution', attribution);
+
+    const hsFields = {
+      email:                             data.email,
+      firstname:                         data.first,
+      lastname:                          data.last,
+      phone:                             data.phone,
+      lagnaf_referral_source:            attribution.lagnaf_referral_source,
+      lagnaf_ambassador_referral_code:   attribution.lagnaf_ambassador_referral_code,
+      lagnaf_referring_ambassador:       attribution.lagnaf_referring_ambassador,
+      lagnaf_attribution_source:         attribution.lagnaf_attribution_source,
+      lagnaf_direct_founder_attribution: String(attribution.lagnaf_direct_founder_attribution),
+      lagnaf_entry_path:                 attribution.lagnaf_entry_path,
+      lagnaf_status:                     'Pending NDA',
+    };
+    this.hubspotFormSubmit(LAGNAF_HS_CONFIG.formEntry, hsFields);
     this.hubspotIdentify({ ...data, ...attribution }, 'New Entry – Pending NDA');
     window.location.href = 'nda-gate.html';
   },
@@ -135,6 +161,20 @@ const Flow = {
     this.set('status', 'ambassador_candidate');
     this.set('amb_modules_complete', 0);
 
+    const entry = this.get('entry') || {};
+    this.hubspotFormSubmit(LAGNAF_HS_CONFIG.formAmbassador, {
+      email:                       entry.email   || '',
+      firstname:                   entry.first   || '',
+      lastname:                    entry.last    || '',
+      phone:                       entry.phone   || '',
+      lagnaf_uin:                  this.get('uin'),
+      lagnaf_ambassador_candidate: 'true',
+      lagnaf_network_size:         data.network_size,
+      lagnaf_industry_connections: data.industry_connections,
+      lagnaf_referral_capability:  data.referral_capability,
+      lagnaf_ambassador_code:      ambCode,
+      lagnaf_status:               'Ambassador Candidate',
+    });
     this.hubspotIdentify({
       lagnaf_uin:                  this.get('uin'),
       lagnaf_ambassador_candidate: true,
@@ -164,16 +204,41 @@ const Flow = {
     }
   },
 
-  // ── HubSpot Integration ──────────────────────────────────────────────────
+  // ── HubSpot Forms API v3 ─────────────────────────────────────────────────
+  // Submits directly to HubSpot via the Forms API — creates/updates contact
+  // regardless of whether the tracking pixel has fired.
+  // Requires LAGNAF_HS_CONFIG.portalId + the relevant form ID to be set above.
+  //
+  // Internal property names must match exactly what is configured in
+  // HubSpot → Settings → Properties → Contact properties.
+  hubspotFormSubmit(formId, fields) {
+    const pid = LAGNAF_HS_CONFIG.portalId;
+    if (!pid || pid === 'YOUR_PORTAL_ID' || !formId || formId.startsWith('YOUR_')) {
+      console.log('[HubSpot Forms API – not configured]', formId, fields);
+      return Promise.resolve();
+    }
+    const url = 'https://api.hsforms.com/submissions/v3/integration/submit/' + pid + '/' + formId;
+    const body = {
+      fields: Object.entries(fields)
+        .filter(([, v]) => v !== undefined && v !== null && v !== '')
+        .map(([name, value]) => ({ name, value: String(value) })),
+      context: {
+        pageUri:  window.location.href,
+        pageName: document.title,
+      }
+    };
+    return fetch(url, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(body),
+    })
+    .then(function(r) { console.log('[HubSpot Forms API]', r.status, formId); })
+    .catch(function(e) { console.error('[HubSpot Forms API error]', e); });
+  },
+
+  // ── HubSpot Tracking Pixel ────────────────────────────────────────────────
   // Uses HubSpot tracking code (_hsq) for identify + event calls.
-  //
-  // To activate:
-  //   1. Add HubSpot tracking code to each page (replace PORTAL_ID below)
-  //   2. Confirm property internal names in HubSpot → Settings → Properties
-  //   3. Set the four attribution properties in the contact record layout
-  //      (Settings → Objects → Contacts → Record Customization → add to top card)
-  //
-  // PORTAL_ID: replace 'YOUR_PORTAL_ID' in the tracking snippet with your ID
+  // Requires the HubSpot tracking snippet on each page.
   hubspotIdentify(properties, eventLabel) {
     if (typeof window._hsq === 'undefined') {
       console.log('[HubSpot – not loaded]', eventLabel, properties);

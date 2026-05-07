@@ -69,6 +69,24 @@
       </div>
     </div>
 
+    <!-- Referral Code & Link -->
+    <div id="referral-link-section" style="background:#0a0a0a;padding:28px;margin-bottom:20px;">
+      <div style="font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#b89d6a;margin-bottom:16px;">Your Referral Credentials</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+        <div>
+          <div style="font-size:0.55rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:6px;">Referral Code</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#b89d6a;letter-spacing:0.14em;" id="amb-code-display">—</div>
+        </div>
+        <div>
+          <div style="font-size:0.55rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:6px;">90-Day Window</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#fff;">Per Referral</div>
+        </div>
+      </div>
+      <div style="font-size:0.55rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#555;margin-bottom:6px;">Your Referral Link</div>
+      <div style="background:#111;border:1px solid #1e1e1e;padding:12px 16px;font-size:0.68rem;color:#888;font-family:monospace;word-break:break-all;margin-bottom:12px;" id="amb-link-display">—</div>
+      <button onclick="copyAmbLink()" style="background:none;border:1px solid #b89d6a;color:#b89d6a;font-size:0.6rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:8px 20px;cursor:pointer;" id="copy-link-btn">Copy Referral Link</button>
+    </div>
+
     <!-- Referral Tracking -->
     <div id="referral-tracking" style="background:#fff;border:1px solid #e5e5e5;padding:28px;margin-bottom:20px;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
@@ -87,7 +105,7 @@
         </thead>
         <tbody>
           <tr>
-            <td colspan="5" style="text-align:center;color:#bbb;padding:28px;font-style:italic;font-size:0.73rem;">No referrals submitted yet. Your referral link will be issued upon ambassador approval.</td>
+            <td colspan="5" style="text-align:center;color:#bbb;padding:28px;font-style:italic;font-size:0.73rem;">No closed referrals yet. Share your referral link to begin tracking introductions.</td>
           </tr>
         </tbody>
       </table>
@@ -123,10 +141,10 @@
     <div style="background:#fff;border:1px solid #e5e5e5;padding:28px;">
       <div style="font-size:0.6rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#b89d6a;margin-bottom:14px;">Next Steps</div>
       <ul class="next-steps">
-        <li><strong>Step 1:</strong> Await ambassador application review. You will be contacted within 3–5 business days.</li>
-        <li><strong>Step 2:</strong> Complete Lagnaf University ambassador training modules upon approval.</li>
-        <li><strong>Step 3:</strong> Receive your anonymous referral code and begin introducing qualified operators.</li>
-        <li><strong>Step 4:</strong> Track referrals and commissions in this dashboard once active.</li>
+        <li><strong>Step 1:</strong> Share your referral link with qualified prospects. Copy it above or programme it to your tap card.</li>
+        <li><strong>Step 2:</strong> Prospects complete entry, NDA, and path selection automatically — no manual follow-up required.</li>
+        <li><strong>Step 3:</strong> Commission is triggered when a referred operator completes a verified payment.</li>
+        <li><strong>Step 4:</strong> Contact the team to establish your payment details for commission disbursement.</li>
       </ul>
       <div style="margin-top:20px;">
         <a href="tel:9493508804" class="btn-sys-primary" style="display:inline-block;">Contact Your Team — 949-350-8804</a>
@@ -143,7 +161,23 @@ document.addEventListener('DOMContentLoaded', function() {
   const uin = Flow.get('uin');
   if (uin) document.getElementById('uin-display').textContent = uin;
   document.getElementById('dash-date').textContent = new Date().toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+
+  const code = Flow.get('ambassador_code');
+  if (code) {
+    document.getElementById('amb-code-display').textContent = code;
+    const base = window.location.origin + window.location.pathname.replace('ambassador-dashboard.html', '');
+    document.getElementById('amb-link-display').textContent = base + 'entry-gateway.html?ref=' + code;
+  }
 });
+
+function copyAmbLink() {
+  const link = document.getElementById('amb-link-display').textContent;
+  navigator.clipboard.writeText(link).then(function() {
+    const btn = document.getElementById('copy-link-btn');
+    btn.textContent = 'Copied';
+    setTimeout(function() { btn.textContent = 'Copy Referral Link'; }, 2000);
+  });
+}
 </script>
 </body>
 </html>
