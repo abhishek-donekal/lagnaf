@@ -17,12 +17,13 @@ img { display: block; max-width: 100%; }
   padding: 18px 36px;
   background: transparent;
 }
-.nav-logo { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: #fff; }
+.nav-logo { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: #b89d6a; }
 .nav-links { display: flex; align-items: center; gap: 24px; }
-.nav-links a { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; transition: opacity .2s; }
-.nav-links a:hover { opacity: .6; }
+.nav-links a { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #b89d6a; transition: opacity .2s; }
+.nav-links a:hover { opacity: .7; }
 .nav-right { display: flex; align-items: center; gap: 18px; }
-.nav-request, .nav-cart { font-size: 0.58rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #fff; }
+.nav-request, .nav-cart { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #b89d6a; }
+.site-nav.scrolled { background: #0a0a0a; box-shadow: 0 2px 12px rgba(0,0,0,0.3); }
 .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
 .hamburger span { display: block; width: 22px; height: 1.5px; background: #fff; }
 

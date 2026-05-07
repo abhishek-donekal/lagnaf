@@ -1,14 +1,12 @@
 // LAGNAF Network - Main JS
 
-// Header scroll effect
-const header = document.querySelector('.site-header');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 60) {
-    header.classList.add('scrolled');
-  } else {
-    header.classList.remove('scrolled');
-  }
-});
+// Nav scroll effect — solid background when scrolled past hero
+const nav = document.querySelector('.site-nav');
+if (nav) {
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+}
 
 // Mobile nav toggle
 const menuToggle = document.querySelector('.menu-toggle');
