@@ -72,6 +72,22 @@ document.addEventListener('DOMContentLoaded', function() {
   const infoRow = document.getElementById('entry-info-row');
   infoRow.style.display = 'grid';
   document.getElementById('issued-time').textContent = new Date().toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+
+  // Ambassador track routes to agreement page, not path selection
+  if (Flow.get('ambassador_track')) {
+    const btn = document.querySelector('button[onclick*="path-routing"]');
+    if (btn) {
+      btn.textContent = 'Continue to Ambassador Agreement →';
+      btn.setAttribute('onclick', "window.location.href='ambassador-agreement.html'");
+    }
+    const indicator = document.querySelector('.sys-step-indicator');
+    if (indicator) indicator.textContent = 'Step 5 of 8 — UIN Issued';
+    // Update progress bar labels
+    const steps = document.querySelectorAll('.sys-progress-step');
+    if (steps.length === 4) {
+      steps[3].textContent = 'Agreement';
+    }
+  }
 });
 </script>
 </body>

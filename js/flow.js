@@ -133,7 +133,7 @@ const Flow = {
     const map = {
       'new-operator':      'new-operator.html',
       'existing-operator': 'existing-operator.html',
-      'ambassador':        'ambassador-onboarding.html'
+      'ambassador':        'ambassador-agreement.html'
     };
     window.location.href = map[path];
   },
@@ -153,9 +153,68 @@ const Flow = {
     window.location.href = 'operator-dashboard.html';
   },
 
-  // Ambassador candidacy form submit
-  submitAmbassador(data) {
+  // ── Ambassador Pre-NDA flow (new primary path) ──────────────────────────
+
+  // Step A: Pre-qualification form (public, before NDA)
+  // Generates master code, stores as entry data so nda-gate.html can read name/email
+  submitAmbassadorPreQual(data) {
     const ambCode = this.generateAmbassadorCode();
+    this.set('entry', data);
+    this.set('ambassador_track', true);
+    this.set('ambassador_code', ambCode);
+    this.set('status', 'ambassador_prequalified');
+    this.set('amb_modules_complete', 0);
+
+    const storedRef = this.get('ref_param');
+    const codeMatch = (data.referral || '').match(/\b(LAGNAF-[A-Z0-9]{4,8})\b/i);
+    const referringCode = codeMatch ? codeMatch[1].toUpperCase() : (storedRef || null);
+
+    this.hubspotFormSubmit(LAGNAF_HS_CONFIG.formAmbassador, {
+      email:                             data.email,
+      firstname:                         data.first,
+      lastname:                          data.last,
+      phone:                             data.phone,
+      lagnaf_ambassador_code:            ambCode,
+      lagnaf_ambassador_candidate:       'true',
+      lagnaf_network_size:               data.network_size,
+      lagnaf_industry_connections:       data.industry_connections,
+      lagnaf_referral_capability:        data.referral_capability,
+      lagnaf_referral_source:            data.referral || '',
+      lagnaf_ambassador_referral_code:   referringCode || '',
+      lagnaf_attribution_source:         referringCode ? 'Brand Ambassador' : 'Organic / Other',
+      lagnaf_status:                     'Ambassador Pre-Qualified',
+    });
+    this.hubspotIdentify({
+      lagnaf_ambassador_code: ambCode,
+      lagnaf_status:          'Ambassador Pre-Qualified',
+    }, 'Ambassador Pre-Qualified');
+
+    window.location.href = 'ambassador-dot-setup.html';
+  },
+
+  // Step B: DOT card + master code acknowledgment — routes to NDA
+  confirmDOTSetup() {
+    this.set('dot_setup_complete', true);
+    this.set('status', 'dot_setup_confirmed');
+    this.hubspotIdentify({
+      lagnaf_ambassador_code: this.get('ambassador_code'),
+      lagnaf_status:          'DOT Setup Confirmed',
+    }, 'DOT Setup Confirmed');
+    window.location.href = 'nda-gate.html';
+  },
+
+  // Guard — ambassador-track pages only
+  requireAmbassadorTrack() {
+    if (!this.get('ambassador_track')) {
+      window.location.href = 'ambassador-entry.html';
+    }
+  },
+
+  // ── Legacy ambassador candidacy form (post-path-selection fallback) ──────
+  // Used if someone reaches path-routing.html via the operator entry flow
+  // and selects the ambassador path. Code may already exist from pre-qual.
+  submitAmbassador(data) {
+    const ambCode = this.get('ambassador_code') || this.generateAmbassadorCode();
     this.set('ambassador_data', data);
     this.set('ambassador_code', ambCode);
     this.set('status', 'ambassador_candidate');
@@ -178,14 +237,11 @@ const Flow = {
     this.hubspotIdentify({
       lagnaf_uin:                  this.get('uin'),
       lagnaf_ambassador_candidate: true,
-      lagnaf_network_size:         data.network_size,
-      lagnaf_industry_connections: data.industry_connections,
-      lagnaf_referral_capability:  data.referral_capability,
       lagnaf_ambassador_code:      ambCode,
       lagnaf_status:               'Ambassador Candidate',
     }, 'Ambassador Candidate');
 
-    window.location.href = 'ambassador-materials.html';
+    window.location.href = 'ambassador-agreement.html';
   },
 
   // Track ambassador module completion (1–5)

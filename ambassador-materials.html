@@ -316,35 +316,44 @@
     <div class="module-block locked" id="mod-5">
       <div class="module-header" onclick="toggleModule(5)">
         <div class="module-num">5</div>
-        <div class="module-title">Referral Link Activation</div>
+        <div class="module-title">Deployment Confirmation</div>
         <span class="module-status" id="mod-5-status" style="color:#ccc;">Locked</span>
       </div>
       <div class="module-body" id="mod-5-body">
-        <p style="margin-top:16px;">You have completed all required training modules. Upon confirming this final module, your personal LAGNAF referral code will be issued and your ambassador status will be marked Active in the system.</p>
-        <p>Your referral link directs prospects to the entry gateway with your code pre-attached. Share it directly — via text, email, or tap card — and all attribution is handled automatically.</p>
+        <p style="margin-top:16px;">You have completed all required training modules. This final step confirms that your DOT card is operational, your referral link is ready to distribute, and you understand the deployment protocol.</p>
+        <p>Your master code and referral link were established during your DOT identity setup. They are live and active. All that remains is confirming your deployment readiness below.</p>
         <ul>
-          <li>Share your link, not your code directly — the link does the work</li>
-          <li>Your tap card (DOT) can be programmed to your referral link for in-person introductions</li>
-          <li>You can share your link as many times as needed — there is no cap on introductions</li>
-          <li>Track all referral activity from your ambassador dashboard</li>
+          <li>Verify your DOT card is programmed to your referral link — this is your primary in-person tool</li>
+          <li>Your referral link is shareable via text, email, or any direct channel</li>
+          <li>Every prospect who accesses the entry gateway through your link is automatically attributed to your code</li>
+          <li>Track all referral activity and commission status from your ambassador dashboard</li>
         </ul>
+
+        <div style="background:#0a0a0a;padding:20px 24px;margin:16px 0;">
+          <p style="font-size:0.55rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:6px;">Your Master Code</p>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#b89d6a;letter-spacing:0.14em;" id="deploy-code-display">—</div>
+          <p style="font-size:0.55rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin:10px 0 4px;">Your Referral Link</p>
+          <div style="font-size:0.68rem;color:#888;font-family:monospace;word-break:break-all;" id="deploy-link-display">—</div>
+        </div>
+
         <div class="module-confirm">
           <input type="checkbox" id="check-5" onchange="enableConfirm(5)" />
-          <label for="check-5">I am ready to activate my referral link and begin operating as a LAGNAF™ Brand Ambassador.</label>
+          <label for="check-5">My DOT card is programmed, my referral link is confirmed, and I am ready to deploy as a LAGNAF™ Brand Ambassador.</label>
         </div>
         <div class="module-cta">
-          <button class="btn-sys-primary" id="btn-5" disabled onclick="confirmModule(5)">Activate My Referral Link →</button>
+          <button class="btn-sys-primary" id="btn-5" disabled onclick="confirmModule(5)">Confirm Deployment Readiness →</button>
         </div>
       </div>
     </div>
 
-    <!-- REFERRAL CODE REVEAL — shown after module 5 -->
+    <!-- DEPLOYMENT READY — shown after module 5 -->
     <div id="referral-reveal" style="display:none;">
       <div class="referral-reveal">
-        <p style="font-size:0.58rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#b89d6a;margin-bottom:6px;">Ambassador Active</p>
-        <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;margin-bottom:4px;">Your Referral Code</p>
+        <p style="font-size:0.58rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#b89d6a;margin-bottom:6px;">Training Complete</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;margin-bottom:16px;">You Are Deployment Ready</p>
+        <p style="font-size:0.68rem;color:#888;margin-bottom:12px;">Your master code:</p>
         <div class="referral-code-display" id="reveal-code">—</div>
-        <p style="font-size:0.68rem;color:#888;margin-bottom:12px;">Your personal referral link:</p>
+        <p style="font-size:0.68rem;color:#888;margin:16px 0 8px;">Your referral link:</p>
         <div class="referral-link-display" id="reveal-link">—</div>
         <button class="copy-btn" onclick="copyLink()">Copy Link</button>
       </div>
