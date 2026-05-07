@@ -10,6 +10,26 @@ const Flow = {
     return id;
   },
 
+  generateAmbassadorCode() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let code = 'LAGNAF-';
+    for (let i = 0; i < 6; i++) code += chars[Math.floor(Math.random() * chars.length)];
+    return code;
+  },
+
+  // Reads ?ref=LAGNAF-XXXXXX from the URL and persists it in localStorage.
+  // Call on any page that may receive a referral link — value survives navigation.
+  captureRefParam() {
+    const params = new URLSearchParams(window.location.search);
+    const raw = params.get('ref') || '';
+    if (raw && /^LAGNAF-[A-Z0-9]{4,8}$/i.test(raw)) {
+      const code = raw.toUpperCase();
+      this.set('ref_param', code);
+      return code;
+    }
+    return this.get('ref_param') || null;
+  },
+
   // Guard — call on pages that require NDA completion
   requireNDA() {
     if (!this.get('nda_complete')) { window.location.href = 'entry-gateway.html'; }
@@ -22,24 +42,28 @@ const Flow = {
   },
 
   // Step 1: Entry form submit
-  // Maps referral_source → HubSpot attribution properties surfaced on contact record
   submitEntry(data) {
     this.set('entry', data);
     this.set('status', 'pending_nda');
 
-    // Determine if this is a direct founder attribution (no referral code, direct contact)
     const referralRaw = (data.referral || '').trim();
-    const isFounderDirect = referralRaw === '' || referralRaw.toLowerCase() === 'direct' || referralRaw.toLowerCase() === 'founder';
 
-    // Extract ambassador referral code if present (format: AMB-XXXXXXXX or similar)
-    const ambassadorCodeMatch = referralRaw.match(/\b([A-Z]{2,4}-[A-Z0-9]{4,10})\b/i);
-    const ambassadorCode = ambassadorCodeMatch ? ambassadorCodeMatch[1].toUpperCase() : null;
+    // Match LAGNAF-XXXXXX referral code format (e.g. LAGNAF-144B41)
+    const codeMatch = referralRaw.match(/\b(LAGNAF-[A-Z0-9]{4,8})\b/i);
+    // Fall back to URL param captured earlier if no code typed
+    const storedRef = this.get('ref_param');
+    const ambassadorCode = codeMatch ? codeMatch[1].toUpperCase() : (storedRef || null);
+
+    const isFounderDirect = !ambassadorCode && (
+      referralRaw === '' ||
+      referralRaw.toLowerCase() === 'direct' ||
+      referralRaw.toLowerCase() === 'founder'
+    );
 
     const attribution = {
-      // HubSpot property internal names — match exactly to your contact record properties
       lagnaf_referral_source:            referralRaw || 'Direct',
       lagnaf_ambassador_referral_code:   ambassadorCode || '',
-      lagnaf_referring_ambassador:       ambassadorCode ? referralRaw : '',
+      lagnaf_referring_ambassador:       ambassadorCode ? ambassadorCode : '',
       lagnaf_attribution_source:         ambassadorCode ? 'Brand Ambassador' : (isFounderDirect ? 'Founder Direct' : 'Organic / Other'),
       lagnaf_direct_founder_attribution: isFounderDirect,
       lagnaf_entry_path:                 data.business_type || '',
@@ -52,7 +76,7 @@ const Flow = {
     window.location.href = 'nda-gate.html';
   },
 
-  // Step 2: NDA complete — update contact with UIN + attribution confirmed
+  // Step 2: NDA complete — update contact with UIN
   completeNDA() {
     const uin = this.generateUIN();
     this.set('nda_complete', true);
@@ -75,9 +99,9 @@ const Flow = {
     this.set('status', 'path_' + path);
 
     this.hubspotIdentify({
-      lagnaf_uin:          this.get('uin'),
-      lagnaf_system_path:  path,
-      lagnaf_status:       'Path Selected – ' + path,
+      lagnaf_uin:         this.get('uin'),
+      lagnaf_system_path: path,
+      lagnaf_status:      'Path Selected – ' + path,
     }, 'Path Selected – ' + path);
 
     const map = {
@@ -103,10 +127,13 @@ const Flow = {
     window.location.href = 'operator-dashboard.html';
   },
 
-  // Ambassador submit
+  // Ambassador candidacy form submit
   submitAmbassador(data) {
+    const ambCode = this.generateAmbassadorCode();
     this.set('ambassador_data', data);
+    this.set('ambassador_code', ambCode);
     this.set('status', 'ambassador_candidate');
+    this.set('amb_modules_complete', 0);
 
     this.hubspotIdentify({
       lagnaf_uin:                  this.get('uin'),
@@ -114,13 +141,31 @@ const Flow = {
       lagnaf_network_size:         data.network_size,
       lagnaf_industry_connections: data.industry_connections,
       lagnaf_referral_capability:  data.referral_capability,
+      lagnaf_ambassador_code:      ambCode,
       lagnaf_status:               'Ambassador Candidate',
     }, 'Ambassador Candidate');
+
+    window.location.href = 'ambassador-materials.html';
+  },
+
+  // Track ambassador module completion (1–5)
+  completeAmbassadorModule(moduleNum) {
+    const current = this.get('amb_modules_complete') || 0;
+    if (moduleNum > current) {
+      this.set('amb_modules_complete', moduleNum);
+      this.hubspotIdentify({
+        lagnaf_uin:                      this.get('uin'),
+        lagnaf_amb_module_complete:      moduleNum,
+        lagnaf_status:                   moduleNum === 5 ? 'Ambassador Active' : 'Ambassador Training – Module ' + moduleNum,
+      }, 'Ambassador Module ' + moduleNum + ' Complete');
+    }
+    if (moduleNum === 5) {
+      this.set('status', 'ambassador_active');
+    }
   },
 
   // ── HubSpot Integration ──────────────────────────────────────────────────
   // Uses HubSpot tracking code (_hsq) for identify + event calls.
-  // Properties must match the internal names in your HubSpot portal exactly.
   //
   // To activate:
   //   1. Add HubSpot tracking code to each page (replace PORTAL_ID below)
@@ -137,7 +182,6 @@ const Flow = {
 
     const entry = this.get('entry');
 
-    // Identify by email so all property updates merge onto the same contact record
     if (entry && entry.email) {
       window._hsq.push(['identify', {
         email:     entry.email,
@@ -150,10 +194,7 @@ const Flow = {
       window._hsq.push(['identify', properties]);
     }
 
-    // Track the funnel step as a named event
     window._hsq.push(['trackEvent', { id: 'lagnaf_funnel_' + eventLabel.toLowerCase().replace(/[^a-z0-9]+/g, '_') }]);
-
-    // Force a page view flush so the identify call fires immediately
     window._hsq.push(['trackPageView']);
 
     console.log('[HubSpot]', eventLabel, properties);

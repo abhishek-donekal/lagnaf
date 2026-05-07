@@ -114,10 +114,7 @@ document.getElementById('ambassador-form').addEventListener('submit', function(e
     background: document.getElementById('background').value,
     submitted_at: new Date().toISOString()
   };
-  Flow.set('ambassador_data', data);
-  Flow.set('status', 'ambassador_candidate');
-  Flow.hubspot(data, 'Ambassador Candidate');
-  window.location.href = 'ambassador-dashboard.html';
+  Flow.submitAmbassador(data);
 });
 </script>
 </body>

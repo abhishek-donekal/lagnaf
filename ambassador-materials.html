@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ambassador Training – LAGNAF Network</title>
+  <link rel="stylesheet" href="css/system.css" />
+  <style>
+    .module-block {
+      border: 1px solid #e5e5e5;
+      margin-bottom: 12px;
+      background: #fff;
+      transition: border-color 0.2s;
+    }
+    .module-block.locked {
+      opacity: 0.45;
+      pointer-events: none;
+    }
+    .module-block.done {
+      border-left: 3px solid #b89d6a;
+    }
+    .module-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .module-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #e5e5e5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.62rem;
+      font-weight: 700;
+      color: #999;
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s;
+    }
+    .module-block.done .module-num {
+      background: #b89d6a;
+      color: #fff;
+    }
+    .module-block.active .module-num {
+      background: #0a0a0a;
+      color: #b89d6a;
+    }
+    .module-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #222;
+      letter-spacing: 0.04em;
+      flex: 1;
+    }
+    .module-status {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .module-body {
+      display: none;
+      padding: 0 24px 24px;
+      border-top: 1px solid #f0f0f0;
+    }
+    .module-body.open {
+      display: block;
+    }
+    .module-body p {
+      font-size: 0.78rem;
+      color: #444;
+      line-height: 1.9;
+      margin-bottom: 14px;
+    }
+    .module-body ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+    .module-body ul li {
+      font-size: 0.76rem;
+      color: #555;
+      line-height: 1.8;
+      margin-bottom: 4px;
+    }
+    .module-confirm {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid #f0f0f0;
+    }
+    .module-confirm label {
+      font-size: 0.72rem;
+      color: #555;
+      cursor: pointer;
+    }
+    .module-confirm input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #b89d6a;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .module-cta {
+      margin-top: 14px;
+    }
+    .referral-reveal {
+      background: #0a0a0a;
+      padding: 32px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .referral-code-display {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      color: #b89d6a;
+      letter-spacing: 0.18em;
+      margin: 16px 0;
+    }
+    .referral-link-display {
+      font-size: 0.68rem;
+      color: #888;
+      font-family: monospace;
+      background: #111;
+      padding: 10px 16px;
+      border: 1px solid #222;
+      word-break: break-all;
+      margin: 10px 0;
+    }
+    .copy-btn {
+      background: none;
+      border: 1px solid #b89d6a;
+      color: #b89d6a;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.2s;
+    }
+    .copy-btn:hover { background: #b89d6a; color: #fff; }
+    .progress-bar-wrap {
+      background: #f0f0f0;
+      height: 4px;
+      margin-bottom: 24px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: #b89d6a;
+      transition: width 0.4s;
+    }
+  </style>
+</head>
+<body>
+
+<header class="sys-header">
+  <div class="sys-logo">LAGNAF<span>™</span> Network</div>
+  <div style="display:flex;align-items:center;gap:24px;">
+    <span class="sys-step-indicator">Ambassador Onboarding — Training Modules</span>
+    <div style="text-align:right;">
+      <span style="font-size:0.55rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#666;">UIN</span>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;color:#b89d6a;letter-spacing:0.1em;" id="uin-badge">—</div>
+    </div>
+  </div>
+</header>
+
+<div class="sys-page top-aligned">
+  <div class="sys-card wide">
+
+    <span class="sys-eyebrow">Required — Complete All Modules</span>
+    <h1 class="sys-title">Ambassador Training</h1>
+    <div class="sys-divider"></div>
+    <p class="sys-sub">Complete all five modules in sequence. Each module must be acknowledged before the next is unlocked. Your referral code is issued upon completion of Module 5.</p>
+
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progress-bar" style="width:0%"></div>
+    </div>
+
+    <!-- MODULE 1 -->
+    <div class="module-block active" id="mod-1">
+      <div class="module-header" onclick="toggleModule(1)">
+        <div class="module-num">1</div>
+        <div class="module-title">Introduction to LAGNAF™ Network</div>
+        <span class="module-status" id="mod-1-status" style="color:#b89d6a;">In Progress</span>
+      </div>
+      <div class="module-body open" id="mod-1-body">
+        <p style="margin-top:16px;">LAGNAF™ Network is a private, controlled-access business infrastructure system. It is not a public platform, a franchise, or a service subscription. It is a closed operator network built around digital asset ownership, brand infrastructure, and scalable systems for serious operators.</p>
+        <p>As a Brand Ambassador, your role is singular: introduce qualified individuals to the entry gateway. You do not sell, pitch, or explain pricing. You extend invitations. The system handles everything from entry through onboarding.</p>
+        <ul>
+          <li>All introductions are made through your personal referral link only</li>
+          <li>You never disclose pricing, system details, or operator terms</li>
+          <li>Your identity as an ambassador is confidential — not disclosed to prospects</li>
+          <li>All referrals are tracked automatically via your LAGNAF code</li>
+        </ul>
+        <p>Your success as an ambassador depends entirely on the quality — not the quantity — of your introductions. One serious operator is worth more than ten unqualified inquiries.</p>
+        <div class="module-confirm">
+          <input type="checkbox" id="check-1" onchange="enableConfirm(1)" />
+          <label for="check-1">I have read and understood this module.</label>
+        </div>
+        <div class="module-cta">
+          <button class="btn-sys-primary" id="btn-1" disabled onclick="confirmModule(1)">Confirm &amp; Continue →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 2 -->
+    <div class="module-block locked" id="mod-2">
+      <div class="module-header" onclick="toggleModule(2)">
+        <div class="module-num">2</div>
+        <div class="module-title">The Network Standard</div>
+        <span class="module-status" id="mod-2-status" style="color:#ccc;">Locked</span>
+      </div>
+      <div class="module-body" id="mod-2-body">
+        <p style="margin-top:16px;">The LAGNAF™ Network operates under a strict standard of conduct for all participants — operators and ambassadors alike. Understanding and upholding this standard is non-negotiable.</p>
+        <p><strong style="color:#222;">Confidentiality.</strong> Everything disclosed within the system — pricing, operator identities, network structure, digital asset valuations — is governed by the NDA you executed at entry. This extends to your role as an ambassador. You may not discuss system specifics with anyone outside the network.</p>
+        <p><strong style="color:#222;">Brand Integrity.</strong> You represent the network by extension. Any conduct that damages the brand — misrepresentation, unauthorized marketing materials, public claims about income — is grounds for immediate removal and forfeiture of pending commissions.</p>
+        <p><strong style="color:#222;">Referral Quality.</strong> Qualified operators have verifiable business activity, a clear use case for the infrastructure, and the financial capacity to participate. Do not submit referrals who cannot meet these criteria. Low-quality referrals do not convert — and you are only compensated on closed transactions.</p>
+        <ul>
+          <li>Never share system pricing publicly or in writing</li>
+          <li>Never create marketing materials without written approval</li>
+          <li>Never make income guarantees or forward projections to prospects</li>
+          <li>Always refer prospects to the entry gateway — never to a team member directly</li>
+        </ul>
+        <div class="module-confirm">
+          <input type="checkbox" id="check-2" onchange="enableConfirm(2)" />
+          <label for="check-2">I understand and agree to uphold the LAGNAF™ Network standard.</label>
+        </div>
+        <div class="module-cta">
+          <button class="btn-sys-primary" id="btn-2" disabled onclick="confirmModule(2)">Confirm &amp; Continue →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 3 -->
+    <div class="module-block locked" id="mod-3">
+      <div class="module-header" onclick="toggleModule(3)">
+        <div class="module-num">3</div>
+        <div class="module-title">The Referral Process</div>
+        <span class="module-status" id="mod-3-status" style="color:#ccc;">Locked</span>
+      </div>
+      <div class="module-body" id="mod-3-body">
+        <p style="margin-top:16px;">Your referral process is a one-step action: share your personal referral link with a qualified prospect. When they visit the link, your LAGNAF code is captured automatically — no manual tracking, no follow-up codes to enter.</p>
+        <p><strong style="color:#222;">How the system captures your referral:</strong></p>
+        <ul>
+          <li>Your link appends your code to the entry gateway URL: <code style="font-size:0.7rem;background:#f5f5f5;padding:2px 6px;">entry-gateway.html?ref=LAGNAF-XXXXXX</code></li>
+          <li>The system reads the code on page load and stores it in the prospect's session</li>
+          <li>Even if they navigate away and return, your attribution is preserved</li>
+          <li>When they complete entry, your code is written to their contact record in HubSpot automatically</li>
+        </ul>
+        <p><strong style="color:#222;">What happens after they submit:</strong></p>
+        <ul>
+          <li>They proceed through NDA execution and UIN issuance — you are not involved</li>
+          <li>The system routes them to the appropriate operator or ambassador track</li>
+          <li>If they select and pay for a build, your commission is triggered and logged</li>
+          <li>You can track referral status in your ambassador dashboard</li>
+        </ul>
+        <p>You do not need to follow up, schedule calls, or manage prospects through the funnel. Your job ends at the introduction. The system handles the rest.</p>
+        <div class="module-confirm">
+          <input type="checkbox" id="check-3" onchange="enableConfirm(3)" />
+          <label for="check-3">I understand the referral process and how attribution is tracked.</label>
+        </div>
+        <div class="module-cta">
+          <button class="btn-sys-primary" id="btn-3" disabled onclick="confirmModule(3)">Confirm &amp; Continue →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 4 -->
+    <div class="module-block locked" id="mod-4">
+      <div class="module-header" onclick="toggleModule(4)">
+        <div class="module-num">4</div>
+        <div class="module-title">Compensation &amp; Compliance</div>
+        <span class="module-status" id="mod-4-status" style="color:#ccc;">Locked</span>
+      </div>
+      <div class="module-body" id="mod-4-body">
+        <p style="margin-top:16px;">Commissions are paid on verified, received payments only. There are no advances, guaranteed minimums, or commissions on pending transactions.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0;">
+          <div style="border:1px solid #e5e5e5;border-top:3px solid #b89d6a;padding:20px;">
+            <div style="font-size:0.58rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#b89d6a;margin-bottom:8px;">Direct Purchase</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#b89d6a;line-height:1;margin-bottom:8px;">15%</div>
+            <p style="font-size:0.7rem;color:#666;line-height:1.7;margin:0;">Single lump-sum payout on verified payment in full.</p>
+          </div>
+          <div style="border:1px solid #e5e5e5;border-top:3px solid #b89d6a;padding:20px;">
+            <div style="font-size:0.58rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#b89d6a;margin-bottom:8px;">Lease-to-Own ($50k+)</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#b89d6a;line-height:1;margin-bottom:8px;">3% <span style="font-size:1.2rem;color:#aaa;">+</span> 1%</div>
+            <p style="font-size:0.7rem;color:#666;line-height:1.7;margin:0;">3% on each monthly payment received. 1% lump sum on verified final payoff.</p>
+          </div>
+        </div>
+        <p><strong style="color:#222;">Referral validity window:</strong> 90 days from date of introduction. If a referred prospect does not complete a paid transaction within 90 days, the referral expires. Re-introduction resets the window.</p>
+        <p><strong style="color:#222;">Compliance requirements:</strong></p>
+        <ul>
+          <li>You must maintain active ambassador status (no violations, no removal) to receive payment</li>
+          <li>Commissions are issued via the method on file — contact the team to establish payment details</li>
+          <li>You are responsible for any tax obligations on commissions received</li>
+          <li>Commission disputes must be raised within 30 days of the triggering transaction</li>
+        </ul>
+        <div class="module-confirm">
+          <input type="checkbox" id="check-4" onchange="enableConfirm(4)" />
+          <label for="check-4">I understand the compensation structure and compliance requirements.</label>
+        </div>
+        <div class="module-cta">
+          <button class="btn-sys-primary" id="btn-4" disabled onclick="confirmModule(4)">Confirm &amp; Continue →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODULE 5 -->
+    <div class="module-block locked" id="mod-5">
+      <div class="module-header" onclick="toggleModule(5)">
+        <div class="module-num">5</div>
+        <div class="module-title">Referral Link Activation</div>
+        <span class="module-status" id="mod-5-status" style="color:#ccc;">Locked</span>
+      </div>
+      <div class="module-body" id="mod-5-body">
+        <p style="margin-top:16px;">You have completed all required training modules. Upon confirming this final module, your personal LAGNAF referral code will be issued and your ambassador status will be marked Active in the system.</p>
+        <p>Your referral link directs prospects to the entry gateway with your code pre-attached. Share it directly — via text, email, or tap card — and all attribution is handled automatically.</p>
+        <ul>
+          <li>Share your link, not your code directly — the link does the work</li>
+          <li>Your tap card (DOT) can be programmed to your referral link for in-person introductions</li>
+          <li>You can share your link as many times as needed — there is no cap on introductions</li>
+          <li>Track all referral activity from your ambassador dashboard</li>
+        </ul>
+        <div class="module-confirm">
+          <input type="checkbox" id="check-5" onchange="enableConfirm(5)" />
+          <label for="check-5">I am ready to activate my referral link and begin operating as a LAGNAF™ Brand Ambassador.</label>
+        </div>
+        <div class="module-cta">
+          <button class="btn-sys-primary" id="btn-5" disabled onclick="confirmModule(5)">Activate My Referral Link →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- REFERRAL CODE REVEAL — shown after module 5 -->
+    <div id="referral-reveal" style="display:none;">
+      <div class="referral-reveal">
+        <p style="font-size:0.58rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#b89d6a;margin-bottom:6px;">Ambassador Active</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;margin-bottom:4px;">Your Referral Code</p>
+        <div class="referral-code-display" id="reveal-code">—</div>
+        <p style="font-size:0.68rem;color:#888;margin-bottom:12px;">Your personal referral link:</p>
+        <div class="referral-link-display" id="reveal-link">—</div>
+        <button class="copy-btn" onclick="copyLink()">Copy Link</button>
+      </div>
+      <div style="margin-top:20px;">
+        <button class="btn-sys-primary btn-full" onclick="window.location.href='ambassador-dashboard.html'">Continue to Ambassador Dashboard →</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="js/flow.js"></script>
+<script>
+const TOTAL_MODULES = 5;
+
+function getCompleted() {
+  return Flow.get('amb_modules_complete') || 0;
+}
+
+function updateProgress(n) {
+  document.getElementById('progress-bar').style.width = ((n / TOTAL_MODULES) * 100) + '%';
+}
+
+function toggleModule(n) {
+  const body = document.getElementById('mod-' + n + '-body');
+  body.classList.toggle('open');
+}
+
+function enableConfirm(n) {
+  const cb = document.getElementById('check-' + n);
+  const btn = document.getElementById('btn-' + n);
+  btn.disabled = !cb.checked;
+}
+
+function confirmModule(n) {
+  Flow.completeAmbassadorModule(n);
+  const mod = document.getElementById('mod-' + n);
+  mod.classList.remove('active');
+  mod.classList.add('done');
+  document.getElementById('mod-' + n + '-status').textContent = 'Complete';
+  document.getElementById('mod-' + n + '-status').style.color = '#b89d6a';
+  document.getElementById('mod-' + n + '-body').classList.remove('open');
+
+  updateProgress(n);
+
+  if (n < TOTAL_MODULES) {
+    const next = document.getElementById('mod-' + (n + 1));
+    next.classList.remove('locked');
+    next.classList.add('active');
+    document.getElementById('mod-' + (n + 1) + '-status').textContent = 'In Progress';
+    document.getElementById('mod-' + (n + 1) + '-status').style.color = '#b89d6a';
+    document.getElementById('mod-' + (n + 1) + '-body').classList.add('open');
+    next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } else {
+    revealReferralCode();
+  }
+}
+
+function revealReferralCode() {
+  const code = Flow.get('ambassador_code');
+  const baseUrl = window.location.origin + window.location.pathname.replace('ambassador-materials.html', '');
+  const link = baseUrl + 'entry-gateway.html?ref=' + code;
+
+  document.getElementById('reveal-code').textContent = code || '—';
+  document.getElementById('reveal-link').textContent = link;
+  document.getElementById('referral-reveal').style.display = 'block';
+  document.getElementById('referral-reveal').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function copyLink() {
+  const link = document.getElementById('reveal-link').textContent;
+  navigator.clipboard.writeText(link).then(function() {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = 'Copied';
+    setTimeout(function() { btn.textContent = 'Copy Link'; }, 2000);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  Flow.requirePath('ambassador');
+  const uin = Flow.get('uin');
+  if (uin) document.getElementById('uin-badge').textContent = uin;
+
+  // Restore progress if user refreshes
+  const completed = getCompleted();
+  updateProgress(completed);
+
+  for (let i = 1; i <= completed; i++) {
+    const mod = document.getElementById('mod-' + i);
+    mod.classList.remove('active', 'locked');
+    mod.classList.add('done');
+    document.getElementById('mod-' + i + '-status').textContent = 'Complete';
+    document.getElementById('mod-' + i + '-status').style.color = '#b89d6a';
+  }
+
+  if (completed < TOTAL_MODULES) {
+    const next = document.getElementById('mod-' + (completed + 1));
+    next.classList.remove('locked');
+    next.classList.add('active');
+    document.getElementById('mod-' + (completed + 1) + '-status').textContent = 'In Progress';
+    document.getElementById('mod-' + (completed + 1) + '-status').style.color = '#b89d6a';
+    document.getElementById('mod-' + (completed + 1) + '-body').classList.add('open');
+  } else {
+    revealReferralCode();
+  }
+});
+</script>
+</body>
+</html>
