@@ -408,6 +408,13 @@ function confirmModule(n) {
     document.getElementById('mod-' + (n + 1) + '-body').classList.add('open');
     next.scrollIntoView({ behavior: 'smooth', block: 'start' });
   } else {
+    // Final status — training complete, ambassador deployed
+    Flow.set('status', 'ambassador_deployed');
+    Flow.hubspotIdentify({
+      lagnaf_uin:             Flow.get('uin'),
+      lagnaf_ambassador_code: Flow.get('ambassador_code'),
+      lagnaf_status:          'Ambassador Deployed',
+    }, 'Ambassador Training Complete');
     revealReferralCode();
   }
 }
@@ -433,9 +440,20 @@ function copyLink() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  Flow.requirePath('ambassador');
+  Flow.requireNDA();
+  if (!Flow.get('ambassador_track')) { window.location.href = 'ambassador-entry.html'; return; }
+  if (!Flow.get('amb_agreement_complete')) { window.location.href = 'ambassador-agreement.html'; return; }
+
   const uin = Flow.get('uin');
   if (uin) document.getElementById('uin-badge').textContent = uin;
+
+  // Populate Module 5 deploy credentials on load
+  const code = Flow.get('ambassador_code');
+  if (code) {
+    document.getElementById('deploy-code-display').textContent = code;
+    const base = window.location.origin + window.location.pathname.replace('ambassador-materials.html', '');
+    document.getElementById('deploy-link-display').textContent = base + 'entry-gateway.html?ref=' + code;
+  }
 
   // Restore progress if user refreshes
   const completed = getCompleted();
