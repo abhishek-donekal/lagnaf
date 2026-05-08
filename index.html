@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LAGNAF™ Network</title>
+  <title>LAGNAF™ network LLC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Cinzel:wght@400;500;600&family=Rajdhani:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" />
@@ -26,7 +26,7 @@
     }
     a { text-decoration: none; color: inherit; }
 
-    /* ─── SCAN LINE (fixed, travels full page) ── */
+    /* ─── SCAN LINE ─────────────────────────────── */
     .scan-line {
       position: fixed;
       left: 0; top: -1px;
@@ -51,82 +51,111 @@
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      padding: 22px 52px;
-      background: rgba(3,3,6,0.88);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
+      padding: 18px 52px;
+      background: rgba(3,3,6,0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
       flex-shrink: 0;
       opacity: 0;
       transform: translateY(-6px);
     }
-    .nav.in { opacity: 1; transform: translateY(0); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .nav.in {
+      opacity: 1; transform: translateY(0);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
 
+    /* Logo stack */
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
     .nav-logo {
       font-family: 'Orbitron', sans-serif;
       font-size: 0.68rem;
       font-weight: 600;
-      letter-spacing: 0.38em;
+      letter-spacing: 0.34em;
       text-transform: uppercase;
-      background: linear-gradient(130deg, #d0d4da 0%, #a0a6ae 60%, #bcc1c8 100%);
+      background: linear-gradient(130deg, #d8dce2 0%, #9ea5ae 55%, #c4c9d0 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      line-height: 1;
     }
     .nav-logo sup {
-      font-size: 0.42rem;
+      font-size: 0.4rem;
       letter-spacing: 0;
       color: #b89d6a;
       -webkit-text-fill-color: #b89d6a;
       vertical-align: super;
     }
-    .nav-network {
+    .nav-logo-suffix {
       font-family: 'Orbitron', sans-serif;
       font-size: 0.52rem;
       font-weight: 400;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.24em;
       text-transform: lowercase;
-      background: linear-gradient(130deg, #d0d4da 0%, #a0a6ae 60%, #bcc1c8 100%);
+      background: linear-gradient(130deg, #d8dce2 0%, #9ea5ae 55%, #c4c9d0 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      vertical-align: middle;
-      margin-left: 6px;
+      margin-left: 2px;
+    }
+    .nav-slogan {
+      font-family: 'Cinzel', serif;
+      font-size: 0.42rem;
+      font-weight: 400;
+      letter-spacing: 0.26em;
+      color: rgba(184,157,106,0.6);
+      text-transform: uppercase;
+      line-height: 1;
     }
 
+    /* Center status — command chip */
     .nav-status {
       display: flex;
       align-items: center;
       gap: 9px;
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.48rem;
-      font-weight: 500;
-      letter-spacing: 0.3em;
+      font-size: 0.46rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.05);
+      padding: 6px 16px;
+      background: rgba(255,255,255,0.025);
     }
     .status-dot {
       width: 5px; height: 5px;
       border-radius: 50%;
       background: #4ade80;
+      flex-shrink: 0;
       animation: dot-pulse 2.8s ease-in-out infinite;
     }
     @keyframes dot-pulse {
-      0%,100% { opacity: 0.45; box-shadow: none; }
+      0%,100% { opacity: 0.4; box-shadow: none; }
       50%      { opacity: 1; box-shadow: 0 0 6px rgba(74,222,128,0.55); }
     }
 
-    .nav-right { display: flex; justify-content: flex-end; }
+    .nav-right { display: flex; justify-content: flex-end; align-items: center; }
     .nav-contact {
       font-family: 'Rajdhani', sans-serif;
       font-size: 0.5rem;
       font-weight: 500;
       letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.18);
-      transition: color 0.25s;
+      color: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 6px 14px;
+      transition: color 0.25s, border-color 0.25s;
     }
-    .nav-contact:hover { color: rgba(255,255,255,0.55); }
+    .nav-contact:hover {
+      color: rgba(255,255,255,0.55);
+      border-color: rgba(184,157,106,0.3);
+    }
 
-    /* ─── HERO (image + mask only, no text) ────── */
+    /* ─── HERO ──────────────────────────────────── */
     .hero {
       position: relative;
       width: 100%;
@@ -135,10 +164,8 @@
       overflow: hidden;
       flex-shrink: 0;
     }
-
     .hero-img {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background-image: url('https://lagnafnetwork.com/wp-content/uploads/2026/02/image-43.jpg');
       background-size: cover;
       background-position: center 28%;
@@ -148,85 +175,75 @@
     }
     .hero-img.in { opacity: 1; transform: scale(1); }
 
-    /* Dark mask */
     .hero-mask {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: rgba(4,4,7,0.72);
     }
-
-    /* Grid on image */
     .hero-grid {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background-image:
         linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
       background-size: 70px 70px;
     }
-
-    /* Gold center glow */
     .hero-glow {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(184,157,106,0.08) 0%, transparent 70%);
     }
-
-    /* Fade out bottom — seamless blend into content section */
     .hero-fade {
-      position: absolute;
-      bottom: 0; left: 0;
+      position: absolute; bottom: 0; left: 0;
       width: 100%; height: 65%;
       background: linear-gradient(to bottom, transparent 0%, #030306 100%);
     }
 
-    /* ─── CONTENT (below hero) ──────────────────── */
+    /* ─── CONTENT ───────────────────────────────── */
     .content {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 56px 40px 64px;
-      position: relative;
+      padding: 64px 40px 72px;
     }
 
-    /* Corner bracket frame */
     .bracket-box {
       position: relative;
-      padding: 56px 88px;
+      padding: 60px 96px;
       text-align: center;
-      max-width: 720px;
+      max-width: 760px;
       width: 100%;
     }
-    .c { position: absolute; width: 20px; height: 20px; }
-    .c.tl { top:0; left:0;   border-top:1px solid rgba(184,157,106,0.4); border-left:1px solid rgba(184,157,106,0.4); }
-    .c.tr { top:0; right:0;  border-top:1px solid rgba(184,157,106,0.4); border-right:1px solid rgba(184,157,106,0.4); }
-    .c.bl { bottom:0; left:0;  border-bottom:1px solid rgba(184,157,106,0.4); border-left:1px solid rgba(184,157,106,0.4); }
-    .c.br { bottom:0; right:0; border-bottom:1px solid rgba(184,157,106,0.4); border-right:1px solid rgba(184,157,106,0.4); }
+    .c { position: absolute; width: 22px; height: 22px; }
+    .c.tl { top:0; left:0;   border-top:1px solid rgba(184,157,106,0.38); border-left:1px solid rgba(184,157,106,0.38); }
+    .c.tr { top:0; right:0;  border-top:1px solid rgba(184,157,106,0.38); border-right:1px solid rgba(184,157,106,0.38); }
+    .c.bl { bottom:0; left:0;  border-bottom:1px solid rgba(184,157,106,0.38); border-left:1px solid rgba(184,157,106,0.38); }
+    .c.br { bottom:0; right:0; border-bottom:1px solid rgba(184,157,106,0.38); border-right:1px solid rgba(184,157,106,0.38); }
 
+    /* Eyebrow */
     .eyebrow {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.55rem;
+      font-size: 0.52rem;
       font-weight: 600;
-      letter-spacing: 0.46em;
+      letter-spacing: 0.48em;
       text-transform: uppercase;
-      color: rgba(184,157,106,0.85);
-      margin-bottom: 22px;
+      color: rgba(184,157,106,0.75);
+      margin-bottom: 20px;
       opacity: 0;
     }
     .eyebrow.in { opacity: 1; transition: opacity 0.9s ease; }
 
+    /* Main heading — stays on one line, wraps only if truly needed */
     .main-heading {
       font-family: 'Cinzel', serif;
-      font-size: clamp(3rem, 6.5vw, 5.6rem);
+      font-size: clamp(2.6rem, 5.5vw, 5.4rem);
       font-weight: 600;
       letter-spacing: 0.05em;
       line-height: 1.1;
+      white-space: nowrap;
       background: linear-gradient(155deg, #eaecef 0%, #9da3ac 45%, #c6cbd2 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 26px;
+      margin-bottom: 10px;
       opacity: 0;
       transform: translateY(10px);
     }
@@ -235,38 +252,51 @@
       transition: opacity 1s ease, transform 1s ease;
     }
 
+    /* Slogan under heading */
+    .slogan {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(0.75rem, 1.4vw, 1.05rem);
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      color: rgba(184,157,106,0.7);
+      margin-bottom: 32px;
+      opacity: 0;
+    }
+    .slogan.in { opacity: 1; transition: opacity 0.9s ease; }
+
     .rule {
-      width: 40px; height: 1px;
+      width: 48px; height: 1px;
       background: linear-gradient(90deg, transparent, #b89d6a, transparent);
-      margin: 0 auto 24px;
+      margin: 0 auto 28px;
       opacity: 0;
     }
     .rule.in { opacity: 1; transition: opacity 0.8s ease; }
 
     .main-body {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 400;
-      color: rgba(255,255,255,0.52);
+      color: rgba(255,255,255,0.5);
       line-height: 2;
       letter-spacing: 0.07em;
-      max-width: 460px;
-      margin: 0 auto 38px;
+      max-width: 480px;
+      margin: 0 auto 42px;
       opacity: 0;
     }
     .main-body.in { opacity: 1; transition: opacity 0.9s ease; }
 
+    /* CTA Button */
     .cta-btn {
       display: inline-block;
       position: relative;
       overflow: hidden;
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.62rem;
+      font-size: 0.64rem;
       font-weight: 600;
       letter-spacing: 0.34em;
       text-transform: uppercase;
       color: #b89d6a;
       border: 1px solid rgba(184,157,106,0.45);
-      padding: 17px 54px;
+      padding: 18px 60px;
       cursor: pointer;
       opacity: 0;
       transition: opacity 0.9s ease, border-color 0.3s, color 0.3s;
@@ -277,7 +307,7 @@
     }
     @keyframes btn-pulse {
       0%,100% { box-shadow: 0 0 0 rgba(184,157,106,0); }
-      50%      { box-shadow: 0 0 28px rgba(184,157,106,0.2), 0 0 8px rgba(184,157,106,0.08); }
+      50%      { box-shadow: 0 0 32px rgba(184,157,106,0.22), 0 0 10px rgba(184,157,106,0.08); }
     }
     .cta-btn::after {
       content: '';
@@ -289,19 +319,20 @@
     .cta-btn:hover::after { left: 160%; }
     .cta-btn:hover { border-color: #b89d6a; color: #fff; }
 
+    /* Gate note */
     .gate-note {
       display: block;
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.48rem;
+      font-size: 0.5rem;
       font-weight: 500;
-      letter-spacing: 0.4em;
+      letter-spacing: 0.42em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.14);
-      margin-top: 18px;
+      margin-top: 20px;
       opacity: 0;
     }
     .gate-note.in { opacity: 1; transition: opacity 0.8s ease; }
-    .gate-note em { font-style: normal; color: rgba(184,157,106,0.3); margin: 0 8px; }
+    .gate-note em { font-style: normal; color: rgba(184,157,106,0.3); margin: 0 10px; }
 
     /* ─── FOOTER ────────────────────────────────── */
     .foot {
@@ -320,25 +351,28 @@
       letter-spacing: 0.1em;
       color: rgba(255,255,255,0.1);
     }
-    .foot-links { display: flex; gap: 26px; }
+    .foot-links { display: flex; gap: 28px; }
     .foot-links a {
       font-family: 'Rajdhani', sans-serif;
       font-size: 0.48rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.11);
+      color: rgba(255,255,255,0.1);
       transition: color 0.2s;
     }
     .foot-links a:hover { color: rgba(255,255,255,0.42); }
 
     /* ─── RESPONSIVE ────────────────────────────── */
+    @media (max-width: 820px) {
+      .main-heading { white-space: normal; font-size: clamp(2.2rem, 8vw, 3.2rem); }
+    }
     @media (max-width: 700px) {
-      .nav { padding: 18px 22px; grid-template-columns: 1fr 1fr; }
+      .nav { padding: 16px 22px; grid-template-columns: 1fr 1fr; }
       .nav-status { display: none; }
-      .hero { height: 40vh; min-height: 220px; }
+      .hero { height: 38vh; min-height: 200px; }
       .bracket-box { padding: 40px 24px; }
       .c { width: 14px; height: 14px; }
-      .cta-btn { padding: 15px 32px; }
+      .cta-btn { padding: 16px 36px; }
       .content { padding: 48px 20px 56px; }
       .foot { padding: 18px 22px; flex-direction: column; gap: 12px; text-align: center; }
     }
@@ -346,22 +380,33 @@
 </head>
 <body>
 
-  <!-- Scan line travels full viewport height -->
   <div class="scan-line"></div>
 
   <!-- NAV -->
   <nav class="nav" id="nav">
-    <div class="nav-logo">LAGNAF<sup>™</sup> <span class="nav-network">network</span></div>
+
+    <!-- Brand stack -->
+    <div class="nav-brand">
+      <div class="nav-logo">
+        LAGNAF<sup>™</sup><span class="nav-logo-suffix"> network LLC</span>
+      </div>
+      <div class="nav-slogan">Where Systems Meet Scale</div>
+    </div>
+
+    <!-- System status chip -->
     <div class="nav-status">
       <div class="status-dot"></div>
-      Deployment Systems Online
+      Apollo Build™ Infrastructure Online
     </div>
+
+    <!-- Contact -->
     <div class="nav-right">
       <a href="tel:9493508804" class="nav-contact">949-350-8804</a>
     </div>
+
   </nav>
 
-  <!-- HERO — image + mask, no text -->
+  <!-- HERO — image + mask only -->
   <section class="hero">
     <div class="hero-img" id="hero-img"></div>
     <div class="hero-mask"></div>
@@ -370,7 +415,7 @@
     <div class="hero-fade"></div>
   </section>
 
-  <!-- CONTENT — below the image -->
+  <!-- CONTENT -->
   <section class="content">
     <div class="bracket-box">
       <span class="c tl"></span>
@@ -378,15 +423,16 @@
       <span class="c bl"></span>
       <span class="c br"></span>
 
-      <div class="eyebrow"     id="e1">Apollo Build™ Infrastructure</div>
-      <h1  class="main-heading" id="e2">Founder-Controlled<br>Access</h1>
-      <div class="rule"        id="e3"></div>
-      <p   class="main-body"   id="e4">
-        Access to proprietary Apollo Build™ deployment systems is restricted<br>
+      <div class="eyebrow"      id="e1">Apollo Build™ Infrastructure</div>
+      <h1  class="main-heading" id="e2">Founder-Controlled Access</h1>
+      <div class="slogan"       id="e3">Where Systems Meet Scale</div>
+      <div class="rule"         id="e4"></div>
+      <p   class="main-body"    id="e5">
+        Access to proprietary Apollo Build™ deployment systems is restricted
         to approved operators and strategic partners.
       </p>
-      <a href="welcome.html" class="cta-btn" id="e5">Request Deployment Access</a>
-      <span class="gate-note"  id="e6">NDA <em>•</em> Verification <em>•</em> .card Activation Required</span>
+      <a href="welcome.html" class="cta-btn" id="e6">Request Deployment Access</a>
+      <span class="gate-note"   id="e7">NDA <em>•</em> Verification <em>•</em> .card Activation Required</span>
     </div>
   </section>
 
@@ -402,21 +448,13 @@
 
   <script>
     window.addEventListener('load', function() {
-      // Image fades in immediately
-      setTimeout(function() {
-        document.getElementById('hero-img').classList.add('in');
-      }, 80);
-      // Nav in
-      setTimeout(function() {
-        document.getElementById('nav').classList.add('in');
-      }, 200);
-      // Content staggers in after
-      var items = ['e1','e2','e3','e4','e5','e6','foot'];
-      items.forEach(function(id, i) {
+      setTimeout(function() { document.getElementById('hero-img').classList.add('in'); }, 80);
+      setTimeout(function() { document.getElementById('nav').classList.add('in'); }, 200);
+      ['e1','e2','e3','e4','e5','e6','e7','foot'].forEach(function(id, i) {
         setTimeout(function() {
           var el = document.getElementById(id);
           if (el) el.classList.add('in');
-        }, 500 + i * 160);
+        }, 520 + i * 150);
       });
     });
   </script>
