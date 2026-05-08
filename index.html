@@ -22,6 +22,29 @@
 
     /* ─── BACKGROUND LAYERS ─────────────────────────── */
 
+    /* Background image */
+    .bg-image {
+      position: fixed;
+      inset: 0;
+      background-image: url('https://lagnafnetwork.com/wp-content/uploads/2026/02/image-43.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      z-index: 0;
+      opacity: 0;
+      transform: scale(1.06);
+      transition: opacity 2.4s ease, transform 10s ease;
+    }
+    .bg-image.in { opacity: 1; transform: scale(1); }
+
+    /* Dark mask over image */
+    .bg-mask {
+      position: fixed;
+      inset: 0;
+      background: rgba(4,4,7,0.82);
+      z-index: 1;
+    }
+
+    /* Grid over mask */
     .bg-grid {
       position: fixed;
       inset: 0;
@@ -29,7 +52,7 @@
         linear-gradient(rgba(255,255,255,0.027) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.027) 1px, transparent 1px);
       background-size: 70px 70px;
-      z-index: 0;
+      z-index: 2;
       animation: grid-breathe 9s ease-in-out infinite;
     }
     @keyframes grid-breathe {
@@ -41,14 +64,14 @@
       position: fixed;
       inset: 0;
       background: radial-gradient(ellipse 55% 45% at 50% 52%, rgba(184,157,106,0.07) 0%, transparent 68%);
-      z-index: 1;
+      z-index: 3;
     }
 
     .bg-vignette {
       position: fixed;
       inset: 0;
-      background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 35%, rgba(0,0,0,0.78) 100%);
-      z-index: 2;
+      background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 35%, rgba(0,0,0,0.72) 100%);
+      z-index: 4;
     }
 
     .scan-line {
@@ -336,6 +359,8 @@
 </head>
 <body>
 
+  <div class="bg-image" id="bg-img"></div>
+  <div class="bg-mask"></div>
   <div class="bg-grid"></div>
   <div class="bg-glow"></div>
   <div class="bg-vignette"></div>
@@ -386,6 +411,11 @@
   <script>
     var seq = ['nav','e1','e2','e3','e4','e5','e6','foot'];
     window.addEventListener('load', function() {
+      // Image fades in first
+      setTimeout(function() {
+        document.getElementById('bg-img').classList.add('in');
+      }, 80);
+      // Content staggers in after
       seq.forEach(function(id, i) {
         setTimeout(function() {
           var el = document.getElementById(id);
