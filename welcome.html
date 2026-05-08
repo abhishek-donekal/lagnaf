@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome — LAGNAF™ Network</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { height: 100%; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #080808;
+      color: #fff;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 52px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      flex-shrink: 0;
+    }
+
+    .nav-logo {
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .nav-back {
+      font-size: 0.52rem;
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.28);
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: rgba(255,255,255,0.6); }
+
+    /* ── MAIN ── */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 72px 40px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      font-size: 0.48rem;
+      font-weight: 600;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: #b89d6a;
+      margin-bottom: 20px;
+    }
+    .eyebrow::before, .eyebrow::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: #b89d6a;
+    }
+
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+    }
+
+    .page-sub {
+      font-size: 0.6rem;
+      font-weight: 300;
+      letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.9;
+    }
+
+    /* ── PATH CARDS ── */
+    .paths {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1060px;
+      width: 100%;
+    }
+
+    .path-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 44px 36px;
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .path-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 3px;
+      background: #b89d6a;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .path-card:hover::before { transform: scaleX(1); }
+    .path-card:hover { border-color: rgba(184,157,106,0.25); }
+
+    .path-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      color: rgba(184,157,106,0.15);
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 28px;
+    }
+
+    .path-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 24px;
+      opacity: 0.5;
+    }
+
+    .path-label {
+      font-size: 0.48rem;
+      font-weight: 600;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: #b89d6a;
+      margin-bottom: 12px;
+    }
+
+    .path-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 400;
+      color: #fff;
+      letter-spacing: 0.03em;
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+
+    .path-desc {
+      font-size: 0.65rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.85;
+      letter-spacing: 0.03em;
+      flex: 1;
+      margin-bottom: 32px;
+    }
+
+    .path-action {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.52rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #b89d6a;
+    }
+
+    .path-arrow {
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+    .path-card:hover .path-arrow { transform: translateX(5px); }
+
+    /* ── NOTE ── */
+    .access-note {
+      margin-top: 44px;
+      text-align: center;
+      font-size: 0.55rem;
+      color: rgba(255,255,255,0.15);
+      letter-spacing: 0.1em;
+      line-height: 1.8;
+    }
+
+    /* ── FOOT ── */
+    .foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 52px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      flex-shrink: 0;
+    }
+    .foot-copy { font-size: 0.5rem; color: rgba(255,255,255,0.12); letter-spacing: 0.07em; }
+    .foot-links { display: flex; gap: 22px; }
+    .foot-links a {
+      font-size: 0.48rem;
+      color: rgba(255,255,255,0.14);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .foot-links a:hover { color: rgba(255,255,255,0.45); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .paths { grid-template-columns: 1fr; max-width: 480px; }
+      .path-card { padding: 36px 28px; }
+      .path-num { font-size: 1.8rem; margin-bottom: 16px; }
+    }
+    @media (max-width: 600px) {
+      .nav { padding: 22px 24px; }
+      .main { padding: 56px 20px; }
+      .header { margin-bottom: 48px; }
+      .foot { padding: 20px 24px; flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">LAGNAF™ Network</div>
+    <a href="index.html" class="nav-back">← Return</a>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <div class="header">
+      <div class="eyebrow">Access Request</div>
+      <h1 class="page-title">Tell us how to direct you.</h1>
+      <p class="page-sub">Select the path that describes your purpose within the network.</p>
+    </div>
+
+    <div class="paths">
+
+      <!-- PATH 1: Business Owner -->
+      <a href="entry-gateway.html" class="path-card">
+        <div class="path-num">01</div>
+        <div class="path-label">Operator Track</div>
+        <div class="path-title">I'm a Business Owner</div>
+        <p class="path-desc">
+          I want to build or expand my operation. I'm looking for infrastructure, brand positioning, and system support within a structured private network.
+        </p>
+        <div class="path-action">
+          Begin Application <span class="path-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- PATH 2: Brand Ambassador -->
+      <a href="ambassador-entry.html" class="path-card">
+        <div class="path-num">02</div>
+        <div class="path-label">Ambassador Track</div>
+        <div class="path-title">I'm Here as a Brand Ambassador</div>
+        <p class="path-desc">
+          I was referred to join the ambassador program. I want to refer operators into the network and earn commission under my assigned master code and DOT identity.
+        </p>
+        <div class="path-action">
+          Begin Pre-Qualification <span class="path-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- PATH 3: Existing Operator -->
+      <a href="entry-gateway.html?returning=true" class="path-card">
+        <div class="path-num">03</div>
+        <div class="path-label">Existing Operator</div>
+        <div class="path-title">I'm Already in the Network</div>
+        <p class="path-desc">
+          I am an existing operator or ambassador. I need to access my account, continue my onboarding, or return to the system after a prior entry.
+        </p>
+        <div class="path-action">
+          Access My Account <span class="path-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+
+    <p class="access-note">
+      This is a private network. Access is not publicly available.<br>
+      All entry is gated behind identity verification and NDA execution.
+    </p>
+
+  </main>
+
+  <!-- FOOT -->
+  <div class="foot">
+    <span class="foot-copy">© 2026 LAGNAF™ network LLC. All Rights Reserved.</span>
+    <div class="foot-links">
+      <a href="privacy-policy.html">Privacy</a>
+      <a href="terms-of-service.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </div>
+  </div>
+
+</body>
+</html>
