@@ -1,147 +1,620 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Network – LAGNAF Network</title>
-  <link rel="stylesheet" href="css/site.css" />
+  <title>Operator Verticals — LAGNAF™</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Cinzel:wght@400;500;600&family=Rajdhani:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f7f6f4;
+      color: #111;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    .site-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 52px;
+      background: #fff;
+      border-bottom: 1px solid #e8e8e8;
+      position: sticky; top: 0; z-index: 100;
+    }
+
+    .nav-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.64rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #111;
+    }
+    .nav-logo sup { font-size: 0.38rem; color: #b89d6a; }
+
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a {
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #888;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #111; }
+
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .nav-request {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.56rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #b89d6a;
+      border: 1px solid rgba(184,157,106,0.5);
+      padding: 8px 20px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-request:hover { background: #b89d6a; color: #fff; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 1.5px;
+      background: #555;
+    }
+
+    /* ── MOBILE DRAWER ── */
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #fff;
+      z-index: 999;
+      padding: 40px 32px;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .mobile-drawer.open { display: flex; }
+    .mobile-drawer a { font-size: 1rem; font-weight: 500; color: #111; border-bottom: 1px solid #f0f0f0; padding-bottom: 14px; }
+    .drawer-close { align-self: flex-end; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #555; margin-bottom: 8px; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: #030306;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 70px 70px;
+      padding: 80px 52px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(184,157,106,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .ph-eyebrow {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.44em;
+      text-transform: uppercase;
+      color: rgba(184,157,106,0.7);
+      margin-bottom: 16px;
+    }
+
+    .ph-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 3.8vw, 3rem);
+      font-weight: 500;
+      color: #e8eaed;
+      letter-spacing: 0.06em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .ph-sub {
+      font-size: 0.68rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.1em;
+      line-height: 1.9;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ── VERTICALS INTRO ── */
+    .verticals-intro {
+      background: #fff;
+      padding: 64px 52px;
+      text-align: center;
+      border-bottom: 1px solid #ebebeb;
+    }
+
+    .vi-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: #b89d6a;
+      margin-bottom: 16px;
+    }
+
+    .vi-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      font-weight: 500;
+      color: #111;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+
+    .vi-sub {
+      font-size: 0.7rem;
+      font-weight: 300;
+      color: #777;
+      line-height: 1.9;
+      letter-spacing: 0.06em;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    /* ── VERTICALS GRID ── */
+    .verticals-section {
+      padding: 64px 52px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .verticals-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: #e0e0e0;
+      border: 1px solid #e0e0e0;
+    }
+
+    .vertical-card {
+      background: #fff;
+      padding: 40px 34px;
+      display: flex;
+      flex-direction: column;
+      transition: background 0.25s;
+    }
+    .vertical-card:hover { background: #faf8f4; }
+
+    .vc-index {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: rgba(184,157,106,0.15);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .vc-sector {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.46rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #b89d6a;
+      margin-bottom: 8px;
+    }
+
+    .vc-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #111;
+      letter-spacing: 0.04em;
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+
+    .vc-desc {
+      font-size: 0.65rem;
+      font-weight: 300;
+      color: #666;
+      line-height: 1.85;
+      letter-spacing: 0.04em;
+      flex: 1;
+      margin-bottom: 24px;
+    }
+
+    .vc-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.48rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(184,157,106,0.6);
+      border: 1px solid rgba(184,157,106,0.25);
+      padding: 8px 18px;
+      align-self: flex-start;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .vc-cta:hover {
+      color: #b89d6a;
+      border-color: #b89d6a;
+      background: rgba(184,157,106,0.04);
+    }
+    .vc-arrow { transition: transform 0.2s; }
+    .vc-cta:hover .vc-arrow { transform: translateX(4px); }
+
+    /* ── ACCESS CALL ── */
+    .access-call {
+      background: #030306;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 70px 70px;
+      padding: 80px 52px;
+      text-align: center;
+    }
+
+    .ac-label {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.44em;
+      text-transform: uppercase;
+      color: rgba(184,157,106,0.6);
+      margin-bottom: 16px;
+    }
+
+    .ac-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+      font-weight: 500;
+      color: #e8eaed;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    .ac-sub {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.08em;
+      line-height: 1.9;
+      margin-bottom: 36px;
+    }
+
+    .ac-btn {
+      display: inline-block;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #b89d6a;
+      border: 1px solid rgba(184,157,106,0.4);
+      padding: 16px 52px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .ac-btn:hover { border-color: #b89d6a; color: #fff; }
+
+    .ac-note {
+      margin-top: 18px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.46rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.1);
+    }
+    .ac-note em { font-style: normal; color: rgba(184,157,106,0.2); margin: 0 8px; }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: #0a0a0a;
+      padding: 56px 52px 0;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-logo-text {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 12px;
+    }
+    .footer-logo-text sup { font-size: 0.4rem; color: #b89d6a; }
+    .footer-brand p {
+      font-size: 0.62rem;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.8;
+      letter-spacing: 0.05em;
+      max-width: 300px;
+      margin-bottom: 12px;
+    }
+    .footer-contact {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.52rem;
+      letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.25);
+    }
+    .footer-contact a { color: rgba(184,157,106,0.6); transition: color 0.2s; }
+    .footer-contact a:hover { color: #b89d6a; }
+
+    .footer-col h5 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a {
+      font-size: 0.6rem;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: rgba(255,255,255,0.65); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .footer-copy {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.48rem;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.15);
+    }
+    .footer-legal-links { display: flex; gap: 22px; }
+    .footer-legal-links a {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.46rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.15);
+      transition: color 0.2s;
+    }
+    .footer-legal-links a:hover { color: rgba(255,255,255,0.45); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .verticals-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 700px) {
+      .site-nav { padding: 16px 22px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .page-header, .verticals-intro, .access-call { padding: 52px 24px; }
+      .verticals-section { padding: 44px 20px 60px; }
+      .verticals-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; padding: 40px 0 36px; }
+      .site-footer { padding: 40px 24px 0; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; padding: 16px 0; }
+    }
+  </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="site-nav">
-  <a href="index.html" class="nav-logo">LAGNAF™ Network</a>
+  <a href="index.html" class="nav-logo">LAGNAF<sup>™</sup></a>
   <div class="nav-links">
-    <a href="network.html">Network</a>
-    <a href="network.html">Operator Programs</a>
-    <a href="lagnaf-university.html">Brand Ambassador Program</a>
-    <a href="brand-ambassador-compensation.html">Brand Ambassador Compensation</a>
-    <a href="blog.html">Blog</a>
+    <a href="network.html" class="active">Operator Verticals</a>
+    <a href="lagnaf-university.html">Ambassador Program</a>
+    <a href="brand-ambassador-compensation.html">Compensation</a>
+    <a href="about.html">About</a>
   </div>
   <div class="nav-right">
-    <a href="entry-gateway.html" class="nav-request">Request Access</a>
-    <button class="hamburger" onclick="document.getElementById('drawer').classList.add('open')"><span></span><span></span><span></span></button>
+    <a href="welcome.html" class="nav-request">Request Access</a>
+    <button class="hamburger" onclick="document.getElementById('drawer').classList.add('open')">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
 <div class="mobile-drawer" id="drawer">
   <button class="drawer-close" onclick="document.getElementById('drawer').classList.remove('open')">✕</button>
-  <a href="network.html">Network</a>
-  <a href="network.html">Operator Programs</a>
-  <a href="lagnaf-university.html">Brand Ambassador Program</a>
-  <a href="brand-ambassador-compensation.html">Brand Ambassador Compensation</a>
-  <a href="blog.html">Blog</a>
+  <a href="network.html">Operator Verticals</a>
+  <a href="lagnaf-university.html">Ambassador Program</a>
+  <a href="brand-ambassador-compensation.html">Compensation</a>
   <a href="about.html">About</a>
-  <a href="entry-gateway.html">Request Access</a>
+  <a href="welcome.html">Request Access</a>
 </div>
 
-<!-- Hero Image -->
-<div class="hero-wrap">
-  <img src="https://lagnafnetwork.com/wp-content/uploads/2026/02/image-43.jpg" alt="LAGNAF Network" />
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="ph-eyebrow">Apollo Build™ Infrastructure</div>
+  <h1 class="ph-title">Deployed Operator Verticals</h1>
+  <p class="ph-sub">A curated portfolio of active deployments built on Apollo Build™ architecture. Each represents a distinct operational position within the LAGNAF™ network.</p>
 </div>
 
-<!-- Blueprint Hero -->
-<div class="bp-hero">
-  <div class="bp-hero-inner">
-    <p class="bp-eyebrow">Welcome to the LAGNAF™ Network</p>
-    <h1 class="bp-title">The Brand built for Private Worlds &amp; Titans of Industry</h1>
-    <p class="bp-sub">A curated network of premium domains designed for clubs, VIP communities, live platforms, and professionals building exclusive clientele.</p>
-    <a href="entry-gateway.html" class="btn-tan">What Is LAGNAF™?</a>
-  </div>
+<!-- INTRO -->
+<div class="verticals-intro">
+  <div class="vi-label">What LAGNAF™ Deploys</div>
+  <h2 class="vi-title">Private Infrastructure. Controlled Scale.</h2>
+  <p class="vi-sub">These are not products. These are deployed operating systems — each one built, branded, and launched under Apollo Build™ architecture with founder-controlled infrastructure and scalable operational frameworks.</p>
 </div>
 
-<!-- Content -->
-<div style="background:#f7f7f7; padding: 70px 0;">
-  <div class="content-section" style="padding-top:0;padding-bottom:0;">
-    <h2>Where ownership is engineered.</h2>
-    <p>Transition from earned income to structured positioning through a private, automated framework designed for serious builders. You've worked hard. You've performed well. Yet control still feels limited. You do not need motivation. You need leverage.</p>
-    <ul class="check-list">
-      <li>Defined compensation timelines</li>
-      <li>Structured revenue participation</li>
-      <li>Anonymous affiliate codes</li>
-      <li>Lease-to-own participation options</li>
-      <li>Institutional documentation</li>
-    </ul>
-    <p class="bold-line" style="margin-top:20px;">This is not for everyone.</p>
-    <p>It is for individuals who understand:</p>
-    <p class="bold-line">Ownership is not given. It is engineered.</p>
-    <div style="margin-top:32px;">
-      <a href="entry-gateway.html" class="btn-tan">Enter The Network</a>
+<!-- VERTICALS GRID -->
+<div style="background:#f7f6f4;">
+<div class="verticals-section">
+  <div class="verticals-grid">
+
+    <!-- 01 AutoAppeal™ -->
+    <div class="vertical-card">
+      <div class="vc-index">01</div>
+      <div class="vc-sector">Legal Tech — Citation Defense</div>
+      <div class="vc-name">AutoAppeal™</div>
+      <p class="vc-desc">Traffic citation defense infrastructure powered by Apollo Build™ architecture. Designed to automate intake, case routing, and scalable operational deployment. Built for high-volume market expansion and founder-controlled scalability.</p>
+      <a href="welcome.html" class="vc-cta">Request Similar Build <span class="vc-arrow">→</span></a>
     </div>
-  </div>
-</div>
 
-<!-- Operator Tiers -->
-<div style="background:#fff; padding: 60px 0;">
-  <div class="products-section" style="padding-top:0;padding-bottom:0;">
-    <h2>Operator Programs — Network Tiers</h2>
-    <p style="font-size:0.78rem;color:#777;margin-bottom:36px;max-width:600px;">Five structured tiers of network access. Pricing and asset composition are disclosed post-NDA. All tiers route through the controlled access gateway.</p>
-    <div class="products-grid">
-
-      <div class="product-card-real">
-        <div style="font-size:0.55rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#b89d6a;margin-bottom:8px;">Tier I</div>
-        <h3>Network Access</h3>
-        <p>Structured entry into the LAGNAF™ operator network. Core infrastructure, system framework, and operator documentation included.</p>
-        <a href="entry-gateway.html" class="btn-tan" style="font-size:0.6rem;padding:10px 24px;">Apply for Consideration</a>
-      </div>
-
-      <div class="product-card-real">
-        <div style="font-size:0.55rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#b89d6a;margin-bottom:8px;">Tier II</div>
-        <h3>Operator Pro</h3>
-        <p>Expanded infrastructure access and priority onboarding. Built for operators with established operational foundations ready to scale.</p>
-        <a href="entry-gateway.html" class="btn-tan" style="font-size:0.6rem;padding:10px 24px;">Apply for Consideration</a>
-      </div>
-
-      <div class="product-card-real">
-        <div style="font-size:0.55rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#b89d6a;margin-bottom:8px;">Tier III</div>
-        <h3>Operator Council</h3>
-        <p>Council-tier access with curated digital asset positioning, compliance infrastructure, and structured network integration at depth.</p>
-        <a href="entry-gateway.html" class="btn-tan" style="font-size:0.6rem;padding:10px 24px;">Apply for Consideration</a>
-      </div>
-
-      <div class="product-card-real">
-        <div style="font-size:0.55rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#b89d6a;margin-bottom:8px;">Tier IV</div>
-        <h3>Operator Authority</h3>
-        <p>Authority-level infrastructure package with full asset suite access, brand architecture control, and institutional documentation.</p>
-        <a href="entry-gateway.html" class="btn-tan" style="font-size:0.6rem;padding:10px 24px;">Apply for Consideration</a>
-      </div>
-
-      <div class="product-card-real" style="border-color:#b89d6a;">
-        <div style="font-size:0.55rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#b89d6a;margin-bottom:8px;">Tier V — Sovereign</div>
-        <h3>Operator Sovereign</h3>
-        <p>Complete network control. Full portfolio access, sovereign operator positioning, and direct LAGNAF™ team engagement across all infrastructure layers.</p>
-        <a href="entry-gateway.html" class="btn-tan" style="font-size:0.6rem;padding:10px 24px;">Apply for Consideration</a>
-      </div>
-
+    <!-- 02 Ascend Analytics™ -->
+    <div class="vertical-card">
+      <div class="vc-index">02</div>
+      <div class="vc-sector">Intelligence — Data Operations</div>
+      <div class="vc-name">Ascend Analytics™</div>
+      <p class="vc-desc">Performance intelligence infrastructure built for operational decision-making and data-driven scalability. Proprietary analytics architecture delivering actionable insight at every deployment layer. Designed for founders who operate from data, not assumption.</p>
+      <a href="welcome.html" class="vc-cta">Request Similar Build <span class="vc-arrow">→</span></a>
     </div>
-    <p style="font-size:0.68rem;color:#aaa;margin-top:32px;text-align:center;">Tier details, asset composition, and pricing are disclosed following NDA execution. <a href="entry-gateway.html" style="color:#b89d6a;">Begin the access process →</a></p>
+
+    <!-- 03 Precision Greens -->
+    <div class="vertical-card">
+      <div class="vc-index">03</div>
+      <div class="vc-sector">Grounds & Landscape Management</div>
+      <div class="vc-name">Precision Greens</div>
+      <p class="vc-desc">Premium landscape and turf management operations deployed under Apollo Build™ architecture. Systematized service delivery with scalable, franchise-ready infrastructure and founder-controlled expansion protocols. Built for high-value residential and commercial market penetration.</p>
+      <a href="welcome.html" class="vc-cta">Request Similar Build <span class="vc-arrow">→</span></a>
+    </div>
+
+    <!-- 04 Clear Panel Pros -->
+    <div class="vertical-card">
+      <div class="vc-index">04</div>
+      <div class="vc-sector">Surface & Panel Maintenance</div>
+      <div class="vc-name">Clear Panel Pros</div>
+      <p class="vc-desc">Specialized surface and panel maintenance services deployed under a scalable Apollo Build™ operational model. Structured for repeatable service delivery, systematic client acquisition, and territory-based market expansion at any deployment scale.</p>
+      <a href="welcome.html" class="vc-cta">Request Similar Build <span class="vc-arrow">→</span></a>
+    </div>
+
+    <!-- 05 Red Vault Auto Detail -->
+    <div class="vertical-card">
+      <div class="vc-index">05</div>
+      <div class="vc-sector">Automotive — Premium Detailing</div>
+      <div class="vc-name">Red Vault Auto Detail</div>
+      <p class="vc-desc">Precision automotive detailing infrastructure built for premium market positioning and repeatable client retention. Apollo Build™ deployment architecture enables scalable operations with systematic quality control and founder-controlled brand standards across every touchpoint.</p>
+      <a href="welcome.html" class="vc-cta">Request Similar Build <span class="vc-arrow">→</span></a>
+    </div>
+
+    <!-- 06 Coin Vault Pro -->
+    <div class="vertical-card">
+      <div class="vc-index">06</div>
+      <div class="vc-sector">Asset Acquisition — Collectibles</div>
+      <div class="vc-name">Coin Vault Pro</div>
+      <p class="vc-desc">Specialized acquisition and asset management infrastructure for the collectibles and numismatic market. Apollo Build™ architecture powers automated intake, valuation workflows, and scalable transactional operations. Designed for high-margin, relationship-driven market positioning.</p>
+      <a href="welcome.html" class="vc-cta">Request Similar Build <span class="vc-arrow">→</span></a>
+    </div>
+
+    <!-- 07 Tail Acquisitions -->
+    <div class="vertical-card">
+      <div class="vc-index">07</div>
+      <div class="vc-sector">Business Acquisitions — M&A</div>
+      <div class="vc-name">Tail Acquisitions</div>
+      <p class="vc-desc">Strategic business acquisition and transaction infrastructure powered by Apollo Build™ deployment systems. Structured intake, deal-flow management, and due diligence protocols designed for scalable transaction volume. Built for operators who acquire businesses with precision.</p>
+      <a href="welcome.html" class="vc-cta">Request Similar Build <span class="vc-arrow">→</span></a>
+    </div>
+
+    <!-- 08 Mirage VIP Pool & Spa -->
+    <div class="vertical-card">
+      <div class="vc-index">08</div>
+      <div class="vc-sector">Aquatic & Lifestyle Services</div>
+      <div class="vc-name">Mirage VIP Pool &amp; Spa</div>
+      <p class="vc-desc">Premium pool, spa, and aquatic environment management deployed under Apollo Build™ operational infrastructure. Systematized service delivery designed for high-net-worth residential and commercial clients. Built for recurring revenue, elevated client experience, and scalable territory deployment.</p>
+      <a href="welcome.html" class="vc-cta">Request Similar Build <span class="vc-arrow">→</span></a>
+    </div>
+
+    <!-- 09 Adobe Creek Concrete Stamping -->
+    <div class="vertical-card">
+      <div class="vc-index">09</div>
+      <div class="vc-sector">Construction — Hardscape Design</div>
+      <div class="vc-name">Adobe Creek Concrete Stamping</div>
+      <p class="vc-desc">Decorative concrete and hardscape design infrastructure deployed at the highest operational standard. Apollo Build™ architecture enables systematic project delivery, client acquisition, and territory-based scaling — artisan-quality output at industrial deployment scale.</p>
+      <a href="welcome.html" class="vc-cta">Request Similar Build <span class="vc-arrow">→</span></a>
+    </div>
+
+    <!-- 10 Happy Tails -->
+    <div class="vertical-card">
+      <div class="vc-index">10</div>
+      <div class="vc-sector">Pet Services — Premium Operations</div>
+      <div class="vc-name">Happy Tails</div>
+      <p class="vc-desc">Premium pet services infrastructure deployed under Apollo Build™ architecture for scalable, care-driven operations. Systematized intake, service delivery, and client retention designed for market expansion. Built for founders committed to quality-first brand positioning and repeat business.</p>
+      <a href="welcome.html" class="vc-cta">Request Similar Build <span class="vc-arrow">→</span></a>
+    </div>
+
   </div>
+
+  <p style="text-align:center;margin-top:40px;font-family:'Rajdhani',sans-serif;font-size:0.58rem;letter-spacing:0.18em;color:#aaa;">Additional verticals are in active deployment. Operator details and build compositions are disclosed post-NDA.</p>
+
+</div>
 </div>
 
+<!-- ACCESS CALL -->
+<div class="access-call">
+  <div class="ac-label">Deploy Your Vertical</div>
+  <h2 class="ac-title">Request a Similar Build</h2>
+  <p class="ac-sub">Apollo Build™ systems are available to qualified operators through controlled access.<br>All deployment inquiries are reviewed by the founding team.</p>
+  <a href="welcome.html" class="ac-btn">Request Deployment Access</a>
+  <p class="ac-note">NDA <em>•</em> Verification <em>•</em> Approval Required</p>
+</div>
+
+<!-- FOOTER -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="footer-logo-text">LAGNAF™</div>
-      <p>A private digital brand network offering strategic asset control and operator-level brand infrastructure.</p>
+      <div class="footer-logo-text">LAGNAF<sup>™</sup></div>
+      <p>A private deployment infrastructure network. Apollo Build™ systems are available exclusively to approved operators through the controlled access gateway.</p>
       <div class="footer-contact">For inquiries: <a href="tel:9493508804">949-350-8804</a></div>
     </div>
     <div class="footer-col">
-      <h5>Links</h5>
+      <h5>Navigation</h5>
       <ul>
-        <li><a href="network.html">Network</a></li>
-        <li><a href="network.html">Operator Programs</a></li>
-        <li><a href="lagnaf-university.html">Brand Ambassador Program</a></li>
-        <li><a href="brand-ambassador-compensation.html">Brand Ambassador Compensation</a></li>
-        <li><a href="blog.html">Blog</a></li>
+        <li><a href="network.html">Operator Verticals</a></li>
+        <li><a href="lagnaf-university.html">Ambassador Program</a></li>
+        <li><a href="brand-ambassador-compensation.html">Compensation</a></li>
+        <li><a href="about.html">About</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h5>Legal</h5>
       <ul>
         <li><a href="privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="terms-of-service.html">Terms of Service</a></li>
         <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
+        <li><a href="disclaimer.html">Disclaimer</a></li>
+        <li><a href="refund-policy.html">Refund Policy</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">© 2026 LAGNAF™ network LLC All Rights Reserved.</span>
+    <span class="footer-copy">© 2026 LAGNAF™ network LLC. All Rights Reserved.</span>
     <div class="footer-legal-links">
       <a href="privacy-policy.html">Privacy</a>
       <a href="terms-of-service.html">Terms</a>
@@ -149,6 +622,6 @@
     </div>
   </div>
 </footer>
-<div class="purchase-notice">By completing this purchase, you agree to our <a href="terms-of-service.html">Terms of Service</a>, <a href="privacy-policy.html">Privacy Policy</a>, and <a href="refund-policy.html">Refund Policy</a>. Please contact LAGNAF™ network LLC directly before initiating any bank dispute.</div>
+
 </body>
 </html>
