@@ -321,7 +321,7 @@
       </div>
       <div class="module-body" id="mod-5-body">
         <p style="margin-top:16px;">You have completed all required training modules. This final step confirms that your DOT card is operational, your referral link is ready to distribute, and you understand the deployment protocol.</p>
-        <p>Your master code and referral link were established during your DOT identity setup. They are live and active. All that remains is confirming your deployment readiness below.</p>
+        <p>Your DOT identity and referral link were established during your identity setup. Your Secure Activation Verification™ is active. All that remains is confirming your deployment readiness below.</p>
         <ul>
           <li>Verify your DOT card is programmed to your referral link — this is your primary in-person tool</li>
           <li>Your referral link is shareable via text, email, or any direct channel</li>
@@ -330,9 +330,9 @@
         </ul>
 
         <div style="background:#0a0a0a;padding:20px 24px;margin:16px 0;">
-          <p style="font-size:0.55rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:6px;">Your Master Code</p>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:#b89d6a;letter-spacing:0.14em;" id="deploy-code-display">—</div>
-          <p style="font-size:0.55rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin:10px 0 4px;">Your Referral Link</p>
+          <p style="font-size:0.52rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#b89d6a;margin-bottom:8px;">Secure Activation Verification™</p>
+          <span class="badge badge-gold" style="font-size:0.5rem;display:inline-block;margin-bottom:14px;">Active</span>
+          <p style="font-size:0.55rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin:0 0 4px;">Your Referral Link</p>
           <div style="font-size:0.68rem;color:#888;font-family:monospace;word-break:break-all;" id="deploy-link-display">—</div>
         </div>
 
@@ -351,9 +351,9 @@
       <div class="referral-reveal">
         <p style="font-size:0.58rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:#b89d6a;margin-bottom:6px;">Training Complete</p>
         <p style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;margin-bottom:16px;">You Are Deployment Ready</p>
-        <p style="font-size:0.68rem;color:#888;margin-bottom:12px;">Your master code:</p>
-        <div class="referral-code-display" id="reveal-code">—</div>
-        <p style="font-size:0.68rem;color:#888;margin:16px 0 8px;">Your referral link:</p>
+        <p style="font-size:0.58rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#b89d6a;margin-bottom:8px;">Secure Activation Verification™</p>
+        <span class="badge badge-gold" style="font-size:0.5rem;display:inline-block;margin-bottom:18px;">Deployment Authorised</span>
+        <p style="font-size:0.68rem;color:#888;margin:0 0 8px;">Your referral link:</p>
         <div class="referral-link-display" id="reveal-link">—</div>
         <button class="copy-btn" onclick="copyLink()">Copy Link</button>
       </div>
@@ -420,11 +420,11 @@ function confirmModule(n) {
 }
 
 function revealReferralCode() {
+  // Only the referral link (public URL) is shown — activation reference is never exposed client-side
   const code = Flow.get('ambassador_code');
   const baseUrl = window.location.origin + window.location.pathname.replace('ambassador-materials.html', '');
   const link = baseUrl + 'entry-gateway.html?ref=' + code;
 
-  document.getElementById('reveal-code').textContent = code || '—';
   document.getElementById('reveal-link').textContent = link;
   document.getElementById('referral-reveal').style.display = 'block';
   document.getElementById('referral-reveal').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -447,10 +447,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const uin = Flow.get('uin');
   if (uin) document.getElementById('uin-badge').textContent = uin;
 
-  // Populate Module 5 deploy credentials on load
+  // Populate Module 5 referral link — activation reference is never exposed client-side
   const code = Flow.get('ambassador_code');
   if (code) {
-    document.getElementById('deploy-code-display').textContent = code;
     const base = window.location.origin + window.location.pathname.replace('ambassador-materials.html', '');
     document.getElementById('deploy-link-display').textContent = base + 'entry-gateway.html?ref=' + code;
   }

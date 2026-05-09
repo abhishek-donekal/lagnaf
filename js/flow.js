@@ -156,7 +156,8 @@ const Flow = {
   // ── Ambassador Pre-NDA flow (new primary path) ──────────────────────────
 
   // Step A: Pre-qualification form (public, before NDA)
-  // Generates master code, stores as entry data so nda-gate.html can read name/email
+  // Generates internal activation reference (never exposed client-side per SAV™ protocol)
+  // Stores as entry data so nda-gate.html can read name/email
   submitAmbassadorPreQual(data) {
     const ambCode = this.generateAmbassadorCode();
     this.set('entry', data);
@@ -192,7 +193,7 @@ const Flow = {
     window.location.href = 'ambassador-dot-setup.html';
   },
 
-  // Step B: DOT card + master code acknowledgment — routes to NDA
+  // Step B: DOT card + Secure Activation Verification™ acknowledgment — routes to NDA
   confirmDOTSetup() {
     this.set('dot_setup_complete', true);
     this.set('status', 'dot_setup_confirmed');

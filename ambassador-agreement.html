@@ -91,7 +91,7 @@
         </div>
         <div style="border:1px solid #e5e5e5;padding:16px 20px;display:flex;gap:12px;">
           <span style="color:#b89d6a;font-size:0.9rem;flex-shrink:0;">▸</span>
-          <p style="font-size:0.72rem;color:#555;line-height:1.7;"><strong style="color:#222;">Master Code Attribution Required.</strong> Commissions are only paid on transactions that carry your master code. Referrals made without your LAGNAF referral code in the attribution chain cannot be retroactively credited.</p>
+          <p style="font-size:0.72rem;color:#555;line-height:1.7;"><strong style="color:#222;">Secure Activation Verification™ Attribution Required.</strong> Commissions are only paid on transactions that carry verified activation attribution. Referrals made without verified attribution in the chain cannot be retroactively credited.</p>
         </div>
         <div style="border:1px solid #e5e5e5;padding:16px 20px;display:flex;gap:12px;">
           <span style="color:#b89d6a;font-size:0.9rem;flex-shrink:0;">▸</span>
@@ -108,11 +108,11 @@
       </div>
     </div>
 
-    <!-- Your assigned code reminder -->
+    <!-- Identity status reminder -->
     <div style="background:#0a0a0a;padding:20px 24px;margin-bottom:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
       <div>
-        <p style="font-size:0.55rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:4px;">Your Master Code</p>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#b89d6a;letter-spacing:0.14em;" id="code-reminder">—</div>
+        <p style="font-size:0.55rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:4px;">Secure Activation Verification™</p>
+        <span class="badge badge-gold" style="font-size:0.5rem;">Initialised — Pending Training</span>
       </div>
       <div>
         <p style="font-size:0.55rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:4px;">Your UIN</p>
@@ -134,11 +134,11 @@
         </label>
         <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
           <input type="checkbox" id="check-terms" style="margin-top:2px;accent-color:#b89d6a;flex-shrink:0;" onchange="updateActivateBtn()" />
-          <span style="font-size:0.72rem;color:#555;line-height:1.7;">I accept the operating terms: verified payments only, 90-day referral window, master code attribution requirement, active status requirement, and confidentiality obligation.</span>
+          <span style="font-size:0.72rem;color:#555;line-height:1.7;">I accept the operating terms: verified payments only, 90-day referral window, Secure Activation Verification™ attribution requirement, active status requirement, and confidentiality obligation.</span>
         </label>
         <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
           <input type="checkbox" id="check-ready" style="margin-top:2px;accent-color:#b89d6a;flex-shrink:0;" onchange="updateActivateBtn()" />
-          <span style="font-size:0.72rem;color:#555;line-height:1.7;">I am ready to complete ambassador training and deploy as a LAGNAF™ Brand Ambassador operating under my assigned master code and DOT identity.</span>
+          <span style="font-size:0.72rem;color:#555;line-height:1.7;">I am ready to complete ambassador training and deploy as a LAGNAF™ Brand Ambassador operating under my Secure Activation Verification™ and DOT identity.</span>
         </label>
       </div>
     </div>
@@ -154,14 +154,11 @@
 document.addEventListener('DOMContentLoaded', function() {
   Flow.requireNDA();
   const uin = Flow.get('uin');
-  const code = Flow.get('ambassador_code');
   if (uin) {
     document.getElementById('uin-badge').textContent = uin;
     document.getElementById('uin-reminder').textContent = uin;
   }
-  if (code) {
-    document.getElementById('code-reminder').textContent = code;
-  }
+  // Activation reference is never exposed client-side per Secure Activation Verification™ protocol
 });
 
 function updateActivateBtn() {

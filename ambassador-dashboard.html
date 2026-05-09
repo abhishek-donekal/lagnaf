@@ -260,8 +260,8 @@
         <div class="status-panel-note" id="status-note">Loading…</div>
       </div>
       <div>
-        <div class="status-panel-label">Master Code</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#b89d6a;letter-spacing:0.12em;" id="status-code">—</div>
+        <div class="status-panel-label">Secure Activation</div>
+        <span class="badge badge-gold" style="font-size:0.48rem;display:inline-block;margin-top:4px;" id="status-code">Verified</span>
       </div>
       <div>
         <div class="status-panel-label">Referral Window</div>
@@ -280,7 +280,7 @@
       <div class="dash-card">
         <div class="dash-card-label">Active Referrals</div>
         <div class="dash-card-value" style="font-family:'Cormorant Garamond',serif;font-size:2rem;">0</div>
-        <div class="dash-card-sub">Tracked by master code</div>
+        <div class="dash-card-sub">Tracked by secure activation</div>
       </div>
       <div class="dash-card">
         <div class="dash-card-label">Verified Commissions</div>
@@ -298,15 +298,11 @@
     <div id="credentials">
       <div style="font-size:0.6rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#b89d6a;margin-bottom:14px;">Referral Credentials</div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
+      <div style="margin-bottom:16px;">
         <div class="cred-block">
-          <div class="cred-block-label">Your Master Code</div>
-          <div class="cred-block-value" id="amb-code-display">—</div>
-        </div>
-        <div class="cred-block">
-          <div class="cred-block-label">DOT Card Target</div>
+          <div class="cred-block-label">DOT Card Target URL</div>
           <div style="font-size:0.65rem;color:#666;font-family:monospace;margin-top:8px;line-height:1.7;word-break:break-all;" id="dot-card-url">—</div>
-          <div style="font-size:0.58rem;color:#444;margin-top:8px;line-height:1.7;">Programme your physical NFC card to this URL. When tapped, your code is pre-loaded automatically.</div>
+          <div style="font-size:0.58rem;color:#444;margin-top:8px;line-height:1.7;">Programme your physical NFC card to this URL. When tapped, your activation is pre-loaded automatically.</div>
         </div>
       </div>
 
@@ -315,10 +311,9 @@
         <div class="cred-link" id="amb-link-display" onclick="copyLink(this)">—</div>
         <div class="copy-row">
           <button class="copy-btn-sm" id="copy-link-btn" onclick="copyAmbLink()">Copy Referral Link</button>
-          <button class="copy-btn-sm" id="copy-code-btn" onclick="copyAmbCode()">Copy Master Code</button>
         </div>
         <div style="font-size:0.58rem;color:#444;margin-top:12px;line-height:1.75;">
-          Share this link directly or programme it to your DOT NFC card. Every prospect who enters through this link is automatically attributed to your master code.
+          Share this link directly or programme it to your DOT NFC card. Every prospect who enters through this link is automatically attributed through Secure Activation Verification™.
         </div>
       </div>
     </div>
@@ -430,9 +425,8 @@ document.addEventListener('DOMContentLoaded', function() {
   var refLink = base + 'entry-gateway.html?ref=' + code;
   var dotUrl  = base + 'tap.html?ref=' + code;
 
+  // Activation reference is never exposed client-side per Secure Activation Verification™ protocol
   document.getElementById('uin-display').textContent     = uin;
-  document.getElementById('status-code').textContent     = code;
-  document.getElementById('amb-code-display').textContent = code;
   document.getElementById('amb-link-display').textContent = refLink;
   document.getElementById('dot-card-url').textContent    = dotUrl;
   document.getElementById('dash-date').textContent = new Date().toLocaleDateString('en-US', {year:'numeric',month:'long',day:'numeric'});
@@ -500,15 +494,6 @@ function copyAmbLink() {
     var btn = document.getElementById('copy-link-btn');
     btn.textContent = 'Copied';
     setTimeout(function() { btn.textContent = 'Copy Referral Link'; }, 2000);
-  });
-}
-
-function copyAmbCode() {
-  var code = document.getElementById('amb-code-display').textContent;
-  navigator.clipboard.writeText(code).then(function() {
-    var btn = document.getElementById('copy-code-btn');
-    btn.textContent = 'Copied';
-    setTimeout(function() { btn.textContent = 'Copy Master Code'; }, 2000);
   });
 }
 
