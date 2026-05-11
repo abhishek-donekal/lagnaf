@@ -13,10 +13,10 @@
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background: #030306;
+      background: #060609;
       background-image:
-        linear-gradient(rgba(255,255,255,0.024) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.024) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
       background-size: 70px 70px;
       color: #fff;
       min-height: 100dvh;
@@ -31,7 +31,7 @@
       position: fixed;
       left: 0; top: -1px;
       width: 100%; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(184,157,106,0.22), transparent);
+      background: linear-gradient(90deg, transparent, rgba(184,157,106,0.28), transparent);
       z-index: 200;
       pointer-events: none;
       animation: scan-travel 14s linear infinite;
@@ -51,11 +51,11 @@
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      padding: 18px 52px;
-      background: rgba(3,3,6,0.92);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 22px 52px;
+      background: rgba(5,5,9,0.94);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(184,157,106,0.1);
       flex-shrink: 0;
       opacity: 0;
       transform: translateY(-6px);
@@ -65,54 +65,58 @@
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
 
-    /* Logo stack */
+    /* Logo stack with glow backing */
     .nav-brand {
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
+      padding: 10px 16px 10px 0;
+      position: relative;
     }
+    .nav-brand::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.035) 0%, rgba(184,157,106,0.05) 100%);
+      border-left: 1px solid rgba(184,157,106,0.15);
+      pointer-events: none;
+    }
+
     .nav-logo {
       font-family: 'Orbitron', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.34em;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.38em;
       text-transform: uppercase;
-      background: linear-gradient(130deg, #d8dce2 0%, #9ea5ae 55%, #c4c9d0 100%);
+      background: linear-gradient(130deg, #e8ecf0 0%, #b0b7c0 50%, #d4d8de 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       line-height: 1;
+      animation: logo-glow 5s ease-in-out infinite;
+    }
+    @keyframes logo-glow {
+      0%, 100% { filter: drop-shadow(0 0 0px rgba(184,157,106,0)); }
+      50%       { filter: drop-shadow(0 0 8px rgba(184,157,106,0.45)); }
     }
     .nav-logo sup {
-      font-size: 0.4rem;
+      font-size: 0.42rem;
       letter-spacing: 0;
-      color: #b89d6a;
-      -webkit-text-fill-color: #b89d6a;
+      color: #c9a870;
+      -webkit-text-fill-color: #c9a870;
       vertical-align: super;
-    }
-    .nav-logo-suffix {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 0.52rem;
-      font-weight: 400;
-      letter-spacing: 0.24em;
-      text-transform: lowercase;
-      background: linear-gradient(130deg, #d8dce2 0%, #9ea5ae 55%, #c4c9d0 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-left: 2px;
     }
     .nav-slogan {
       font-family: 'Cinzel', serif;
-      font-size: 0.42rem;
+      font-size: 0.44rem;
       font-weight: 400;
-      letter-spacing: 0.26em;
-      color: rgba(184,157,106,0.6);
+      letter-spacing: 0.28em;
+      color: rgba(201,168,112,0.75);
       text-transform: uppercase;
       line-height: 1;
     }
 
-    /* Center status — command chip */
+    /* Center status chip */
     .nav-status {
       display: flex;
       align-items: center;
@@ -122,10 +126,10 @@
       font-weight: 600;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.05);
-      padding: 6px 16px;
-      background: rgba(255,255,255,0.025);
+      color: rgba(255,255,255,0.22);
+      border: 1px solid rgba(184,157,106,0.12);
+      padding: 7px 18px;
+      background: rgba(184,157,106,0.03);
     }
     .status-dot {
       width: 5px; height: 5px;
@@ -145,22 +149,22 @@
       font-size: 0.5rem;
       font-weight: 500;
       letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.16);
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 6px 14px;
+      color: rgba(255,255,255,0.22);
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 7px 16px;
       transition: color 0.25s, border-color 0.25s;
     }
     .nav-contact:hover {
-      color: rgba(255,255,255,0.55);
-      border-color: rgba(184,157,106,0.3);
+      color: rgba(255,255,255,0.65);
+      border-color: rgba(184,157,106,0.35);
     }
 
     /* ─── HERO ──────────────────────────────────── */
     .hero {
       position: relative;
       width: 100%;
-      height: 52vh;
-      min-height: 300px;
+      height: 58vh;
+      min-height: 320px;
       overflow: hidden;
       flex-shrink: 0;
     }
@@ -175,63 +179,74 @@
     }
     .hero-img.in { opacity: 1; transform: scale(1); }
 
+    /* Lighter mask so face breathes */
     .hero-mask {
       position: absolute; inset: 0;
-      background: rgba(4,4,7,0.72);
+      background: rgba(4,4,8,0.40);
     }
     .hero-grid {
       position: absolute; inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.016) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.016) 1px, transparent 1px);
       background-size: 70px 70px;
     }
+    /* Stronger centered glow */
     .hero-glow {
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(184,157,106,0.08) 0%, transparent 70%);
+      background: radial-gradient(ellipse 55% 65% at 50% 45%, rgba(184,157,106,0.14) 0%, transparent 68%);
     }
     .hero-fade {
       position: absolute; bottom: 0; left: 0;
-      width: 100%; height: 65%;
-      background: linear-gradient(to bottom, transparent 0%, #030306 100%);
+      width: 100%; height: 60%;
+      background: linear-gradient(to bottom, transparent 0%, #060609 100%);
     }
+
+    /* ─── DIVIDER ───────────────────────────────── */
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(184,157,106,0.35) 30%, rgba(201,168,112,0.55) 50%, rgba(184,157,106,0.35) 70%, transparent 100%);
+      opacity: 0;
+    }
+    .section-divider.in { opacity: 1; transition: opacity 1s ease; }
 
     /* ─── CONTENT ───────────────────────────────── */
     .content {
-      flex: 1;
+      flex: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 64px 40px 72px;
+      padding: 72px 40px 64px;
     }
 
     .bracket-box {
       position: relative;
       padding: 60px 96px;
       text-align: center;
-      max-width: 760px;
+      max-width: 780px;
       width: 100%;
     }
-    .c { position: absolute; width: 22px; height: 22px; }
-    .c.tl { top:0; left:0;   border-top:1px solid rgba(184,157,106,0.38); border-left:1px solid rgba(184,157,106,0.38); }
-    .c.tr { top:0; right:0;  border-top:1px solid rgba(184,157,106,0.38); border-right:1px solid rgba(184,157,106,0.38); }
-    .c.bl { bottom:0; left:0;  border-bottom:1px solid rgba(184,157,106,0.38); border-left:1px solid rgba(184,157,106,0.38); }
-    .c.br { bottom:0; right:0; border-bottom:1px solid rgba(184,157,106,0.38); border-right:1px solid rgba(184,157,106,0.38); }
+    .c { position: absolute; width: 24px; height: 24px; }
+    .c.tl { top:0; left:0;   border-top:1px solid rgba(184,157,106,0.55); border-left:1px solid rgba(184,157,106,0.55); }
+    .c.tr { top:0; right:0;  border-top:1px solid rgba(184,157,106,0.55); border-right:1px solid rgba(184,157,106,0.55); }
+    .c.bl { bottom:0; left:0;  border-bottom:1px solid rgba(184,157,106,0.55); border-left:1px solid rgba(184,157,106,0.55); }
+    .c.br { bottom:0; right:0; border-bottom:1px solid rgba(184,157,106,0.55); border-right:1px solid rgba(184,157,106,0.55); }
 
     /* Eyebrow */
     .eyebrow {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.52rem;
+      font-size: 0.54rem;
       font-weight: 600;
-      letter-spacing: 0.48em;
+      letter-spacing: 0.5em;
       text-transform: uppercase;
-      color: rgba(184,157,106,0.75);
-      margin-bottom: 20px;
+      color: rgba(201,168,112,0.85);
+      margin-bottom: 22px;
       opacity: 0;
     }
     .eyebrow.in { opacity: 1; transition: opacity 0.9s ease; }
 
-    /* Main heading — stays on one line, wraps only if truly needed */
+    /* Main heading */
     .main-heading {
       font-family: 'Cinzel', serif;
       font-size: clamp(2.6rem, 5.5vw, 5.4rem);
@@ -239,11 +254,11 @@
       letter-spacing: 0.05em;
       line-height: 1.1;
       white-space: nowrap;
-      background: linear-gradient(155deg, #eaecef 0%, #9da3ac 45%, #c6cbd2 100%);
+      background: linear-gradient(155deg, #f0f2f5 0%, #b0b7c2 40%, #dde0e5 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       opacity: 0;
       transform: translateY(10px);
     }
@@ -252,72 +267,96 @@
       transition: opacity 1s ease, transform 1s ease;
     }
 
-    /* Slogan under heading */
+    /* Slogan — brighter gold */
     .slogan {
       font-family: 'Cinzel', serif;
-      font-size: clamp(0.75rem, 1.4vw, 1.05rem);
+      font-size: clamp(0.82rem, 1.5vw, 1.1rem);
       font-weight: 400;
-      letter-spacing: 0.22em;
-      color: rgba(184,157,106,0.7);
-      margin-bottom: 32px;
+      letter-spacing: 0.24em;
+      color: #c9a870;
+      margin-bottom: 36px;
       opacity: 0;
+      text-shadow: 0 0 28px rgba(201,168,112,0.28);
     }
     .slogan.in { opacity: 1; transition: opacity 0.9s ease; }
 
     .rule {
-      width: 48px; height: 1px;
-      background: linear-gradient(90deg, transparent, #b89d6a, transparent);
-      margin: 0 auto 28px;
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, #c9a870, transparent);
+      margin: 0 auto 30px;
       opacity: 0;
     }
     .rule.in { opacity: 1; transition: opacity 0.8s ease; }
 
+    /* Tagline badge */
+    .tagline-badge {
+      display: inline-block;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #c9a870;
+      border: 1px solid rgba(201,168,112,0.3);
+      padding: 6px 20px;
+      margin-bottom: 24px;
+      background: rgba(201,168,112,0.04);
+      opacity: 0;
+    }
+    .tagline-badge.in { opacity: 1; transition: opacity 0.9s ease; }
+
     .main-body {
-      font-size: 0.72rem;
-      font-weight: 400;
-      color: rgba(255,255,255,0.5);
+      font-size: 0.84rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.72);
       line-height: 2;
-      letter-spacing: 0.07em;
-      max-width: 480px;
-      margin: 0 auto 42px;
+      letter-spacing: 0.06em;
+      max-width: 500px;
+      margin: 0 auto 44px;
       opacity: 0;
     }
     .main-body.in { opacity: 1; transition: opacity 0.9s ease; }
 
-    /* CTA Button */
+    /* CTA Button — champagne-gold vibrancy */
     .cta-btn {
       display: inline-block;
       position: relative;
       overflow: hidden;
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.64rem;
-      font-weight: 600;
-      letter-spacing: 0.34em;
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.36em;
       text-transform: uppercase;
-      color: #b89d6a;
-      border: 1px solid rgba(184,157,106,0.45);
-      padding: 18px 60px;
+      color: #c9a870;
+      border: 1px solid rgba(201,168,112,0.6);
+      padding: 20px 64px;
       cursor: pointer;
+      background: linear-gradient(135deg, rgba(201,168,112,0.06) 0%, rgba(184,157,106,0.02) 100%);
       opacity: 0;
-      transition: opacity 0.9s ease, border-color 0.3s, color 0.3s;
+      transition: opacity 0.9s ease, border-color 0.3s, color 0.3s, background 0.3s, box-shadow 0.3s;
     }
     .cta-btn.in {
       opacity: 1;
-      animation: btn-pulse 4.5s ease-in-out infinite;
+      animation: btn-pulse 4s ease-in-out infinite;
     }
     @keyframes btn-pulse {
-      0%,100% { box-shadow: 0 0 0 rgba(184,157,106,0); }
-      50%      { box-shadow: 0 0 32px rgba(184,157,106,0.22), 0 0 10px rgba(184,157,106,0.08); }
+      0%,100% { box-shadow: 0 0 0 rgba(201,168,112,0); }
+      50%      { box-shadow: 0 0 38px rgba(201,168,112,0.28), 0 0 14px rgba(201,168,112,0.12); }
     }
     .cta-btn::after {
       content: '';
       position: absolute;
       top:0; left:-120%; width:55%; height:100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+      background: linear-gradient(90deg, transparent, rgba(201,168,112,0.14), transparent);
       transition: left 0.6s ease;
     }
     .cta-btn:hover::after { left: 160%; }
-    .cta-btn:hover { border-color: #b89d6a; color: #fff; }
+    .cta-btn:hover {
+      border-color: #c9a870;
+      color: #f5e6c8;
+      background: linear-gradient(135deg, rgba(201,168,112,0.15) 0%, rgba(184,157,106,0.08) 100%);
+      box-shadow: 0 0 44px rgba(201,168,112,0.32), 0 0 16px rgba(201,168,112,0.14);
+    }
 
     /* Gate note */
     .gate-note {
@@ -325,14 +364,104 @@
       font-family: 'Rajdhani', sans-serif;
       font-size: 0.5rem;
       font-weight: 500;
-      letter-spacing: 0.42em;
+      letter-spacing: 0.44em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.14);
-      margin-top: 20px;
+      color: rgba(255,255,255,0.18);
+      margin-top: 22px;
       opacity: 0;
     }
     .gate-note.in { opacity: 1; transition: opacity 0.8s ease; }
-    .gate-note em { font-style: normal; color: rgba(184,157,106,0.3); margin: 0 10px; }
+    .gate-note em { font-style: normal; color: rgba(201,168,112,0.38); margin: 0 10px; }
+
+    /* ─── THREE PATHS SECTION ───────────────────── */
+    .paths-section {
+      padding: 0 40px 80px;
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    .paths-section.in {
+      opacity: 1; transform: translateY(0);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .paths-label {
+      text-align: center;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.5rem;
+      font-weight: 600;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: rgba(201,168,112,0.55);
+      margin-bottom: 28px;
+    }
+
+    .paths-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(184,157,106,0.15);
+      border: 1px solid rgba(184,157,106,0.15);
+    }
+
+    .path-card {
+      display: flex;
+      flex-direction: column;
+      padding: 36px 32px;
+      background: rgba(8,8,14,0.96);
+      position: relative;
+      cursor: pointer;
+      transition: background 0.3s;
+      overflow: hidden;
+    }
+    .path-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(201,168,112,0.0), transparent);
+      transition: background 0.4s;
+    }
+    .path-card:hover { background: rgba(12,12,20,0.98); }
+    .path-card:hover::before {
+      background: linear-gradient(90deg, transparent, #c9a870, transparent);
+    }
+
+    .path-index {
+      font-family: 'Cinzel', serif;
+      font-size: 0.52rem;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      color: rgba(201,168,112,0.45);
+      margin-bottom: 14px;
+    }
+    .path-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.0rem;
+      font-weight: 500;
+      color: #e8e8e8;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+    .path-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.48);
+      line-height: 1.85;
+      flex: 1;
+      margin-bottom: 20px;
+    }
+    .path-cta {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #c9a870;
+      transition: letter-spacing 0.3s;
+    }
+    .path-card:hover .path-cta { letter-spacing: 0.32em; }
 
     /* ─── FOOTER ────────────────────────────────── */
     .foot {
@@ -340,7 +469,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 20px 52px;
-      border-top: 1px solid rgba(255,255,255,0.04);
+      border-top: 1px solid rgba(184,157,106,0.1);
       flex-shrink: 0;
       opacity: 0;
     }
@@ -349,7 +478,7 @@
       font-family: 'Rajdhani', sans-serif;
       font-size: 0.48rem;
       letter-spacing: 0.1em;
-      color: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.12);
     }
     .foot-links { display: flex; gap: 28px; }
     .foot-links a {
@@ -357,23 +486,26 @@
       font-size: 0.48rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.12);
       transition: color 0.2s;
     }
-    .foot-links a:hover { color: rgba(255,255,255,0.42); }
+    .foot-links a:hover { color: rgba(201,168,112,0.6); }
 
     /* ─── RESPONSIVE ────────────────────────────── */
     @media (max-width: 820px) {
       .main-heading { white-space: normal; font-size: clamp(2.2rem, 8vw, 3.2rem); }
+      .paths-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 700px) {
       .nav { padding: 16px 22px; grid-template-columns: 1fr 1fr; }
       .nav-status { display: none; }
-      .hero { height: 38vh; min-height: 200px; }
+      .hero { height: 42vh; min-height: 220px; }
       .bracket-box { padding: 40px 24px; }
-      .c { width: 14px; height: 14px; }
-      .cta-btn { padding: 16px 36px; }
-      .content { padding: 48px 20px 56px; }
+      .c { width: 16px; height: 16px; }
+      .cta-btn { padding: 18px 36px; }
+      .content { padding: 52px 20px 48px; }
+      .paths-section { padding: 0 20px 60px; }
+      .path-card { padding: 28px 24px; }
       .foot { padding: 18px 22px; flex-direction: column; gap: 12px; text-align: center; }
     }
   </style>
@@ -387,9 +519,7 @@
 
     <!-- Brand stack -->
     <div class="nav-brand">
-      <div class="nav-logo">
-        LAGNAF<sup>™</sup>
-      </div>
+      <div class="nav-logo">LAGNAF<sup>™</sup></div>
       <div class="nav-slogan">Where Systems Meet Scale</div>
     </div>
 
@@ -406,7 +536,7 @@
 
   </nav>
 
-  <!-- HERO — image + mask only -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-img" id="hero-img"></div>
     <div class="hero-mask"></div>
@@ -423,16 +553,50 @@
       <span class="c bl"></span>
       <span class="c br"></span>
 
-      <div class="eyebrow"      id="e1">Apollo Build™ Infrastructure</div>
-      <h1  class="main-heading" id="e2">Founder-Controlled Access</h1>
-      <div class="slogan"       id="e3">Where Systems Meet Scale</div>
-      <div class="rule"         id="e4"></div>
-      <p   class="main-body"    id="e5">
+      <div class="eyebrow"       id="e1">Apollo Build™ Infrastructure</div>
+      <h1  class="main-heading"  id="e2">Founder-Controlled Access</h1>
+      <div class="slogan"        id="e3">Where Systems Meet Scale</div>
+      <div class="rule"          id="e4"></div>
+      <div class="tagline-badge" id="e5">Private Business Infrastructure &nbsp;·&nbsp; Built for Scale</div>
+      <p   class="main-body"     id="e6">
         Access to proprietary Apollo Build™ deployment systems is restricted
-        to approved operators and strategic partners.
+        to approved operators and strategic partners. Select your path below
+        to begin the consideration process.
       </p>
-      <a href="welcome.html" class="cta-btn" id="e6">Request Deployment Access</a>
-      <span class="gate-note"   id="e7">NDA <em>•</em> Verification <em>•</em> Approval Required</span>
+      <a href="welcome.html" class="cta-btn" id="e7">Request Deployment Access</a>
+      <span class="gate-note"    id="e8">NDA <em>•</em> Verification <em>•</em> Approval Required</span>
+    </div>
+  </section>
+
+  <!-- SECTION DIVIDER -->
+  <div class="section-divider" id="div1"></div>
+
+  <!-- THREE PATHS -->
+  <section class="paths-section" id="paths">
+    <div class="paths-label">Select Your Path</div>
+    <div class="paths-grid">
+
+      <a href="entry-gateway.html" class="path-card">
+        <div class="path-index">01</div>
+        <div class="path-title">Business Owners</div>
+        <p class="path-desc">Request deployment access to Apollo Build™ infrastructure systems and apply for operator consideration.</p>
+        <div class="path-cta">Apply for Consideration →</div>
+      </a>
+
+      <a href="ambassador-entry.html" class="path-card">
+        <div class="path-index">02</div>
+        <div class="path-title">Brand Ambassadors</div>
+        <p class="path-desc">Join the LAGNAF™ Brand Ambassador Program and earn through verified referrals into the network.</p>
+        <div class="path-cta">Learn More →</div>
+      </a>
+
+      <a href="network.html" class="path-card">
+        <div class="path-index">03</div>
+        <div class="path-title">Existing LAGNAF™ Verticals</div>
+        <p class="path-desc">View active Apollo Build™ operator deployments across all verticals within the LAGNAF™ ecosystem.</p>
+        <div class="path-cta">View Network →</div>
+      </a>
+
     </div>
   </section>
 
@@ -450,12 +614,26 @@
     window.addEventListener('load', function() {
       setTimeout(function() { document.getElementById('hero-img').classList.add('in'); }, 80);
       setTimeout(function() { document.getElementById('nav').classList.add('in'); }, 200);
-      ['e1','e2','e3','e4','e5','e6','e7','foot'].forEach(function(id, i) {
+
+      var seq = ['e1','e2','e3','e4','e5','e6','e7','e8'];
+      seq.forEach(function(id, i) {
         setTimeout(function() {
           var el = document.getElementById(id);
           if (el) el.classList.add('in');
-        }, 520 + i * 150);
+        }, 500 + i * 140);
       });
+
+      // Divider + paths section animate after content
+      setTimeout(function() {
+        var d = document.getElementById('div1');
+        if (d) d.classList.add('in');
+      }, 500 + seq.length * 140 + 100);
+      setTimeout(function() {
+        var p = document.getElementById('paths');
+        if (p) p.classList.add('in');
+        var f = document.getElementById('foot');
+        if (f) f.classList.add('in');
+      }, 500 + seq.length * 140 + 280);
     });
   </script>
 
