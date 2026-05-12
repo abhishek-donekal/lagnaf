@@ -21,7 +21,7 @@
       <span style="color:#444;font-size:0.7rem;">›</span>
       <span style="font-size:0.55rem;font-weight:600;letter-spacing:0.1em;color:#b89d6a;padding:3px 8px;border:1px solid #1e1e1e;background:#0a0a0a;">Pre-Qual</span>
       <span style="color:#444;font-size:0.7rem;">›</span>
-      <span style="font-size:0.55rem;font-weight:600;letter-spacing:0.1em;color:#fff;padding:3px 8px;background:#b89d6a;">DOT Setup</span>
+      <span style="font-size:0.55rem;font-weight:600;letter-spacing:0.1em;color:#fff;padding:3px 8px;background:#b89d6a;">.card Setup</span>
       <span style="color:#444;font-size:0.7rem;">›</span>
       <span style="font-size:0.55rem;font-weight:600;letter-spacing:0.1em;color:#555;padding:3px 8px;border:1px solid #2a2a2a;">NDA</span>
       <span style="color:#444;font-size:0.7rem;">›</span>
@@ -57,7 +57,7 @@
         </div>
         <div>
           <p style="font-size:0.65rem;font-weight:600;color:#e8e0d0;margin-bottom:6px;">the .card is your primary operational tool.</p>
-          <p style="font-size:0.72rem;color:#888;line-height:1.8;">Your physical DOT NFC card is programmed to your referral link. Tapping the card opens the LAGNAF™ entry gateway with your activation pre-loaded. This is how in-person introductions are made.</p>
+          <p style="font-size:0.72rem;color:#888;line-height:1.8;">Your physical .card NFC device is programmed to your referral link. Tapping the card opens the LAGNAF™ entry gateway with your activation pre-loaded. This is how in-person introductions are made.</p>
         </div>
       </div>
     </div>
@@ -77,7 +77,7 @@
 
     <!-- .card system infrastructure note -->
     <div style="background:#0c0c12;border:1px solid rgba(255,255,255,0.06);border-left:3px solid #b89d6a;padding:20px 24px;margin-bottom:28px;">
-      <p style="font-size:0.72rem;color:rgba(255,255,255,0.5);line-height:1.8;"><strong style="color:#e8eaed;">.card System Programming:</strong> Your physical NFC tap card should be programmed to your referral link above. If you have not yet received your card, note your referral link and programme the card upon receipt. The card must be active before deployment.</p>
+      <p style="font-size:0.72rem;color:rgba(255,255,255,0.5);line-height:1.8;"><strong style="color:#e8eaed;">.card System Programming:</strong> Your physical .card NFC device should be programmed to your referral link above. If you have not yet received your card, note your referral link and programme the .card upon receipt. The card must be active before deployment.</p>
     </div>
 
     <!-- Acknowledgment -->
@@ -111,9 +111,16 @@ document.addEventListener('DOMContentLoaded', function() {
   Flow.requireAmbassadorTrack();
   // Referral link is shown (public URL); the underlying activation reference is never exposed
   var code = Flow.get('ambassador_code');
+  var linkEl = document.getElementById('master-link-display');
   if (code) {
     var base = window.location.origin + window.location.pathname.replace('ambassador-dot-setup.html', '');
-    document.getElementById('master-link-display').textContent = base + 'entry-gateway.html?ref=' + code;
+    linkEl.textContent = base + 'entry-gateway.html?ref=' + code;
+  } else {
+    linkEl.textContent = 'Activation pending — your referral link will appear here after identity setup is confirmed.';
+    linkEl.style.color = 'rgba(255,255,255,0.3)';
+    linkEl.style.fontFamily = 'inherit';
+    linkEl.style.fontSize = '0.65rem';
+    linkEl.style.fontStyle = 'italic';
   }
 });
 
