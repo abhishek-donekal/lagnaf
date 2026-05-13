@@ -88,7 +88,7 @@
       font-weight: 700;
       letter-spacing: 0.38em;
       text-transform: uppercase;
-      background: linear-gradient(130deg, #e8ecf0 0%, #b0b7c0 50%, #d4d8de 100%);
+      background: linear-gradient(130deg, #ffffff 0%, #c8d8ec 30%, #c9a870 58%, #f8f8ff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -97,10 +97,10 @@
     }
     @keyframes logo-glow {
       0%, 100% { filter: drop-shadow(0 0 0px rgba(184,157,106,0)); }
-      50%       { filter: drop-shadow(0 0 8px rgba(184,157,106,0.45)); }
+      50%       { filter: drop-shadow(0 0 14px rgba(201,168,112,0.75)) drop-shadow(0 0 5px rgba(255,255,255,0.3)); }
     }
     .nav-logo sup {
-      font-size: 0.42rem;
+      font-size: 0.52rem;
       letter-spacing: 0;
       color: #c9a870;
       -webkit-text-fill-color: #c9a870;
@@ -108,7 +108,7 @@
     }
     .nav-slogan {
       font-family: 'Cinzel', serif;
-      font-size: 0.44rem;
+      font-size: 0.58rem;
       font-weight: 400;
       letter-spacing: 0.28em;
       color: rgba(201,168,112,0.75);
@@ -122,7 +122,7 @@
       align-items: center;
       gap: 9px;
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.46rem;
+      font-size: 0.58rem;
       font-weight: 600;
       letter-spacing: 0.28em;
       text-transform: uppercase;
@@ -146,7 +146,7 @@
     .nav-right { display: flex; justify-content: flex-end; align-items: center; }
     .nav-contact {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.5rem;
+      font-size: 0.62rem;
       font-weight: 500;
       letter-spacing: 0.2em;
       color: rgba(255,255,255,0.22);
@@ -236,7 +236,7 @@
     /* Eyebrow */
     .eyebrow {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.54rem;
+      font-size: 0.65rem;
       font-weight: 600;
       letter-spacing: 0.5em;
       text-transform: uppercase;
@@ -249,7 +249,7 @@
     /* Main heading */
     .main-heading {
       font-family: 'Cinzel', serif;
-      font-size: clamp(2.6rem, 5.5vw, 5.4rem);
+      font-size: clamp(1.4rem, 2.6vw, 2.2rem);
       font-weight: 600;
       letter-spacing: 0.05em;
       line-height: 1.1;
@@ -292,7 +292,7 @@
     .tagline-badge {
       display: inline-block;
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.58rem;
+      font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.3em;
       text-transform: uppercase;
@@ -362,7 +362,7 @@
     .gate-note {
       display: block;
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.5rem;
+      font-size: 0.62rem;
       font-weight: 500;
       letter-spacing: 0.44em;
       text-transform: uppercase;
@@ -387,7 +387,7 @@
     .paths-label {
       text-align: center;
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.5rem;
+      font-size: 0.63rem;
       font-weight: 600;
       letter-spacing: 0.5em;
       text-transform: uppercase;
@@ -430,7 +430,7 @@
 
     .path-index {
       font-family: 'Cinzel', serif;
-      font-size: 0.52rem;
+      font-size: 0.64rem;
       font-weight: 400;
       letter-spacing: 0.3em;
       color: rgba(201,168,112,0.45);
@@ -454,7 +454,7 @@
     }
     .path-cta {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.58rem;
+      font-size: 0.68rem;
       font-weight: 600;
       letter-spacing: 0.24em;
       text-transform: uppercase;
@@ -476,14 +476,14 @@
     .foot.in { opacity: 1; transition: opacity 0.8s ease; }
     .foot-copy {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.48rem;
+      font-size: 0.62rem;
       letter-spacing: 0.1em;
       color: rgba(255,255,255,0.12);
     }
     .foot-links { display: flex; gap: 28px; }
     .foot-links a {
       font-family: 'Rajdhani', sans-serif;
-      font-size: 0.48rem;
+      font-size: 0.62rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.12);
@@ -493,7 +493,7 @@
 
     /* ─── RESPONSIVE ────────────────────────────── */
     @media (max-width: 820px) {
-      .main-heading { white-space: normal; font-size: clamp(2.2rem, 8vw, 3.2rem); }
+      .main-heading { white-space: normal; font-size: clamp(1.2rem, 5vw, 1.8rem); }
       .paths-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 700px) {
@@ -532,7 +532,7 @@
     <!-- Contact -->
     <div class="nav-right" style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
       <a href="tel:9493508804" class="nav-contact">949-350-8804</a>
-      <a href="mailto:info@lagnafnetwork.com" class="nav-contact" style="font-size:0.42rem;letter-spacing:0.14em;">info@lagnafnetwork.com</a>
+      <a href="mailto:info@lagnafnetwork.com" class="nav-contact" style="font-size:0.56rem;letter-spacing:0.14em;">info@lagnafnetwork.com</a>
     </div>
 
   </nav>
@@ -566,7 +566,7 @@
       </p>
       <a href="welcome.html" class="cta-btn" id="e7">Request Deployment Access</a>
       <span class="gate-note"    id="e8">NDA <em>•</em> Verification <em>•</em> Approval Required</span>
-      <p id="e9" style="font-family:'Rajdhani',sans-serif;font-size:0.48rem;font-weight:400;letter-spacing:0.12em;color:rgba(255,255,255,0.18);margin-top:14px;line-height:1.8;max-width:480px;margin-left:auto;margin-right:auto;opacity:0;transition:opacity 0.8s ease;">No system details, pricing, operator terms, or deployment materials are released until NDA execution and Founder approval.</p>
+      <p id="e9" style="font-family:'Rajdhani',sans-serif;font-size:0.62rem;font-weight:400;letter-spacing:0.12em;color:rgba(255,255,255,0.18);margin-top:14px;line-height:1.8;max-width:480px;margin-left:auto;margin-right:auto;opacity:0;transition:opacity 0.8s ease;">No system details, pricing, operator terms, or deployment materials are released until NDA execution and Founder approval.</p>
     </div>
   </section>
 
@@ -606,8 +606,8 @@
   <footer class="foot" id="foot">
     <span class="foot-copy">© 2026 LAGNAF™ network LLC. All Rights Reserved.</span>
     <div style="display:flex;align-items:center;gap:20px;">
-      <a href="tel:9493508804" style="font-family:'Rajdhani',sans-serif;font-size:0.46rem;letter-spacing:0.14em;color:rgba(255,255,255,0.12);transition:color 0.2s;" onmouseover="this.style.color='rgba(201,168,112,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.12)'">949-350-8804</a>
-      <a href="mailto:info@lagnafnetwork.com" style="font-family:'Rajdhani',sans-serif;font-size:0.46rem;letter-spacing:0.14em;color:rgba(255,255,255,0.12);transition:color 0.2s;" onmouseover="this.style.color='rgba(201,168,112,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.12)'">info@lagnafnetwork.com</a>
+      <a href="tel:9493508804" style="font-family:'Rajdhani',sans-serif;font-size:0.60rem;letter-spacing:0.14em;color:rgba(255,255,255,0.12);transition:color 0.2s;" onmouseover="this.style.color='rgba(201,168,112,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.12)'">949-350-8804</a>
+      <a href="mailto:info@lagnafnetwork.com" style="font-family:'Rajdhani',sans-serif;font-size:0.60rem;letter-spacing:0.14em;color:rgba(255,255,255,0.12);transition:color 0.2s;" onmouseover="this.style.color='rgba(201,168,112,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.12)'">info@lagnafnetwork.com</a>
     </div>
     <div class="foot-links">
       <a href="privacy-policy.html">Privacy</a>
