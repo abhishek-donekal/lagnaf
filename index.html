@@ -183,37 +183,36 @@
     }
     .hero-img.in { opacity: 1; transform: scale(1); }
 
-    /* Minimal mask — logo is already dark */
+    /* Near-zero mask — let the logo breathe */
     .hero-mask {
       position: absolute; inset: 0;
-      background: rgba(4,4,8,0.12);
+      background: rgba(4,4,8,0.04);
     }
     .hero-grid {
       position: absolute; inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,0.016) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.016) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
       background-size: 70px 70px;
     }
-    /* Cinematic depth layers */
+    /* Luminous gold glow — illuminates logo, no dark suppression */
     .hero-glow {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 50% 55% at 50% 42%, rgba(201,168,112,0.18) 0%, transparent 60%),
-        radial-gradient(ellipse 100% 60% at 50% 0%, rgba(4,4,8,0.55) 0%, transparent 50%),
-        radial-gradient(ellipse 40% 100% at 0% 50%, rgba(4,4,8,0.45) 0%, transparent 50%),
-        radial-gradient(ellipse 40% 100% at 100% 50%, rgba(4,4,8,0.45) 0%, transparent 50%);
+        radial-gradient(ellipse 65% 60% at 50% 40%, rgba(201,168,112,0.22) 0%, rgba(201,168,112,0.06) 45%, transparent 70%),
+        radial-gradient(ellipse 30% 30% at 50% 38%, rgba(255,240,200,0.12) 0%, transparent 55%);
     }
+    /* Light bottom fade only — enough to ground content below */
     .hero-fade {
       position: absolute; bottom: 0; left: 0;
-      width: 100%; height: 75%;
-      background: linear-gradient(to bottom, transparent 0%, rgba(6,6,9,0.6) 55%, #060609 100%);
+      width: 100%; height: 45%;
+      background: linear-gradient(to bottom, transparent 0%, rgba(6,6,9,0.35) 65%, #060609 100%);
     }
-    /* Top cinematic vignette */
+    /* Very subtle top edge — not a vignette, just a frame */
     .hero-vignette {
       position: absolute; top: 0; left: 0;
-      width: 100%; height: 30%;
-      background: linear-gradient(to bottom, rgba(4,4,8,0.5) 0%, transparent 100%);
+      width: 100%; height: 15%;
+      background: linear-gradient(to bottom, rgba(4,4,8,0.18) 0%, transparent 100%);
       pointer-events: none;
     }
 
@@ -243,10 +242,10 @@
       width: 100%;
     }
     .c { position: absolute; width: 24px; height: 24px; }
-    .c.tl { top:0; left:0;   border-top:1px solid rgba(184,157,106,0.55); border-left:1px solid rgba(184,157,106,0.55); }
-    .c.tr { top:0; right:0;  border-top:1px solid rgba(184,157,106,0.55); border-right:1px solid rgba(184,157,106,0.55); }
-    .c.bl { bottom:0; left:0;  border-bottom:1px solid rgba(184,157,106,0.55); border-left:1px solid rgba(184,157,106,0.55); }
-    .c.br { bottom:0; right:0; border-bottom:1px solid rgba(184,157,106,0.55); border-right:1px solid rgba(184,157,106,0.55); }
+    .c.tl { top:0; left:0;   border-top:1px solid rgba(232,200,122,0.85); border-left:1px solid rgba(232,200,122,0.85); }
+    .c.tr { top:0; right:0;  border-top:1px solid rgba(232,200,122,0.85); border-right:1px solid rgba(232,200,122,0.85); }
+    .c.bl { bottom:0; left:0;  border-bottom:1px solid rgba(232,200,122,0.85); border-left:1px solid rgba(232,200,122,0.85); }
+    .c.br { bottom:0; right:0; border-bottom:1px solid rgba(232,200,122,0.85); border-right:1px solid rgba(232,200,122,0.85); }
 
     /* Eyebrow */
     .eyebrow {
@@ -255,53 +254,55 @@
       font-weight: 600;
       letter-spacing: 0.5em;
       text-transform: uppercase;
-      color: rgba(201,168,112,0.85);
+      color: #e8c87a;
       margin-bottom: 22px;
       opacity: 0;
+      text-shadow: 0 0 20px rgba(232,200,122,0.4);
     }
     .eyebrow.in { opacity: 1; transition: opacity 0.9s ease; }
 
-    /* Main heading */
+    /* Main heading — bright chrome */
     .main-heading {
       font-family: 'Cinzel', serif;
       font-size: clamp(1.4rem, 2.8vw, 2.4rem);
       font-weight: 600;
       letter-spacing: 0.08em;
       line-height: 1.15;
-      background: linear-gradient(155deg, #f0f2f5 0%, #b0b7c2 40%, #dde0e5 100%);
+      background: linear-gradient(155deg, #ffffff 0%, #dce2ea 30%, #f4f6f8 65%, #c8d0da 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       margin-bottom: 14px;
       opacity: 0;
       transform: translateY(10px);
+      filter: drop-shadow(0 0 18px rgba(255,255,255,0.15));
     }
     .main-heading.in {
       opacity: 1; transform: translateY(0);
       transition: opacity 1s ease, transform 1s ease;
     }
 
-    /* Slogan — brighter gold */
+    /* Slogan — vibrant gold, illuminated */
     .slogan {
       font-family: 'Cinzel', serif;
       font-size: clamp(0.82rem, 1.5vw, 1.1rem);
       font-weight: 400;
       letter-spacing: 0.24em;
-      color: #c9a870;
+      color: #e8c870;
       margin-bottom: 10px;
       opacity: 0;
-      text-shadow: 0 0 28px rgba(201,168,112,0.28);
+      text-shadow: 0 0 32px rgba(232,200,112,0.55), 0 0 8px rgba(232,200,112,0.2);
     }
     .slogan.in { opacity: 1; transition: opacity 0.9s ease; }
 
-    /* Through Selective Expansion — italic, silver/chrome, understated */
+    /* Through Selective Expansion — bright silver/chrome */
     .selective-tag {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(0.72rem, 1.1vw, 0.88rem);
       font-style: italic;
       font-weight: 300;
       letter-spacing: 0.16em;
-      background: linear-gradient(135deg, #9aa2ad 0%, #c8cdd6 45%, #8e96a0 100%);
+      background: linear-gradient(135deg, #c8cdd6 0%, #edf0f4 45%, #b8bec8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -311,10 +312,11 @@
     .selective-tag.in { opacity: 1; transition: opacity 1s ease; }
 
     .rule {
-      width: 60px; height: 1px;
-      background: linear-gradient(90deg, transparent, #c9a870, transparent);
+      width: 80px; height: 1px;
+      background: linear-gradient(90deg, transparent, #e8c870, transparent);
       margin: 0 auto 30px;
       opacity: 0;
+      box-shadow: 0 0 8px rgba(232,200,112,0.4);
     }
     .rule.in { opacity: 1; transition: opacity 0.8s ease; }
 
@@ -326,11 +328,11 @@
       font-weight: 600;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: #c9a870;
-      border: 1px solid rgba(201,168,112,0.3);
+      color: #e8c870;
+      border: 1px solid rgba(232,200,112,0.6);
       padding: 6px 20px;
       margin-bottom: 24px;
-      background: rgba(201,168,112,0.04);
+      background: rgba(232,200,112,0.07);
       opacity: 0;
     }
     .tagline-badge.in { opacity: 1; transition: opacity 0.9s ease; }
@@ -338,7 +340,7 @@
     .main-body {
       font-size: 0.84rem;
       font-weight: 300;
-      color: rgba(255,255,255,0.72);
+      color: rgba(255,255,255,0.90);
       line-height: 2;
       letter-spacing: 0.06em;
       max-width: 500px;
@@ -347,7 +349,7 @@
     }
     .main-body.in { opacity: 1; transition: opacity 0.9s ease; }
 
-    /* CTA Button — champagne-gold vibrancy */
+    /* CTA Button — luminous gold */
     .cta-btn {
       display: inline-block;
       position: relative;
@@ -357,35 +359,36 @@
       font-weight: 700;
       letter-spacing: 0.36em;
       text-transform: uppercase;
-      color: #c9a870;
-      border: 1px solid rgba(201,168,112,0.6);
+      color: #f0d588;
+      border: 1px solid rgba(232,200,112,0.85);
       padding: 20px 64px;
       cursor: pointer;
-      background: linear-gradient(135deg, rgba(201,168,112,0.06) 0%, rgba(184,157,106,0.02) 100%);
+      background: linear-gradient(135deg, rgba(232,200,112,0.12) 0%, rgba(201,168,112,0.06) 100%);
       opacity: 0;
+      box-shadow: 0 0 24px rgba(232,200,112,0.2), inset 0 0 20px rgba(232,200,112,0.04);
       transition: opacity 0.9s ease, border-color 0.3s, color 0.3s, background 0.3s, box-shadow 0.3s;
     }
     .cta-btn.in {
       opacity: 1;
-      animation: btn-pulse 4s ease-in-out infinite;
+      animation: btn-pulse 3.5s ease-in-out infinite;
     }
     @keyframes btn-pulse {
-      0%,100% { box-shadow: 0 0 0 rgba(201,168,112,0); }
-      50%      { box-shadow: 0 0 38px rgba(201,168,112,0.28), 0 0 14px rgba(201,168,112,0.12); }
+      0%,100% { box-shadow: 0 0 24px rgba(232,200,112,0.2), inset 0 0 20px rgba(232,200,112,0.04); }
+      50%      { box-shadow: 0 0 52px rgba(232,200,112,0.45), 0 0 20px rgba(232,200,112,0.2), inset 0 0 20px rgba(232,200,112,0.06); }
     }
     .cta-btn::after {
       content: '';
       position: absolute;
       top:0; left:-120%; width:55%; height:100%;
-      background: linear-gradient(90deg, transparent, rgba(201,168,112,0.14), transparent);
-      transition: left 0.6s ease;
+      background: linear-gradient(90deg, transparent, rgba(232,200,112,0.22), transparent);
+      transition: left 0.5s ease;
     }
     .cta-btn:hover::after { left: 160%; }
     .cta-btn:hover {
-      border-color: #c9a870;
-      color: #f5e6c8;
-      background: linear-gradient(135deg, rgba(201,168,112,0.15) 0%, rgba(184,157,106,0.08) 100%);
-      box-shadow: 0 0 44px rgba(201,168,112,0.32), 0 0 16px rgba(201,168,112,0.14);
+      border-color: #e8c870;
+      color: #fff8e0;
+      background: linear-gradient(135deg, rgba(232,200,112,0.22) 0%, rgba(201,168,112,0.12) 100%);
+      box-shadow: 0 0 60px rgba(232,200,112,0.5), 0 0 22px rgba(232,200,112,0.22);
     }
 
     /* Gate note */
@@ -396,7 +399,7 @@
       font-weight: 500;
       letter-spacing: 0.44em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.38);
       margin-top: 22px;
       opacity: 0;
     }
@@ -530,7 +533,7 @@
       .nav { padding: 16px 22px; grid-template-columns: 1fr 1fr; }
       .nav-status { display: none; }
       .hero { height: 100svh; min-height: 500px; }
-      .hero-mask { background: rgba(4,4,8,0.12); }
+      .hero-mask { background: rgba(4,4,8,0.04); }
       .hero-img { background-position: center center; }
       .bracket-box { padding: 40px 24px; }
       .c { width: 16px; height: 16px; }
