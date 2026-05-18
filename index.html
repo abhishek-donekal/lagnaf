@@ -6,7 +6,7 @@
   <title>LAGNAF™ network LLC</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Cinzel:wght@400;500;600&family=Rajdhani:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Cinzel:wght@400;500;600&family=Rajdhani:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -195,15 +195,26 @@
         linear-gradient(90deg, rgba(255,255,255,0.016) 1px, transparent 1px);
       background-size: 70px 70px;
     }
-    /* Stronger centered glow */
+    /* Cinematic depth layers */
     .hero-glow {
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse 55% 65% at 50% 45%, rgba(184,157,106,0.14) 0%, transparent 68%);
+      background:
+        radial-gradient(ellipse 50% 55% at 50% 42%, rgba(201,168,112,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse 100% 60% at 50% 0%, rgba(4,4,8,0.55) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 100% at 0% 50%, rgba(4,4,8,0.45) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 100% at 100% 50%, rgba(4,4,8,0.45) 0%, transparent 50%);
     }
     .hero-fade {
       position: absolute; bottom: 0; left: 0;
-      width: 100%; height: 60%;
-      background: linear-gradient(to bottom, transparent 0%, #060609 100%);
+      width: 100%; height: 75%;
+      background: linear-gradient(to bottom, transparent 0%, rgba(6,6,9,0.6) 55%, #060609 100%);
+    }
+    /* Top cinematic vignette */
+    .hero-vignette {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 30%;
+      background: linear-gradient(to bottom, rgba(4,4,8,0.5) 0%, transparent 100%);
+      pointer-events: none;
     }
 
     /* ─── DIVIDER ───────────────────────────────── */
@@ -253,16 +264,15 @@
     /* Main heading */
     .main-heading {
       font-family: 'Cinzel', serif;
-      font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+      font-size: clamp(1.4rem, 2.8vw, 2.4rem);
       font-weight: 600;
-      letter-spacing: 0.05em;
-      line-height: 1.1;
-      white-space: nowrap;
+      letter-spacing: 0.08em;
+      line-height: 1.15;
       background: linear-gradient(155deg, #f0f2f5 0%, #b0b7c2 40%, #dde0e5 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       opacity: 0;
       transform: translateY(10px);
     }
@@ -278,11 +288,27 @@
       font-weight: 400;
       letter-spacing: 0.24em;
       color: #c9a870;
-      margin-bottom: 36px;
+      margin-bottom: 10px;
       opacity: 0;
       text-shadow: 0 0 28px rgba(201,168,112,0.28);
     }
     .slogan.in { opacity: 1; transition: opacity 0.9s ease; }
+
+    /* Through Selective Expansion — italic, silver/chrome, understated */
+    .selective-tag {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.72rem, 1.1vw, 0.88rem);
+      font-style: italic;
+      font-weight: 300;
+      letter-spacing: 0.16em;
+      background: linear-gradient(135deg, #9aa2ad 0%, #c8cdd6 45%, #8e96a0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 36px;
+      opacity: 0;
+    }
+    .selective-tag.in { opacity: 1; transition: opacity 1s ease; }
 
     .rule {
       width: 60px; height: 1px;
@@ -541,6 +567,7 @@
     <div class="hero-img" id="hero-img"></div>
     <div class="hero-mask"></div>
     <div class="hero-grid"></div>
+    <div class="hero-vignette"></div>
     <div class="hero-glow"></div>
     <div class="hero-fade"></div>
   </section>
@@ -554,8 +581,9 @@
       <span class="c br"></span>
 
       <div class="eyebrow"       id="e1">Apollo Build™ Infrastructure</div>
-      <h1  class="main-heading"  id="e2">Founder-Controlled Access</h1>
-      <div class="slogan"        id="e3">Where Systems Meet Scale</div>
+      <h1  class="main-heading"  id="e2">LAGNAF™ Private Network</h1>
+      <div class="slogan"        id="e3">Relationship-Driven Scale</div>
+      <div class="selective-tag" id="e3b">Through Selective Expansion</div>
       <div class="rule"          id="e4"></div>
       <div class="tagline-badge" id="e5">Private Business Infrastructure &nbsp;·&nbsp; Built for Scale</div>
       <p   class="main-body"     id="e6">
@@ -620,7 +648,7 @@
       setTimeout(function() { document.getElementById('hero-img').classList.add('in'); }, 80);
       setTimeout(function() { document.getElementById('nav').classList.add('in'); }, 200);
 
-      var seq = ['e1','e2','e3','e4','e5','e6','e7','e8','e9'];
+      var seq = ['e1','e2','e3','e3b','e4','e5','e6','e7','e8','e9'];
       seq.forEach(function(id, i) {
         setTimeout(function() {
           var el = document.getElementById(id);
