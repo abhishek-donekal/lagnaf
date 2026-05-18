@@ -163,26 +163,30 @@
     .hero {
       position: relative;
       width: 100%;
-      height: 58vh;
-      min-height: 320px;
+      /* tall enough to show full portrait logo on desktop */
+      height: 100vh;
+      min-height: 600px;
       overflow: hidden;
       flex-shrink: 0;
+      background: #000;
     }
     .hero-img {
       position: absolute; inset: 0;
       background-image: url('images/logo.jpg');
-      background-size: cover;
-      background-position: center 20%;
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-color: #000;
       opacity: 0;
-      transform: scale(1.06);
+      transform: scale(1.03);
       transition: opacity 2.6s ease, transform 11s ease;
     }
     .hero-img.in { opacity: 1; transform: scale(1); }
 
-    /* Lighter mask so face breathes */
+    /* Minimal mask — logo is already dark */
     .hero-mask {
       position: absolute; inset: 0;
-      background: rgba(4,4,8,0.25);
+      background: rgba(4,4,8,0.12);
     }
     .hero-grid {
       position: absolute; inset: 0;
@@ -499,9 +503,9 @@
     @media (max-width: 700px) {
       .nav { padding: 16px 22px; grid-template-columns: 1fr 1fr; }
       .nav-status { display: none; }
-      .hero { height: 46vh; min-height: 240px; }
-      .hero-mask { background: rgba(4,4,8,0.25); }
-      .hero-img { background-position: center 20%; }
+      .hero { height: 100svh; min-height: 500px; }
+      .hero-mask { background: rgba(4,4,8,0.12); }
+      .hero-img { background-position: center center; }
       .bracket-box { padding: 40px 24px; }
       .c { width: 16px; height: 16px; }
       .cta-btn { padding: 18px 36px; }
