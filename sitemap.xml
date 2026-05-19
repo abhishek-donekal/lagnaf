@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://lagnaf-plum.vercel.app/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://lagnaf-plum.vercel.app/about.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lagnaf-plum.vercel.app/entry-gateway.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://lagnaf-plum.vercel.app/welcome.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lagnaf-plum.vercel.app/ambassador-entry.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://lagnaf-plum.vercel.app/brand-ambassador-compensation.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lagnaf-plum.vercel.app/executive-series-bundles.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lagnaf-plum.vercel.app/network.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://lagnaf-plum.vercel.app/blog.html</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://lagnaf-plum.vercel.app/lagnaf-university.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://lagnaf-plum.vercel.app/privacy-policy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://lagnaf-plum.vercel.app/terms-of-service.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://lagnaf-plum.vercel.app/terms-conditions.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://lagnaf-plum.vercel.app/refund-policy.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://lagnaf-plum.vercel.app/disclaimer.html</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+</urlset>
