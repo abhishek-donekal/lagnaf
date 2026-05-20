@@ -1,12 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LAGNAF™ Private Network — Relationship-Driven Scale</title>
-    <meta name="description" content="A private infrastructure network deploying Apollo Build™ operator systems at founder-controlled scale. Selective expansion. Relationship-driven." />
-  <meta property="og:title" content="LAGNAF™ Private Network — Relationship-Driven Scale" />
-  <meta property="og:description" content="A private infrastructure network deploying Apollo Build™ operator systems at founder-controlled scale. Selective expansion. Relationship-driven." />
+  <title>LAGNAF� Private Network � Relationship-Driven Growth</title>
+    <meta name="description" content="A private infrastructure network deploying Apollo Build� operator systems at founder-controlled scale. Selective expansion. Relationship-driven." />
+  <meta property="og:title" content="LAGNAF� Private Network � Relationship-Driven Growth" />
+  <meta property="og:description" content="A private infrastructure network deploying Apollo Build� operator systems at founder-controlled scale. Selective expansion. Relationship-driven." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://lagnaf-plum.vercel.app/images/logo.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,10 +18,10 @@
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background: #080810;
+      background: #100e0c;
       background-image:
-        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
       background-size: 70px 70px;
       color: #fff;
       min-height: 100dvh;
@@ -31,7 +31,7 @@
     }
     a { text-decoration: none; color: inherit; }
 
-    /* ─── SCAN LINE ─────────────────────────────── */
+    /* --- SCAN LINE ------------------------------- */
     .scan-line {
       position: fixed;
       left: 0; top: -1px;
@@ -48,7 +48,7 @@
       100% { top: 100vh; opacity: 0; }
     }
 
-    /* ─── NAV ──────────────────────────────────── */
+    /* --- NAV ------------------------------------ */
     .nav {
       position: sticky;
       top: 0;
@@ -164,7 +164,7 @@
       border-color: rgba(184,157,106,0.35);
     }
 
-    /* ─── HERO ──────────────────────────────────── */
+    /* --- HERO ------------------------------------ */
     .hero {
       position: relative;
       width: 100%;
@@ -173,7 +173,7 @@
       min-height: 600px;
       overflow: hidden;
       flex-shrink: 0;
-      background: #000;
+      background: #100e0c;
     }
     .hero-img {
       position: absolute; inset: 0;
@@ -181,18 +181,15 @@
       background-size: contain;
       background-position: center center;
       background-repeat: no-repeat;
-      background-color: #000;
+      background-color: #100e0c;
       opacity: 0;
       transform: scale(1.03);
       transition: opacity 2.6s ease, transform 11s ease;
     }
     .hero-img.in { opacity: 1; transform: scale(1); }
 
-    /* Near-zero mask — let the logo breathe */
-    .hero-mask {
-      position: absolute; inset: 0;
-      background: rgba(4,4,8,0.04);
-    }
+    /* Zero mask � fully removed */
+    .hero-mask { display: none; }
     .hero-grid {
       position: absolute; inset: 0;
       background-image:
@@ -200,29 +197,23 @@
         linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
       background-size: 70px 70px;
     }
-    /* Stronger center glow — logo feels illuminated */
+    /* Warm stage-light � illuminates logo centre, no dark suppression */
     .hero-glow {
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 70% 65% at 50% 40%, rgba(232,200,112,0.38) 0%, rgba(201,168,112,0.15) 42%, transparent 68%),
-        radial-gradient(ellipse 35% 35% at 50% 36%, rgba(255,248,210,0.24) 0%, transparent 52%),
-        radial-gradient(ellipse 100% 50% at 50% 100%, rgba(8,8,16,0.5) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 75% at 50% 42%, rgba(255,235,160,0.22) 0%, rgba(232,200,112,0.08) 42%, transparent 68%),
+        radial-gradient(ellipse 44% 44% at 50% 38%, rgba(255,252,235,0.16) 0%, transparent 52%);
     }
-    /* Gentle bottom fade */
+    /* Minimal bottom grounding � warm tone, no blue-black */
     .hero-fade {
       position: absolute; bottom: 0; left: 0;
-      width: 100%; height: 40%;
-      background: linear-gradient(to bottom, transparent 0%, rgba(8,8,16,0.15) 60%, #080810 100%);
+      width: 100%; height: 28%;
+      background: linear-gradient(to bottom, transparent 0%, rgba(16,14,12,0.55) 70%, #100e0c 100%);
     }
-    /* Minimal top frame */
-    .hero-vignette {
-      position: absolute; top: 0; left: 0;
-      width: 100%; height: 12%;
-      background: linear-gradient(to bottom, rgba(4,4,8,0.06) 0%, transparent 100%);
-      pointer-events: none;
-    }
+    /* No top vignette */
+    .hero-vignette { display: none; }
 
-    /* ─── DIVIDER ───────────────────────────────── */
+    /* --- DIVIDER --------------------------------- */
     .section-divider {
       width: 100%;
       height: 1px;
@@ -231,7 +222,7 @@
     }
     .section-divider.in { opacity: 1; transition: opacity 1s ease; }
 
-    /* ─── CONTENT ───────────────────────────────── */
+    /* --- CONTENT --------------------------------- */
     .content {
       flex: 0;
       display: flex;
@@ -267,7 +258,7 @@
     }
     .eyebrow.in { opacity: 1; transition: opacity 0.9s ease; }
 
-    /* Main heading — bright chrome */
+    /* Main heading � bright chrome */
     .main-heading {
       font-family: 'Cinzel', serif;
       font-size: clamp(1.5rem, 3vw, 2.6rem);
@@ -288,7 +279,7 @@
       transition: opacity 1s ease, transform 1s ease;
     }
 
-    /* Slogan — vibrant gold, illuminated */
+    /* Slogan � vibrant gold, illuminated */
     .slogan {
       font-family: 'Cinzel', serif;
       font-size: clamp(0.88rem, 1.6vw, 1.15rem);
@@ -301,7 +292,7 @@
     }
     .slogan.in { opacity: 1; transition: opacity 0.9s ease; }
 
-    /* Through Selective Expansion — bright silver/chrome */
+    /* Through Selective Expansion � bright silver/chrome */
     .selective-tag {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(0.72rem, 0.95vw, 0.85rem);
@@ -356,7 +347,7 @@
     }
     .main-body.in { opacity: 1; transition: opacity 0.9s ease; }
 
-    /* CTA Button — luminous gold */
+    /* CTA Button � luminous gold */
     .cta-btn {
       display: inline-block;
       position: relative;
@@ -413,7 +404,7 @@
     .gate-note.in { opacity: 1; transition: opacity 0.8s ease; }
     .gate-note em { font-style: normal; color: rgba(201,168,112,0.38); margin: 0 10px; }
 
-    /* ─── THREE PATHS SECTION ───────────────────── */
+    /* --- THREE PATHS SECTION --------------------- */
     .paths-section {
       padding: 0 40px 80px;
       opacity: 0;
@@ -508,7 +499,7 @@
     }
     .path-card:hover .path-cta { letter-spacing: 0.34em; color: #f5d878; }
 
-    /* ─── FOOTER ────────────────────────────────── */
+    /* --- FOOTER ---------------------------------- */
     .foot {
       display: flex;
       align-items: center;
@@ -536,7 +527,7 @@
     }
     .foot-links a:hover { color: rgba(201,168,112,0.6); }
 
-    /* ─── RESPONSIVE ────────────────────────────── */
+    /* --- RESPONSIVE ------------------------------ */
     @media (max-width: 820px) {
       .main-heading { white-space: normal; font-size: clamp(1.4rem, 5.5vw, 2rem); }
       .slogan { font-size: clamp(0.9rem, 2.8vw, 1.1rem); }
@@ -608,19 +599,19 @@
       <span class="c bl"></span>
       <span class="c br"></span>
 
-      <div class="eyebrow"       id="e1">Apollo Build™ Infrastructure</div>
-      <h1  class="main-heading"  id="e2">LAGNAF™ Private Network</h1>
-      <div class="slogan"        id="e3">Relationship-Driven Scale</div>
+      <div class="eyebrow"       id="e1">Apollo Build� Infrastructure</div>
+      <h1  class="main-heading"  id="e2">LAGNAF� Private Network</h1>
+      <div class="slogan"        id="e3">Relationship-Driven Growth</div>
       <div class="selective-tag" id="e3b">Through Selective Expansion</div>
       <div class="rule"          id="e4"></div>
-      <div class="tagline-badge" id="e5">Private Business Infrastructure &nbsp;·&nbsp; Built for Scale</div>
+      <div class="tagline-badge" id="e5">Private Business Infrastructure &nbsp;�&nbsp; Built for Scale</div>
       <p   class="main-body"     id="e6">
-        Access to proprietary Apollo Build™ deployment systems is restricted
+        Access to proprietary Apollo Build� deployment systems is restricted
         to approved operators and strategic partners. Select your path below
         to begin the consideration process.
       </p>
       <a href="welcome.html" class="cta-btn" id="e7">Request Deployment Access</a>
-      <span class="gate-note"    id="e8">NDA <em>•</em> Verification <em>•</em> Approval Required</span>
+      <span class="gate-note"    id="e8">NDA <em>�</em> Verification <em>�</em> Approval Required</span>
       <p id="e9" style="font-family:'Rajdhani',sans-serif;font-size:0.62rem;font-weight:400;letter-spacing:0.12em;color:rgba(255,255,255,0.18);margin-top:14px;line-height:1.8;max-width:480px;margin-left:auto;margin-right:auto;opacity:0;transition:opacity 0.8s ease;">No system details, pricing, operator terms, or deployment materials are released until NDA execution and Founder approval.</p>
     </div>
   </section>
@@ -636,22 +627,22 @@
       <a href="entry-gateway.html" class="path-card">
         <div class="path-index">01</div>
         <div class="path-title">The Business Owner Program</div>
-        <p class="path-desc">Request deployment access to Apollo Build™ infrastructure systems and apply for operator consideration.</p>
-        <div class="path-cta">Apply for Consideration →</div>
+        <p class="path-desc">Request deployment access to Apollo Build� infrastructure systems and apply for operator consideration.</p>
+        <div class="path-cta">Apply for Consideration ?</div>
       </a>
 
       <a href="ambassador-entry.html" class="path-card">
         <div class="path-index">02</div>
         <div class="path-title">The Brand Ambassador Program</div>
-        <p class="path-desc">Join the LAGNAF™ Brand Ambassador Program and earn through verified referrals into the network.</p>
-        <div class="path-cta">Learn More →</div>
+        <p class="path-desc">Join the LAGNAF� Brand Ambassador Program and earn through verified referrals into the network.</p>
+        <div class="path-cta">Learn More ?</div>
       </a>
 
       <a href="network.html" class="path-card">
         <div class="path-index">03</div>
-        <div class="path-title">Existing LAGNAF™ Verticals</div>
-        <p class="path-desc">View active Apollo Build™ operator deployments across all verticals within the LAGNAF™ ecosystem.</p>
-        <div class="path-cta">View Network →</div>
+        <div class="path-title">Existing LAGNAF� Verticals</div>
+        <p class="path-desc">View active Apollo Build� operator deployments across all verticals within the LAGNAF� ecosystem.</p>
+        <div class="path-cta">View Network ?</div>
       </a>
 
     </div>
@@ -659,7 +650,7 @@
 
   <!-- FOOTER -->
   <footer class="foot" id="foot">
-    <span class="foot-copy">© 2026 LAGNAF™ network LLC. All Rights Reserved.</span>
+    <span class="foot-copy">� 2026 LAGNAF� Network LLC. All Rights Reserved.</span>
     <div style="display:flex;align-items:center;gap:20px;">
       <a href="tel:9493508804" style="font-family:'Rajdhani',sans-serif;font-size:0.60rem;letter-spacing:0.14em;color:rgba(255,255,255,0.12);transition:color 0.2s;" onmouseover="this.style.color='rgba(201,168,112,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.12)'">949-350-8804</a>
       <a href="mailto:info@lagnafnetwork.com" style="font-family:'Rajdhani',sans-serif;font-size:0.60rem;letter-spacing:0.14em;color:rgba(255,255,255,0.12);transition:color 0.2s;" onmouseover="this.style.color='rgba(201,168,112,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.12)'">info@lagnafnetwork.com</a>
