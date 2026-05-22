@@ -16,10 +16,10 @@
   --gold:        #b89d6a;
   --gold-dim:    rgba(184,157,106,0.35);
   --silver:      #9da4ae;
-  --text-1:      #e8eaed;
-  --text-2:      rgba(255,255,255,0.5);
-  --text-3:      rgba(255,255,255,0.25);
-  --text-4:      rgba(255,255,255,0.12);
+  --text-1:      #f0f1f3;
+  --text-2:      rgba(255,255,255,0.62);
+  --text-3:      rgba(255,255,255,0.42);
+  --text-4:      rgba(255,255,255,0.28);
 }
 
 /* ── RESET ───────────────────────────────────────────────────── */
@@ -729,4 +729,6 @@ a { text-decoration: none; color: inherit; }
   .dash-sidebar { display: none; }
   .dash-main { padding: 28px 20px; }
   .sys-progress { flex-wrap: wrap; gap: 4px; }
+  p, li { line-height: 1.7; }
+  .sys-sub { font-size: 0.9rem; }
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ambassador Dashboard — LAGNAF&trade; Private Network</title>
+  <title>Brand Ambassador Dashboard — LAGNAF&trade; Network LLC</title>
     <meta name="description" content="Brand Ambassador dashboard." />
   <meta name="robots" content="noindex,nofollow" />
   <link rel="stylesheet" href="css/system.css" />
@@ -215,9 +215,9 @@
 <body>
 
 <header class="sys-header">
-  <div class="sys-logo"><img src="images/logo.jpg" alt="The LAGNAF Private Network" style="height:56px;display:block;" /></div>
+  <div class="sys-logo"><img src="images/logo.jpg" alt="LAGNAF&trade; Network LLC" style="height:56px;display:block;" /></div>
   <div style="display:flex;align-items:center;gap:20px;">
-    <span class="sys-step-indicator" id="header-status-label">Ambassador Portal</span>
+    <span class="sys-step-indicator" id="header-status-label">Brand Ambassador Portal</span>
     <button onclick="if(confirm('End session?')){Flow.clear();window.location.href='index.html';}" style="background:none;border:1px solid #2a2a2a;color:#777;font-size:0.55rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;padding:6px 14px;cursor:pointer;">Sign Out</button>
   </div>
 </header>
@@ -244,7 +244,7 @@
     <div class="dash-header" id="overview">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;">
         <div>
-          <h1>Ambassador Dashboard</h1>
+          <h1>Brand Ambassador Dashboard</h1>
           <p>Brand Ambassador Program — <span id="dash-date"></></p>
         </div>
         <div style="text-align:right;">
@@ -257,7 +257,7 @@
     <!-- STATUS PANEL -->
     <div class="status-panel">
       <div class="status-panel-left">
-        <div class="status-panel-label">Ambassador Status</div>
+        <div class="status-panel-label">Brand Ambassador Status</div>
         <div class="status-panel-value" id="status-value"></>
         <div class="status-panel-note" id="status-note"></>
       </div>
@@ -341,7 +341,7 @@
         <div class="comp-card">
           <div class="comp-card-label">Model 1 — Direct Purchase</div>
           <div class="comp-card-rate">15%</div>
-          <div class="comp-card-desc">Single lump-sum payout on verified payment in full. 90-day referral validity window. Paid upon confirmed receipt.</div>
+          <div class="comp-card-desc">Single lump-sum payout on verified payment in full. 90-day onboarding window. Paid upon confirmed receipt.</div>
         </div>
         <div class="comp-card">
           <div class="comp-card-label">Model 2 — Lease-to-Own ($50k+)</div>
@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (deployed) {
     statusLabel = 'Deployed — Active';
     statusNote  = 'Training complete. You are operational within the network.';
-    document.getElementById('header-status-label').textContent = 'Ambassador Portal — Active';
+    document.getElementById('header-status-label').textContent = 'Brand Ambassador Portal — Active';
   } else if (modules > 0) {
     statusLabel = 'Training — Module ' + modules + ' of 5';
     statusNote  = 'Complete all five modules to reach Deployed status.';

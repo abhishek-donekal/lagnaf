@@ -14,10 +14,10 @@
   --border-gold: rgba(184,157,106,0.7);
   --gold:        #b89d6a;
   --gold-dim:    rgba(184,157,106,0.35);
-  --text-1:      #e8eaed;
-  --text-2:      rgba(255,255,255,0.5);
-  --text-3:      rgba(255,255,255,0.25);
-  --text-4:      rgba(255,255,255,0.12);
+  --text-1:      #f0f1f3;
+  --text-2:      rgba(255,255,255,0.62);
+  --text-3:      rgba(255,255,255,0.42);
+  --text-4:      rgba(255,255,255,0.28);
 }
 
 /* ── RESET ───────────────────────────────────────────────────── */
@@ -164,7 +164,7 @@ img { display: block; max-width: 100%; }
 .bp-hero::before {
   content: '';
   position: absolute; inset: 0;
-  background: rgba(3,3,6,0.72);
+  background: rgba(3,3,6,0.55);
 }
 .bp-hero::after {
   content: '';
@@ -553,4 +553,6 @@ img { display: block; max-width: 100%; }
   .footer-inner { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
   .bp-hero { min-height: 360px; padding: 80px 20px 60px; }
+  p, li { line-height: 1.75; }
+  .bp-eyebrow, .sys-eyebrow { font-size: 0.66rem; }
 }
