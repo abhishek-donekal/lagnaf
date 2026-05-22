@@ -315,7 +315,7 @@
           <button class="copy-btn-sm" id="copy-link-btn" onclick="copyAmbLink()">Copy Referral Link</button>
         </div>
         <div style="font-size:0.58rem;color:#444;margin-top:12px;line-height:1.75;">
-          Share this link directly or programme it to your .card NFC device. Every prospect who enters through this link is automatically attributed through Secure Activation Verification—.
+          Share this link directly or programme it to your .card NFC device. Every prospect who enters through this link is automatically attributed through Secure Activation Verification.
         </div>
       </div>
     </div>
@@ -427,7 +427,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var refLink = base + 'entry-gateway.html?ref=' + code;
   var dotUrl  = base + 'tap.html?ref=' + code;
 
-  // Activation reference is never exposed client-side per Secure Activation Verification— protocol
+  // Activation reference is never exposed client-side per Secure Activation Verification protocol
   document.getElementById('uin-display').textContent     = uin;
   document.getElementById('amb-link-display').textContent = refLink;
   document.getElementById('dot-card-url').textContent    = dotUrl;
