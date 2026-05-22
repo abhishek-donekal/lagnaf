@@ -8,10 +8,10 @@
 /* ── TOKENS ──────────────────────────────────────────────────── */
 :root {
   --bg:          #050508;
-  --surface:     #0c0c12;
-  --surface-2:   #131318;
-  --border:      rgba(255,255,255,0.065);
-  --border-gold: rgba(184,157,106,0.5);
+  --surface:     #1a1a24;
+  --surface-2:   #222230;
+  --border:      rgba(255,255,255,0.15);
+  --border-gold: rgba(184,157,106,0.7);
   --gold:        #b89d6a;
   --gold-dim:    rgba(184,157,106,0.35);
   --text-1:      #e8eaed;
@@ -205,7 +205,7 @@ img { display: block; max-width: 100%; }
   margin-bottom: 8px;
 }
 .bp-note {
-  font-size: 0.6rem;
+  font-size: 0.78rem;
   font-weight: 300;
   color: var(--text-3);
   letter-spacing: 0.06em;
@@ -239,7 +239,7 @@ img { display: block; max-width: 100%; }
   border: 1px solid rgba(255,255,255,0.25);
   color: rgba(255,255,255,0.7);
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.58rem;
+  font-size: 0.76rem;
   font-weight: 500;
   letter-spacing: 0.26em;
   text-transform: uppercase;
@@ -381,7 +381,7 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.04em;
 }
 .bundle-section .section-sub {
-  font-size: 0.65rem;
+  font-size: 0.83rem;
   font-weight: 300;
   color: var(--text-3);
   text-align: center;
@@ -399,7 +399,7 @@ img { display: block; max-width: 100%; }
 .bundle-item:hover { border-color: var(--border-gold); }
 .bundle-item .series-label {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.63rem;
+  font-size: 0.81rem;
   font-weight: 600;
   letter-spacing: 0.32em;
   text-transform: uppercase;
@@ -510,14 +510,14 @@ img { display: block; max-width: 100%; }
 }
 .footer-copy {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.62rem;
+  font-size: 0.80rem;
   letter-spacing: 0.1em;
   color: var(--text-4);
 }
 .footer-legal-links { display: flex; gap: 20px; }
 .footer-legal-links a {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.62rem;
+  font-size: 0.80rem;
   color: var(--text-4);
   letter-spacing: 0.16em;
   text-transform: uppercase;

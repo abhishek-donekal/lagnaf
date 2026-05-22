@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ambassador Dashboard — LAGNAF™ Private Network</title>
+  <title>Ambassador Dashboard â€” LAGNAF&trade; Private Network</title>
     <meta name="description" content="Brand Ambassador dashboard." />
   <meta name="robots" content="noindex,nofollow" />
   <link rel="stylesheet" href="css/system.css" />
@@ -226,7 +226,7 @@
 
   <!-- Sidebar -->
   <div class="dash-sidebar">
-    <div class="dash-sidebar-logo">LAGNAF<span>™</span></div>
+    <div class="dash-sidebar-logo">LAGNAF<span></></div>
     <nav class="dash-nav">
       <a href="#overview" class="active">Overview</a>
       <a href="#credentials">Referral Credentials</a>
@@ -245,11 +245,11 @@
       <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;">
         <div>
           <h1>Ambassador Dashboard</h1>
-          <p>Brand Ambassador Program · <span id="dash-date">—</span></p>
+          <p>Brand Ambassador Program â€” <span id="dash-date"></></p>
         </div>
         <div style="text-align:right;">
           <div style="font-size:0.5rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#aaa;margin-bottom:4px;">UIN</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#b89d6a;letter-spacing:0.1em;" id="uin-display">—</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#b89d6a;letter-spacing:0.1em;" id="uin-display"></>
         </div>
       </div>
     </div>
@@ -258,8 +258,8 @@
     <div class="status-panel">
       <div class="status-panel-left">
         <div class="status-panel-label">Ambassador Status</div>
-        <div class="status-panel-value" id="status-value">—</div>
-        <div class="status-panel-note" id="status-note">—</div>
+        <div class="status-panel-value" id="status-value"></>
+        <div class="status-panel-note" id="status-note"></>
       </div>
       <div>
         <div class="status-panel-label">Secure Activation</div>
@@ -276,7 +276,7 @@
     <div class="dash-cards">
       <div class="dash-card">
         <div class="dash-card-label">Training Progress</div>
-        <div class="dash-card-value" id="module-count" style="font-family:'Cormorant Garamond',serif;font-size:2rem;">—</div>
+        <div class="dash-card-value" id="module-count" style="font-family:'Cormorant Garamond',serif;font-size:2rem;"></>
         <div class="dash-card-sub" id="module-label">Modules complete</div>
       </div>
       <div class="dash-card">
@@ -303,19 +303,19 @@
       <div style="margin-bottom:16px;">
         <div class="cred-block">
           <div class="cred-block-label">.card system Target URL</div>
-          <div style="font-size:0.65rem;color:#666;font-family:monospace;margin-top:8px;line-height:1.7;word-break:break-all;" id="dot-card-url">—</div>
+          <div style="font-size:0.65rem;color:#666;font-family:monospace;margin-top:8px;line-height:1.7;word-break:break-all;" id="dot-card-url"></>
           <div style="font-size:0.58rem;color:#444;margin-top:8px;line-height:1.7;">Programme your physical .card NFC device to this URL. When tapped, your activation is pre-loaded automatically.</div>
         </div>
       </div>
 
       <div class="cred-block">
         <div class="cred-block-label">Your Referral Link</div>
-        <div class="cred-link" id="amb-link-display" onclick="copyLink(this)">—</div>
+        <div class="cred-link" id="amb-link-display" onclick="copyLink(this)"></>
         <div class="copy-row">
           <button class="copy-btn-sm" id="copy-link-btn" onclick="copyAmbLink()">Copy Referral Link</button>
         </div>
         <div style="font-size:0.58rem;color:#444;margin-top:12px;line-height:1.75;">
-          Share this link directly or programme it to your .card NFC device. Every prospect who enters through this link is automatically attributed through Secure Activation Verification™.
+          Share this link directly or programme it to your .card NFC device. Every prospect who enters through this link is automatically attributed through Secure Activation Verificationâ€”.
         </div>
       </div>
     </div>
@@ -324,7 +324,7 @@
     <div id="training-progress" style="background:#fff;border:1px solid #e5e5e5;padding:28px;margin-top:20px;margin-bottom:20px;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
         <div style="font-size:0.6rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#b89d6a;">Training Modules</div>
-        <span id="training-badge" class="badge badge-grey">—</span>
+        <span id="training-badge" class="badge badge-grey"></>
       </div>
 
       <div class="module-track" id="module-track">
@@ -336,21 +336,21 @@
 
     <!-- COMPENSATION -->
     <div id="compensation" style="background:#fff;border:1px solid #e5e5e5;padding:28px;margin-bottom:20px;">
-      <div style="font-size:0.6rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#b89d6a;margin-bottom:18px;">Your Compensation Structure — Either / Or</div>
+      <div style="font-size:0.6rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#b89d6a;margin-bottom:18px;">Your Compensation Structure â€” Either / Or</div>
       <div class="comp-grid">
         <div class="comp-card">
-          <div class="comp-card-label">Model 1 — Direct Purchase</div>
+          <div class="comp-card-label">Model 1 â€” Direct Purchase</div>
           <div class="comp-card-rate">15%</div>
           <div class="comp-card-desc">Single lump-sum payout on verified payment in full. 90-day referral validity window. Paid upon confirmed receipt.</div>
         </div>
         <div class="comp-card">
-          <div class="comp-card-label">Model 2 — Lease-to-Own ($50k+)</div>
+          <div class="comp-card-label">Model 2 â€” Lease-to-Own ($50k+)</div>
           <div class="comp-card-rate">3% <span style="font-size:1.4rem;color:#aaa;">+</span> 1%</div>
           <div class="comp-card-desc">3% on each monthly payment received and verified. 1% lump sum on verified final payoff. For arrangements of $50,000 or more.</div>
         </div>
       </div>
       <div style="background:#faf8f4;border-left:3px solid #b89d6a;padding:14px 18px;">
-        <p style="font-size:0.68rem;color:#666;line-height:1.8;"><strong style="color:#222;">Either — or. Not both.</strong> Each referred client qualifies under one model only, determined by the transaction type they complete. Commissions are paid on verified, received payments only.</p>
+        <p style="font-size:0.68rem;color:#666;line-height:1.8;"><strong style="color:#222;">Either â€” or. Not both.</strong> Each referred client qualifies under one model only, determined by the transaction type they complete. Commissions are paid on verified, received payments only.</p>
       </div>
     </div>
 
@@ -363,11 +363,11 @@
       </div>
       <div class="step-row">
         <div class="step-num">2</div>
-        <div class="step-body"><strong>Programme your .card.</strong> Your physical .card NFC device must be set to your referral link above. This is your primary in-person introduction tool — not an accessory.</div>
+        <div class="step-body"><strong>Programme your .card.</strong> Your physical .card NFC device must be set to your referral link above. This is your primary in-person introduction tool â€” not an accessory.</div>
       </div>
       <div class="step-row">
         <div class="step-num">3</div>
-        <div class="step-body"><strong>Introduce qualified prospects only.</strong> Share your referral link with individuals who have verifiable business activity and the capacity to participate. The system handles everything from entry through onboarding — you make the introduction, nothing else.</div>
+        <div class="step-body"><strong>Introduce qualified prospects only.</strong> Share your referral link with individuals who have verifiable business activity and the capacity to participate. The system handles everything from entry through onboarding â€” you make the introduction, nothing else.</div>
       </div>
       <div class="step-row">
         <div class="step-num">4</div>
@@ -378,7 +378,7 @@
         <div class="step-body"><strong>Establish your payment details.</strong> Contact the team to set up your disbursement method before commissions are earned. Do not wait until after a transaction closes.</div>
       </div>
       <div style="margin-top:24px;">
-        <a href="tel:9493508804" class="btn-sys-primary" style="display:inline-block;">Contact Your Team — 949-350-8804</a>
+        <a href="tel:9493508804" class="btn-sys-primary" style="display:inline-block;">Contact Your Team â€” 949-350-8804</a>
       </div>
     </div>
 
@@ -421,13 +421,13 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // -- Populate identity fields --
-  var uin  = Flow.get('uin') || '—';
-  var code = Flow.get('ambassador_code') || '—';
+  var uin  = Flow.get('uin') || 'â€”';
+  var code = Flow.get('ambassador_code') || 'â€”';
   var base = window.location.origin + window.location.pathname.replace('ambassador-dashboard.html', '');
   var refLink = base + 'entry-gateway.html?ref=' + code;
   var dotUrl  = base + 'tap.html?ref=' + code;
 
-  // Activation reference is never exposed client-side per Secure Activation Verification™ protocol
+  // Activation reference is never exposed client-side per Secure Activation Verificationâ€” protocol
   document.getElementById('uin-display').textContent     = uin;
   document.getElementById('amb-link-display').textContent = refLink;
   document.getElementById('dot-card-url').textContent    = dotUrl;
@@ -440,11 +440,11 @@ document.addEventListener('DOMContentLoaded', function() {
   var statusLabel, statusNote;
 
   if (deployed) {
-    statusLabel = 'Deployed — Active';
+    statusLabel = 'Deployed â€” Active';
     statusNote  = 'Training complete. You are operational within the network.';
-    document.getElementById('header-status-label').textContent = 'Ambassador Portal — Active';
+    document.getElementById('header-status-label').textContent = 'Ambassador Portal â€” Active';
   } else if (modules > 0) {
-    statusLabel = 'Training — Module ' + modules + ' of 5';
+    statusLabel = 'Training â€” Module ' + modules + ' of 5';
     statusNote  = 'Complete all five modules to reach Deployed status.';
   } else {
     statusLabel = 'Agreement Confirmed';
@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', function() {
     badge.className    = 'badge badge-gold';
     action.innerHTML   = '<p style="font-size:0.7rem;color:#888;font-style:italic;">All training modules confirmed. You are deployment ready.</p>';
   } else {
-    badge.textContent  = 'In Progress — ' + modules + ' of 5';
+    badge.textContent  = 'In Progress â€” ' + modules + ' of 5';
     badge.className    = 'badge badge-grey';
     action.innerHTML   = '<a href="ambassador-materials.html" class="btn-sys-primary" style="display:inline-block;">Continue Training ?</a>';
   }

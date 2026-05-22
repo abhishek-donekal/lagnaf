@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Access Approved — LAGNAF™ Private Network</title>
+  <title>Access Approved â€” LAGNAF&trade; Private Network</title>
     <meta name="description" content="Unique identification number issued." />
   <meta name="robots" content="noindex,nofollow" />
   <link rel="stylesheet" href="css/system.css" />
@@ -11,7 +11,7 @@
 
 <header class="sys-header">
   <div class="sys-logo"><img src="images/logo.jpg" alt="The LAGNAF Private Network" style="height:56px;display:block;" /></div>
-  <span class="sys-step-indicator">Step 3 of 4 — Identity Confirmation</span>
+  <span class="sys-step-indicator">Step 3 of 4 â€” Identity Confirmation</span>
 </header>
 
 <div class="sys-page">
@@ -19,11 +19,11 @@
 
     <div class="sys-progress">
       <span class="sys-progress-step done">Entry</span>
-      <span class="sys-progress-arrow">›</span>
+      <span class="sys-progress-arrow">&rsaquo;</span>
       <span class="sys-progress-step done">NDA Gate</span>
-      <span class="sys-progress-arrow">›</span>
+      <span class="sys-progress-arrow">&rsaquo;</span>
       <span class="sys-progress-step active">UIN Issued</span>
-      <span class="sys-progress-arrow">›</span>
+      <span class="sys-progress-arrow">&rsaquo;</span>
       <span class="sys-progress-step">Path Selection</span>
     </div>
 
@@ -35,7 +35,7 @@
 
     <div class="uin-box">
       <span class="uin-label">Unique Identification Number</span>
-      <div class="uin-value" id="uin-display">—</div>
+      <div class="uin-value" id="uin-display"></>
       <p class="uin-note">Record this number. It will be required to access your account going forward.</p>
     </div>
 
@@ -50,7 +50,7 @@
       </div>
       <div class="info-item">
         <strong>Issued</strong>
-        <span id="issued-time">—</span>
+        <span id="issued-time"></>
       </div>
     </div>
 
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
       btn.setAttribute('onclick', "window.location.href='ambassador-agreement.html'");
     }
     const indicator = document.querySelector('.sys-step-indicator');
-    if (indicator) indicator.textContent = 'Step 5 of 8 — UIN Issued';
+    if (indicator) indicator.textContent = 'Step 5 of 8 â€” UIN Issued';
     // Update progress bar labels
     const steps = document.querySelectorAll('.sys-progress-step');
     if (steps.length === 4) {

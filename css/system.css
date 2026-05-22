@@ -8,11 +8,11 @@
 /* ── TOKENS ──────────────────────────────────────────────────── */
 :root {
   --bg:          #050508;
-  --surface:     #0c0c12;
-  --surface-2:   #13131a;
-  --surface-3:   #1a1a24;
-  --border:      rgba(255,255,255,0.065);
-  --border-gold: rgba(184,157,106,0.5);
+  --surface:     #1a1a24;
+  --surface-2:   #222230;
+  --surface-3:   #2a2a36;
+  --border:      rgba(255,255,255,0.15);
+  --border-gold: rgba(184,157,106,0.7);
   --gold:        #b89d6a;
   --gold-dim:    rgba(184,157,106,0.35);
   --silver:      #9da4ae;
@@ -70,7 +70,7 @@ a { text-decoration: none; color: inherit; }
 
 .sys-step-indicator {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.55rem;
+  font-size: 0.73rem;
   font-weight: 600;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -117,7 +117,7 @@ a { text-decoration: none; color: inherit; }
 /* ── TYPOGRAPHY ──────────────────────────────────────────────── */
 .sys-eyebrow {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.52rem;
+  font-size: 0.70rem;
   font-weight: 600;
   letter-spacing: 0.38em;
   text-transform: uppercase;
