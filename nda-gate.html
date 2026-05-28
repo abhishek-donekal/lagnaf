@@ -32,11 +32,6 @@
     <div class="sys-divider"></div>
     <p class="sys-sub">Before any system details, pricing, or operational information is disclosed, you must execute the LAGNAF&trade; Network Non-Disclosure Agreement. Review and sign the document below. No navigation is available from this page.</p>
 
-    <div style="background:#faf8f4;border:1px solid #b89d6a;padding:16px 20px;margin-bottom:24px;display:flex;gap:12px;align-items:flex-start;">
-      <span style="color:#b89d6a;font-size:1rem;flex-shrink:0;">?</span>
-      <p style="font-size:0.75rem;color:#555;line-height:1.7;">This NDA is legally binding. By signing, you agree that all system information, pricing, operator details, and network infrastructure disclosed following execution are strictly confidential and may not be shared, reproduced, or distributed without written authorization from LAGNAF&trade; Network LLC.</p>
-    </div>
-
     <!-- DocuSign Embed Area -->
     <div class="nda-frame-wrap" id="docusign-wrap">
       <div style="text-align:center;padding:56px 40px;">
@@ -78,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const entry = Flow.get('entry');
   if (entry) {
     const nameEl = document.createElement('div');
-    nameEl.style.cssText = 'font-size:0.7rem;color:#888;margin-bottom:20px;';
+    nameEl.style.cssText = 'font-size:0.72rem;color:var(--text-2);margin-bottom:20px;padding:12px 16px;border:1px solid var(--border);border-left:3px solid var(--gold);background:var(--surface-2);letter-spacing:0.04em;';
     nameEl.innerHTML = 'Applicant: <strong style="color:#222;">' + entry.first + ' ' + entry.last + '</strong>';
     document.querySelector('.sys-divider').after(nameEl);
   }

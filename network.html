@@ -207,8 +207,24 @@
       display: flex;
       flex-direction: column;
       transition: background 0.25s;
+      position: relative;
     }
     .vertical-card:hover { background: #faf8f4; }
+
+    .vc-logo-badge {
+      position: absolute;
+      top: 14px; right: 14px;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #b89d6a, #e8c870);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.52rem; font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(184,157,106,0.25);
+    }
 
     .vc-index {
       font-family: 'Cinzel', serif;
@@ -486,6 +502,7 @@
 
     <!-- 01 AutoAppeal&trade; -->
     <div class="vertical-card">
+      <span class="vc-logo-badge">AA</span>
       <div class="vc-index">01</div>
       <div class="vc-sector">Legal Tech — Citation Defense</div>
       <div class="vc-name">AutoAppeal&trade;</div>
@@ -495,6 +512,7 @@
 
     <!-- 02 Ascend Analytics&trade; -->
     <div class="vertical-card">
+      <span class="vc-logo-badge">AN</span>
       <div class="vc-index">02</div>
       <div class="vc-sector">Intelligence — Data Operations</div>
       <div class="vc-name">Ascend Analytics&trade;</div>
@@ -504,6 +522,7 @@
 
     <!-- 03 Precision Greens -->
     <div class="vertical-card">
+      <span class="vc-logo-badge">PG</span>
       <div class="vc-index">03</div>
       <div class="vc-sector">Grounds & Landscape Management</div>
       <div class="vc-name">Precision Greens</div>
@@ -513,6 +532,7 @@
 
     <!-- 04 Clear Panel Pros -->
     <div class="vertical-card">
+      <span class="vc-logo-badge">CP</span>
       <div class="vc-index">04</div>
       <div class="vc-sector">Surface & Panel Maintenance</div>
       <div class="vc-name">Clear Panel Pros</div>
@@ -522,6 +542,7 @@
 
     <!-- 05 Red Vault Auto Detail -->
     <div class="vertical-card">
+      <span class="vc-logo-badge">RV</span>
       <div class="vc-index">05</div>
       <div class="vc-sector">Automotive — Premium Detailing</div>
       <div class="vc-name">Red Vault Auto Detail</div>
@@ -531,6 +552,7 @@
 
     <!-- 06 Coin Vault Pro -->
     <div class="vertical-card">
+      <span class="vc-logo-badge">CV</span>
       <div class="vc-index">06</div>
       <div class="vc-sector">Asset Acquisition — Collectibles</div>
       <div class="vc-name">Coin Vault Pro</div>
@@ -540,6 +562,7 @@
 
     <!-- 07 Founders N7 Project -->
     <div class="vertical-card">
+      <span class="vc-logo-badge">N7</span>
       <div class="vc-index">07</div>
       <div class="vc-sector">Founders — Private</div>
       <div class="vc-name">Founders N7 Project</div>
@@ -549,6 +572,7 @@
 
     <!-- 08 Mirage VIP Pool & Spa -->
     <div class="vertical-card">
+      <span class="vc-logo-badge">MV</span>
       <div class="vc-index">08</div>
       <div class="vc-sector">Aquatic & Lifestyle Services</div>
       <div class="vc-name">Mirage VIP Pool &amp; Spa</div>
@@ -558,6 +582,7 @@
 
     <!-- 09 Adobe Creek Concrete Stamping -->
     <div class="vertical-card">
+      <span class="vc-logo-badge">AC</span>
       <div class="vc-index">09</div>
       <div class="vc-sector">Construction — Hardscape Design</div>
       <div class="vc-name">Adobe Creek Concrete Stamping</div>
@@ -567,6 +592,7 @@
 
     <!-- 10 Happy Tails -->
     <div class="vertical-card">
+      <span class="vc-logo-badge">HT</span>
       <div class="vc-index">10</div>
       <div class="vc-sector">Pet Services — Premium Operations</div>
       <div class="vc-name">Happy Tails</div>
