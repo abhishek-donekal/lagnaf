@@ -6,6 +6,18 @@
     <meta name="description" content="NDA execution." />
   <meta name="robots" content="noindex,nofollow" />
   <link rel="stylesheet" href="css/system.css" />
+  <style>
+    /* Dark-theme fix: NDA status card */
+    .nda-frame-wrap { background: var(--surface-2); border: 1px solid var(--border); }
+    .nda-frame-wrap [style*="color:#222"] { color: var(--text-1) !important; }
+    .nda-frame-wrap [style*="background:#faf8f5"] {
+      background: var(--surface-3) !important;
+      border-color: var(--border-gold) !important;
+    }
+    /* Bottom divider section */
+    .sys-card [style*="border-top:1px solid #e5e5e5"] { border-color: var(--border) !important; }
+    .sys-card [style*="color:#aaa"] { color: var(--text-3) !important; }
+  </style>
 </head>
 <body>
 
@@ -74,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (entry) {
     const nameEl = document.createElement('div');
     nameEl.style.cssText = 'font-size:0.72rem;color:var(--text-2);margin-bottom:20px;padding:12px 16px;border:1px solid var(--border);border-left:3px solid var(--gold);background:var(--surface-2);letter-spacing:0.04em;';
-    nameEl.innerHTML = 'Applicant: <strong style="color:#222;">' + entry.first + ' ' + entry.last + '</strong>';
+    nameEl.innerHTML = 'Applicant: <strong style="color:var(--text-1);font-weight:600;">' + entry.first + ' ' + entry.last + '</strong>';
     document.querySelector('.sys-divider').after(nameEl);
   }
 });
