@@ -147,6 +147,12 @@
       transition: background 0.2s;
     }
     .copy-btn:hover { background: #b89d6a; color: #fff; }
+    /* Dark-theme fix: compensation grid boxes inside modules */
+    .sys-card div[style*="border:1px solid #e5e5e5"] {
+      background: var(--surface-2) !important;
+      border-color: rgba(255,255,255,0.1) !important;
+    }
+    .sys-card [style*="color:#666"] { color: rgba(255,255,255,0.55) !important; }
     .progress-bar-wrap {
       background: #f0f0f0;
       height: 4px;
@@ -169,7 +175,7 @@
     <span class="sys-step-indicator">Brand Ambassador Onboarding — Training Modules</span>
     <div style="text-align:right;">
       <span style="font-size:0.55rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#666;">UIN</span>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;color:#b89d6a;letter-spacing:0.1em;" id="uin-badge"></>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:0.9rem;color:#b89d6a;letter-spacing:0.1em;" id="uin-badge"></div>
     </div>
   </div>
 </header>
@@ -335,7 +341,7 @@
           <p style="font-size:0.52rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#b89d6a;margin-bottom:8px;">Secure Activation Verification</p>
           <span class="badge badge-gold" style="font-size:0.5rem;display:inline-block;margin-bottom:14px;">Active</span>
           <p style="font-size:0.55rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin:0 0 4px;">Your Referral Link</p>
-          <div style="font-size:0.68rem;color:#888;font-family:monospace;word-break:break-all;" id="deploy-link-display"></>
+          <div style="font-size:0.68rem;color:#888;font-family:monospace;word-break:break-all;" id="deploy-link-display"></div>
         </div>
 
         <div class="module-confirm">
@@ -356,7 +362,7 @@
         <p style="font-size:0.58rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#b89d6a;margin-bottom:8px;">Secure Activation Verification</p>
         <span class="badge badge-gold" style="font-size:0.5rem;display:inline-block;margin-bottom:18px;">Deployment Authorised</span>
         <p style="font-size:0.68rem;color:#888;margin:0 0 8px;">Your referral link:</p>
-        <div class="referral-link-display" id="reveal-link"></>
+        <div class="referral-link-display" id="reveal-link"></div>
         <button class="copy-btn" onclick="copyLink()">Copy Link</button>
       </div>
       <div style="margin-top:20px;">

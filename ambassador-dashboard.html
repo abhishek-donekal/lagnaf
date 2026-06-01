@@ -226,7 +226,7 @@
 
   <!-- Sidebar -->
   <div class="dash-sidebar">
-    <div class="dash-sidebar-logo">LAGNAF<span></></div>
+    <div class="dash-sidebar-logo">LAGNAF<span></span></div>
     <nav class="dash-nav">
       <a href="#overview" class="active">Overview</a>
       <a href="#credentials">Referral Credentials</a>
@@ -245,11 +245,11 @@
       <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px;">
         <div>
           <h1>Brand Ambassador Dashboard</h1>
-          <p>Brand Ambassador Program — <span id="dash-date"></></p>
+          <p>Brand Ambassador Program — <span id="dash-date"></span></p>
         </div>
         <div style="text-align:right;">
           <div style="font-size:0.5rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#aaa;margin-bottom:4px;">UIN</div>
-          <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#b89d6a;letter-spacing:0.1em;" id="uin-display"></>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#b89d6a;letter-spacing:0.1em;" id="uin-display"></div>
         </div>
       </div>
     </div>
@@ -258,8 +258,8 @@
     <div class="status-panel">
       <div class="status-panel-left">
         <div class="status-panel-label">Brand Ambassador Status</div>
-        <div class="status-panel-value" id="status-value"></>
-        <div class="status-panel-note" id="status-note"></>
+        <div class="status-panel-value" id="status-value"></div>
+        <div class="status-panel-note" id="status-note"></div>
       </div>
       <div>
         <div class="status-panel-label">Secure Activation</div>
@@ -276,7 +276,7 @@
     <div class="dash-cards">
       <div class="dash-card">
         <div class="dash-card-label">Training Progress</div>
-        <div class="dash-card-value" id="module-count" style="font-family:'Cormorant Garamond',serif;font-size:2rem;"></>
+        <div class="dash-card-value" id="module-count" style="font-family:'Cormorant Garamond',serif;font-size:2rem;"></div>
         <div class="dash-card-sub" id="module-label">Modules complete</div>
       </div>
       <div class="dash-card">
@@ -303,14 +303,14 @@
       <div style="margin-bottom:16px;">
         <div class="cred-block">
           <div class="cred-block-label">.card system Target URL</div>
-          <div style="font-size:0.65rem;color:#666;font-family:monospace;margin-top:8px;line-height:1.7;word-break:break-all;" id="dot-card-url"></>
+          <div style="font-size:0.65rem;color:#666;font-family:monospace;margin-top:8px;line-height:1.7;word-break:break-all;" id="dot-card-url"></div>
           <div style="font-size:0.58rem;color:#444;margin-top:8px;line-height:1.7;">Programme your physical .card NFC device to this URL. When tapped, your activation is pre-loaded automatically.</div>
         </div>
       </div>
 
       <div class="cred-block">
         <div class="cred-block-label">Your Referral Link</div>
-        <div class="cred-link" id="amb-link-display" onclick="copyLink(this)"></>
+        <div class="cred-link" id="amb-link-display" onclick="copyLink(this)"></div>
         <div class="copy-row">
           <button class="copy-btn-sm" id="copy-link-btn" onclick="copyAmbLink()">Copy Referral Link</button>
         </div>
@@ -324,7 +324,7 @@
     <div id="training-progress" style="background:#fff;border:1px solid #e5e5e5;padding:28px;margin-top:20px;margin-bottom:20px;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
         <div style="font-size:0.6rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#b89d6a;">Training Modules</div>
-        <span id="training-badge" class="badge badge-grey"></>
+        <span id="training-badge" class="badge badge-grey"></span>
       </div>
 
       <div class="module-track" id="module-track">

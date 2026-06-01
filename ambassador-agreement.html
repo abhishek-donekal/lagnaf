@@ -6,6 +6,24 @@
     <meta name="description" content="Brand Ambassador Agreement." />
   <meta name="robots" content="noindex,nofollow" />
   <link rel="stylesheet" href="css/system.css" />
+  <style>
+    /* Dark-theme fix: all content boxes with light borders get dark surface */
+    .sys-card div[style*="border:1px solid #e5e5e5"] {
+      background: var(--surface-2) !important;
+      border-color: rgba(255,255,255,0.1) !important;
+    }
+    .sys-card [style*="background:#faf8f4"] {
+      background: var(--surface-3) !important;
+      border-color: rgba(255,255,255,0.1) !important;
+    }
+    /* Body/muted text → light */
+    .sys-card [style*="color:#555"] { color: rgba(255,255,255,0.65) !important; }
+    .sys-card [style*="color:#666"] { color: rgba(255,255,255,0.55) !important; }
+    /* Near-black text → near-white */
+    .sys-card [style*="color:#222"] { color: #f0f1f3 !important; }
+    /* Checkbox label spans */
+    .sys-card label span { color: rgba(255,255,255,0.72) !important; }
+  </style>
 </head>
 <body>
 
@@ -20,19 +38,19 @@
     <!-- Ambassador step progress -->
     <div style="display:flex;gap:6px;align-items:center;margin-bottom:32px;flex-wrap:wrap;">
       <span style="font-size:0.55rem;font-weight:600;letter-spacing:0.1em;color:#b89d6a;padding:3px 8px;border:1px solid #1e1e1e;background:#0a0a0a;">Intro</span>
-      <span style="color:#444;font-size:0.7rem;"></>
+      <span style="color:#444;font-size:0.7rem;"></span>
       <span style="font-size:0.55rem;font-weight:600;letter-spacing:0.1em;color:#b89d6a;padding:3px 8px;border:1px solid #1e1e1e;background:#0a0a0a;">Pre-Qual</span>
-      <span style="color:#444;font-size:0.7rem;"></>
+      <span style="color:#444;font-size:0.7rem;"></span>
       <span style="font-size:0.55rem;font-weight:600;letter-spacing:0.1em;color:#b89d6a;padding:3px 8px;border:1px solid #1e1e1e;background:#0a0a0a;">.card Setup</span>
-      <span style="color:#444;font-size:0.7rem;"></>
+      <span style="color:#444;font-size:0.7rem;"></span>
       <span style="font-size:0.55rem;font-weight:600;letter-spacing:0.1em;color:#b89d6a;padding:3px 8px;border:1px solid #1e1e1e;background:#0a0a0a;">NDA</span>
-      <span style="color:#444;font-size:0.7rem;"></>
+      <span style="color:#444;font-size:0.7rem;"></span>
       <span style="font-size:0.55rem;font-weight:600;letter-spacing:0.1em;color:#b89d6a;padding:3px 8px;border:1px solid #1e1e1e;background:#0a0a0a;">UIN</span>
-      <span style="color:#444;font-size:0.7rem;"></>
+      <span style="color:#444;font-size:0.7rem;"></span>
       <span style="font-size:0.55rem;font-weight:600;letter-spacing:0.1em;color:#fff;padding:3px 8px;background:#b89d6a;">Agreement</span>
-      <span style="color:#444;font-size:0.7rem;"></>
+      <span style="color:#444;font-size:0.7rem;"></span>
       <span style="font-size:0.55rem;font-weight:600;letter-spacing:0.1em;color:#555;padding:3px 8px;border:1px solid #2a2a2a;">Training</span>
-      <span style="color:#444;font-size:0.7rem;"></>
+      <span style="color:#444;font-size:0.7rem;"></span>
       <span style="font-size:0.55rem;font-weight:600;letter-spacing:0.1em;color:#555;padding:3px 8px;border:1px solid #2a2a2a;">Deployed</span>
     </div>
 
@@ -43,7 +61,7 @@
       </div>
       <div style="text-align:right;">
         <span style="font-size:0.55rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#bbb;">UIN</span>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#b89d6a;letter-spacing:0.1em;" id="uin-badge"></>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:#b89d6a;letter-spacing:0.1em;" id="uin-badge"></div>
       </div>
     </div>
     <div class="sys-divider"></div>
@@ -118,7 +136,7 @@
       </div>
       <div>
         <p style="font-size:0.55rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:4px;">Your UIN</p>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#b89d6a;letter-spacing:0.1em;" id="uin-reminder"></>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#b89d6a;letter-spacing:0.1em;" id="uin-reminder"></div>
       </div>
       <div>
         <p style="font-size:0.55rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:#555;margin-bottom:4px;">Status</p>
