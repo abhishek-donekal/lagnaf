@@ -95,10 +95,12 @@ const Flow = {
     this.set('status', 'nda_completed');
 
     const attribution = this.get('attribution') || {};
+    const ambCode = this.get('ambassador_code');
     this.hubspotUpsert({
       ...attribution,
-      lagnaf_uin:    uin,
-      lagnaf_status: 'NDA Completed',
+      lagnaf_uin:             uin,
+      lagnaf_status:          'NDA Completed',
+      ...(ambCode ? { lagnaf_ambassador_code: ambCode } : {}),
     }, 'NDA Completed');
 
     window.location.href = 'uin-issued.html';
