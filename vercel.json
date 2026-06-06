@@ -1,11 +1,4 @@
 {
-  "redirects": [
-    {
-      "source": "https://www.lagnafnetwork.com/(.*)",
-      "destination": "https://lagnafnetwork.com/$1",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     { "source": "/api/hs", "destination": "/api/hs" },
     { "source": "/(.*)",   "destination": "/$1" }
