@@ -164,7 +164,7 @@ img { display: block; max-width: 100%; }
 .bp-hero::before {
   content: '';
   position: absolute; inset: 0;
-  background: rgba(3,3,6,0.55);
+  background: rgba(3,3,6,0.82);
 }
 .bp-hero::after {
   content: '';
