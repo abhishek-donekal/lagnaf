@@ -11,11 +11,24 @@ const Flow = {
   get(key) { const v = localStorage.getItem('lagnaf_' + key); return v ? JSON.parse(v) : null; },
   clear() { Object.keys(localStorage).filter(k => k.startsWith('lagnaf_')).forEach(k => localStorage.removeItem(k)); },
 
-  generateUIN() {
-    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-    let id = 'DRY-';
-    for (let i = 0; i < 8; i++) id += chars[Math.floor(Math.random() * chars.length)];
-    return id;
+  // Returns a Promise<string> — calls /api/counter for a sequential code.
+  // role: 'ba' (Brand Ambassador) | 'bo' (Business Owner) | 'tech' (Technician)
+  generateUIN(role) {
+    role = role || 'bo';
+    const prefixMap = { ba: 'LagBA', bo: 'LagBO', tech: 'LagTECH' };
+    const prefix = prefixMap[role] || 'LagBO';
+
+    return fetch('/api/counter?role=' + role)
+      .then(r => r.json())
+      .then(d => {
+        if (d.code) return d.code;
+        throw new Error('no code in response');
+      })
+      .catch(() => {
+        // Local fallback — not sequential but never blocks the funnel
+        const n = (Math.floor(Date.now() / 1000) % 8999) + 1001;
+        return prefix + '-' + String(n).padStart(4, '0');
+      });
   },
 
   generateAmbassadorCode() {
@@ -87,23 +100,29 @@ const Flow = {
     window.location.href = 'nda-gate.html';
   },
 
-  // Step 2: NDA complete — assign UIN, update HubSpot
+  // Step 2: NDA complete — assign sequential UIN, update HubSpot
+  // Role-based prefixes: LagBA (ambassador) | LagBO (operator) | LagTECH (technician)
   completeNDA() {
-    const uin = this.generateUIN();
-    this.set('nda_complete', true);
-    this.set('uin', uin);
-    this.set('status', 'nda_completed');
+    const role = this.get('ambassador_track') ? 'ba'
+               : this.get('tech_track')       ? 'tech'
+               : 'bo';
 
-    const attribution = this.get('attribution') || {};
-    const ambCode = this.get('ambassador_code');
-    this.hubspotUpsert({
-      ...attribution,
-      lagnaf_uin:             uin,
-      lagnaf_status:          'NDA Completed',
-      ...(ambCode ? { lagnaf_ambassador_code: ambCode } : {}),
-    }, 'NDA Completed');
+    this.generateUIN(role).then(uin => {
+      this.set('nda_complete', true);
+      this.set('uin', uin);
+      this.set('status', 'nda_completed');
 
-    window.location.href = 'uin-issued.html';
+      const attribution = this.get('attribution') || {};
+      const ambCode = this.get('ambassador_code');
+      this.hubspotUpsert({
+        ...attribution,
+        lagnaf_uin:    uin,
+        lagnaf_status: 'NDA Completed',
+        ...(ambCode ? { lagnaf_ambassador_code: ambCode } : {}),
+      }, 'NDA Completed');
+
+      window.location.href = 'uin-issued.html';
+    });
   },
 
   // Step 3: Path select
