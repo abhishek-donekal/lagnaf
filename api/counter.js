@@ -29,8 +29,9 @@ export default async function handler(req, res) {
   }
 
   const prefix = prefixMap[role];
-  const kvUrl   = process.env.KV_REST_API_URL;
-  const kvToken = process.env.KV_REST_API_TOKEN;
+  // Support both Vercel KV naming and Upstash direct naming
+  const kvUrl   = process.env.KV_REST_API_URL   || process.env.UPSTASH_REDIS_REST_URL;
+  const kvToken = process.env.KV_REST_API_TOKEN  || process.env.UPSTASH_REDIS_REST_TOKEN;
 
   // ── KV not yet configured — return timestamp-derived fallback ──────────────
   if (!kvUrl || !kvToken) {
