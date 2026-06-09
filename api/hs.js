@@ -109,10 +109,28 @@ export default async function handler(req, res) {
 
     // ── Auto-create missing properties then retry once ───────────────────────
     if (!hsRes.ok && data.message && data.message.includes('PROPERTY_DOESNT_EXIST')) {
-      const missing = (data.errors || [])
+      // HubSpot embeds errors as a JSON array inside the message string.
+      // Try data.errors first, then parse from the message string as fallback.
+      let missing = (data.errors || [])
         .filter(e => e.error === 'PROPERTY_DOESNT_EXIST')
         .map(e => e.name)
         .filter(Boolean);
+
+      if (!missing.length) {
+        try {
+          const start = data.message.indexOf('[');
+          const end   = data.message.lastIndexOf(']') + 1;
+          if (start !== -1 && end > start) {
+            const arr = JSON.parse(data.message.slice(start, end));
+            missing = arr
+              .filter(e => e.error === 'PROPERTY_DOESNT_EXIST')
+              .map(e => e.name)
+              .filter(Boolean);
+          }
+        } catch (pe) {
+          console.error('[LAGNAF HubSpot] could not parse missing props from message', pe.message);
+        }
+      }
 
       if (missing.length) {
         console.log('[LAGNAF HubSpot] missing properties — creating:', missing.join(', '));
